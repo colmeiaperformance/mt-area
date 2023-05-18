@@ -1,0 +1,193 @@
+$admin-text-color: #1c1f23;
+$admin-menu-background-color: #2c323f;
+$admin-menu-text-color: #dfe4f1;
+$admin-primary-color: #6c87ae;
+$admin-primary-color-hover: #426391;
+$admin-input-color: #212529;
+$admin-dropdown-background-color: #546987;
+
+//Import custom bootstrap input, textarea and select
+@import "../_scss/bootstrap/_functions.scss";
+@import "../_scss/bootstrap/_variables.scss";
+@import "../_scss/bootstrap/_mixins.scss";
+@import "../_scss/bootstrap/_forms.scss";
+@import "bootstrap";
+
+//Root custom vars
+html {
+  --wp-admin--admin-bar--height: 68px !important;
+}
+
+//Hide undesired stuff from dashboard
+#dashboard-widgets-wrap,
+#menu-dashboard,
+#wp-admin-bar-wp-logo,
+.user-admin-color-wrap,
+.user-admin-bar-front-wrap,
+.user-url-wrap,
+#application-passwords-section,
+#wpfooter,
+#wp-admin-bar-site-name-default,
+#wp-admin-bar-edit-profile,
+.user-language-wrap,
+#your-profile h2:nth-child(4),
+#wp-admin-bar-menu-toggle {
+  display: none !important;
+}
+//Set transparency to site title on button
+#wpadminbar #wp-admin-bar-my-sites a.ab-item,
+#wpadminbar #wp-admin-bar-site-name a.ab-item {
+  color: transparent !important;
+}
+//Hide wp logo from mobile
+@media screen and (max-width: 782px) {
+  #wpadminbar li#wp-admin-bar-wp-logo {
+    display: none !important;
+  }
+}
+//Set admin bar style
+#wpadminbar {
+  background: $admin-primary-color;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.02);
+  height: var(--wp-admin--admin-bar--height);
+}
+//Set left menu style
+#adminmenu,
+#adminmenuback,
+#adminmenuwrap {
+  // background-color: $admin-menu-background-color;
+  // width: 250px;
+  display: none;
+  @media screen and (max-width: 968px) {
+    // width: 160px;
+    display: none;
+  }
+}
+//Adjust left menu size
+#wpcontent,
+#wpfooter {
+  // margin-left: 250px;
+  display: flex;
+  justify-content: center;
+  margin-left: 0 !important;
+  @media screen and (max-width: 968px) {
+    // margin-left: 160px;
+    display: flex;
+    justify-content: center;
+  }
+  @media screen and (max-width: 782px) {
+    // margin-left: 140px;
+    display: flex;
+    justify-content: center;
+  }
+}
+//Correct main content to center
+#wpbody {
+  width: 45%;
+  @media only screen and (max-width: 960px) {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 960px) {
+  .auto-fold #wpcontent,
+  .auto-fold #wpfooter {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+//Correct logo on mobile
+@media screen and (max-width: 782px) {
+  #wpadminbar ul#wp-admin-bar-root-default > li {
+    margin-left: 10px;
+  }
+}
+//Make right button be a little bit to the left
+#wpadminbar ul {
+  padding: 0 20px 0 0;
+  @media screen and (max-width: 782px) {
+    padding: 0;
+  }
+}
+//Correct main content div margin to follow new menu height
+#wpcontent {
+  margin-top: var(--wp-admin--admin-bar--height);
+  @media screen and (max-width: 782px) {
+    margin-top: 0;
+  }
+}
+
+//Adjust right menu dropdown style
+#wpadminbar .menupop .ab-sub-wrapper,
+#wpadminbar .shortlink-input {
+  box-shadow: 0 0.25rem 2rem rgba(0, 0, 0, 0.08);
+  background: #546987;
+  border-radius: 0.375rem;
+  @media screen and (max-width: 782px) {
+    border-radius: 0;
+  }
+}
+
+//Adjust menu link colours
+#wpadminbar a,
+#wpadminbar #adminbarsearch::before,
+#wpadminbar .ab-icon::before,
+#wpadminbar .ab-item::before {
+  color: rgb(255, 255, 255, 1) !important;
+}
+
+#wpadminbar .ab-top-menu > li.hover > .ab-item {
+  content: none;
+}
+#wpadminbar .ab-top-menu > li.hover > .ab-item,
+#wpadminbar.nojq .quicklinks .ab-top-menu > li > .ab-item:focus,
+#wpadminbar:not(.mobile) .ab-top-menu > li:hover > .ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu > li > .ab-item:focus,
+#collapse-button:hover,
+#wpadminbar a:hover {
+  background: transparent;
+  color: $admin-menu-text-color !important;
+}
+.wp-admin #wpadminbar #wp-admin-bar-site-name > .ab-item::before {
+  background-image: url("./assets/media/mt/logo-topo.png") !important;
+  background-repeat: no-repeat;
+  background-size: 145px 100%;
+  opacity: 0.75;
+  display: inline-block;
+  width: 145px;
+  height: 100%;
+  max-width: 145px;
+  content: "";
+  margin-top: 12px;
+  @media screen and (max-width: 782px) {
+    background-image: url("./assets/media/mt/logo-footer.png") !important;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+    opacity: 0.75;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    content: "";
+    margin-top: auto;
+  }
+}
+#wp-admin-bar-my-account {
+  margin-top: 16px !important;
+  @media screen and (max-width: 782px) {
+    margin-top: auto !important;
+  }
+}
+#adminmenu .wp-has-current-submenu .wp-submenu .wp-submenu-head,
+#adminmenu .wp-menu-arrow,
+#adminmenu .wp-menu-arrow div,
+#adminmenu li.current a.menu-top,
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+  background: #6c87ae;
+}
+.wp-core-ui .button-primary {
+  background: #6c87ae;
+  border-color: #6c87ae;
+}
+.wp-core-ui .button-primary:hover {
+  background: $admin-primary-color-hover;
+  border-color: $admin-primary-color-hover;
+}

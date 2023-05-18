@@ -1,0 +1,928 @@
+<?php 
+
+//Stylesheets
+function loading_styles(){
+    wp_enqueue_style( 'source-sans-pro-font', 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'icons-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'dashmix-fullcalendar-css', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'dashmix-datatables-css', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'dashmix-responsive-css', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/dashmix.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'theme', get_template_directory_uri() . '/assets/css/themes/xmodern.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+}
+
+//Scripts
+function loading_scripts(){
+    // wp_register_script( 'popper-js', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    // wp_register_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+
+    wp_register_script( 'dashmix-js', get_template_directory_uri() . '/assets/js/dashmix.app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'jquery-sparkline-js', get_template_directory_uri() . '/assets/js/lib/jquery.min.js', array(), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'sparkline-js', get_template_directory_uri() . '/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'datatables-js', get_template_directory_uri() . '/assets/js/plugins/datatables/jquery.dataTables.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'datatables-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'datatables-responsive-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'responsive-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'buttons-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'buttons-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'jszip-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-jszip/jszip.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'pdfmake-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'vfs-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'print-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.print.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'buttons-html5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.html5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'tables-datatables-js', get_template_directory_uri() . '/assets/js/pages/be_tables_datatables.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'plugin-fullcalendar-js', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'dashmix-fullcalendar-js', get_template_directory_uri() . '/assets/_js/pages/be_comp_calendar.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'phone-mask-js', get_template_directory_uri() . '/assets/js/lib/phone.mask.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'main-js', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    
+    // wp_enqueue_script( 'popper-js');
+    // wp_enqueue_script( 'bootstrap-js');
+    wp_enqueue_script( 'dashmix-js');
+    wp_enqueue_script( 'jquery-sparkline-js');
+    wp_enqueue_script( 'sparkline-js');
+    wp_enqueue_script( 'datatables-js');
+    wp_enqueue_script( 'datatables-bs5-js');
+    wp_enqueue_script( 'datatables-responsive-js');
+    wp_enqueue_script( 'responsive-bs5-js');
+    wp_enqueue_script( 'buttons-js');
+    wp_enqueue_script( 'buttons-bs5-js');
+    wp_enqueue_script( 'jszip-js');
+    wp_enqueue_script( 'pdfmake-js');
+    wp_enqueue_script( 'vfs-js');
+    wp_enqueue_script( 'print-js');
+    wp_enqueue_script( 'buttons-html5-js');
+    wp_enqueue_script( 'tables-datatables-js');
+    wp_enqueue_script( 'plugin-fullcalendar-js');
+    wp_enqueue_script( 'dashmix-fullcalendar-js');
+    wp_enqueue_script( 'phone-mask-js');
+    wp_enqueue_script( 'main-js');
+}
+
+add_action( 'wp_enqueue_scripts', 'loading_styles' );
+add_action( 'wp_enqueue_scripts', 'loading_scripts' );
+
+
+/**
+ * Register and enqueue a custom stylesheet in the WordPress admin to subscribers and redirect them to profile page.
+ */
+function wpdocs_enqueue_custom_admin_style() {
+    if ( current_user_can( 'subscriber' ) || current_user_can( 'contributor' ) || current_user_can( 'author' ) ) {
+
+        if (current_user_can('subscriber') || current_user_can('contributor')) {
+            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/admin-subs-style.min.css', false, wp_get_theme()->get('Version'), 'all');
+        }
+        elseif ( current_user_can( 'author' ) ) {
+            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/admin-author-style.min.css', false, wp_get_theme()->get('Version'), 'all');
+        }
+
+
+        wp_register_script( 'admin-main-js', get_template_directory_uri() . '/assets/js/admin-main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+        wp_enqueue_script( 'admin-main-js');
+        $admins = array(
+            home_url( 'wp-admin', 'relative' ),
+            home_url( 'dashboard', 'relative' ),
+            home_url( 'admin', 'relative' ),
+            site_url( 'dashboard', 'relative' ),
+            site_url( 'admin', 'relative' ),
+        );
+        if ( in_array( untrailingslashit( $_SERVER['REQUEST_URI'] ), $admins, true ) ) {
+            wp_redirect( admin_url( 'profile.php' ) );
+            exit;
+        }
+    } 
+}
+add_action( 'admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style' );
+
+
+/* Add native pagination.  */
+function wp_boostrap_4_pagination(){
+    
+    if( is_singular() )
+    return;
+    
+    global $wp_query;
+    
+    /** Check number of pages **/
+    if( $wp_query->max_num_pages <= 1 )
+    return;
+    
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $max   = intval( $wp_query->max_num_pages );
+    
+    /** Add current page to the array */
+    if ( $paged >= 1 )
+    $links[] = $paged;
+    
+    /** Add the pages around the current page to the array */
+    if ( $paged >= 3 ) {
+        $links[] = $paged - 1;
+        $links[] = $paged - 2;
+    }
+    
+    if ( ( $paged + 2 ) <= $max ) {
+        $links[] = $paged + 2;
+        $links[] = $paged + 1;
+    }
+    
+    echo '<nav aria-label="Page navigation"><ul class="pagination justify-content-center push">' . "\n";
+    
+    /** Previous Post Link */
+    if ( get_previous_posts_link() )
+    printf( '<li class="page-item">%s</li>' . "\n", get_previous_posts_link( '<i class="fa fa-angle-left"></i>' ) );
+    
+    /** Link to first page, plus ellipses if necessary */
+    if ( ! in_array( 1, $links ) ) {
+        $class = 1 == $paged ? ' class="page-item active"' : ' class="page-item"';
+        
+        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+        
+        if ( ! in_array( 2, $links ) )
+        echo '<li class="page-empty">…</li>';
+    }
+    
+    /** Link to current page, plus 2 pages in either direction if necessary */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="page-item active"' : ' class="page-item"';
+        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+    }
+    
+    /** Link to last page, plus ellipses if necessary */
+    if ( ! in_array( $max, $links ) ) {
+        if ( ! in_array( $max - 1, $links ) )
+        echo '<li class="page-empty">…</li>' . "\n";
+        
+        $class = $paged == $max ? ' class="page-item active"' : ' class="page-item"';
+        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+    }
+    
+    /** Next Post Link */
+    if ( get_next_posts_link() )
+    printf( '<li class="page-item">%s</li>' . "\n", get_next_posts_link( '<i class="fa fa-angle-right"></i>' ) );
+    
+    echo '</ul></nav>' . "\n";
+    
+}
+
+
+/*
+* Custom Attribute for links
+*/
+
+add_filter('next_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_attributes');
+
+function wp_boostrap_4_pagination_posts_link_attributes() {
+    return 'class="page-link"';
+}
+
+function base_setup() {
+    
+    //Tradução
+    //load_theme_textdomain( 'base_language', get_template_directory() . '/languages' );
+    
+    //Wordpress gerencia o título
+    add_theme_support( 'title-tag' );
+    
+    //Formatos de posts
+    add_theme_support(
+        'post-formats',
+        array(
+            'aside',
+            'link',
+            'gallery',
+            'status',
+            'video',
+            )
+    );
+
+    //Add custom field to menu - font awesome
+    function menu_item_desc( $item_id, $item ) {
+        $menu_item_desc = get_post_meta( $item_id, '_menu_item_desc', true ); ?>
+<div style="clear: both;">
+  <span class="fa-class"><?php _e( "Font Awesome Class", 'mt-area' ); ?></span><br />
+  <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
+  <div class="logged-input-holder">
+    <input type="text" name="menu_item_desc[<?php echo $item_id ;?>]" id="menu-item-desc-<?php echo $item_id ;?>"
+      value="<?php echo esc_attr( $menu_item_desc ); ?>" />
+  </div>
+</div>
+<?php }
+    add_action( 'wp_nav_menu_item_custom_fields', 'menu_item_desc', 10, 2 );
+
+    //Save custom field in database
+    function save_menu_item_desc( $menu_id, $menu_item_db_id ) {
+        if ( isset( $_POST['menu_item_desc'][$menu_item_db_id]  ) ) {
+            $sanitized_data = sanitize_text_field( $_POST['menu_item_desc'][$menu_item_db_id] );
+            update_post_meta( $menu_item_db_id, '_menu_item_desc', $sanitized_data );
+        } else {
+            delete_post_meta( $menu_item_db_id, '_menu_item_desc' );
+        }
+    }
+    add_action( 'wp_update_nav_menu_item', 'save_menu_item_desc', 10, 2 );
+
+        
+    // bootstrap 5 wp_nav_menu walker
+    class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
+        private $current_item;
+        private $dropdown_menu_alignment_values = [
+            'dropdown-menu-start',
+            'dropdown-menu-end',
+            'dropdown-menu-sm-start',
+            'dropdown-menu-sm-end',
+            'dropdown-menu-md-start',
+            'dropdown-menu-md-end',
+            'dropdown-menu-lg-start',
+            'dropdown-menu-lg-end',
+            'dropdown-menu-xl-start',
+            'dropdown-menu-xl-end',
+            'dropdown-menu-xxl-start',
+            'dropdown-menu-xxl-end'
+        ];
+        
+        function start_lvl(&$output, $depth = 0, $args = null){
+            $dropdown_menu_class[] = '';
+            foreach($this->current_item->classes as $class) {
+                if(in_array($class, $this->dropdown_menu_alignment_values)) {
+                    $dropdown_menu_class[] = $class;
+                }
+            }
+            $indent = str_repeat("\t", $depth);
+            $submenu = ($depth > 0) ? ' sub-menu' : '';
+            $output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr(implode(" ",$dropdown_menu_class)) . " depth_$depth\">\n";
+        }
+        
+        function start_el(&$output, $item, $depth = 0, $args = null, $id = 0){
+            $this->current_item = $item;
+            
+            $indent = ($depth) ? str_repeat("\t", $depth) : '';
+            
+            $li_attributes = '';
+            $class_names = $value = '';
+            
+            $classes = empty($item->classes) ? array() : (array) $item->classes;
+            
+            $classes[] = ($args->walker->has_children) ? 'dropdown' : '';
+            $classes[] = 'nav-item';
+            $classes[] = 'nav-item-' . $item->ID;
+            if ($depth && $args->walker->has_children) {
+                $classes[] = 'dropdown-menu dropdown-menu-end';
+            }
+            
+            $class_names =  join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+            $class_names = ' class="' . esc_attr($class_names) . '"';
+            
+            $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
+            $id = strlen($id) ? ' id="' . esc_attr($id) . '"' : '';
+            
+            $output .= $indent . '<li ' . $id . $value . $class_names . $li_attributes . '>';
+            
+            $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
+            $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
+            $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
+            $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
+            
+            $active_class = ($item->current || $item->current_item_ancestor || in_array("current_page_parent", $item->classes, true) || in_array("current-post-ancestor", $item->classes, true)) ? 'active' : '';
+            $nav_link_class = ( $depth > 0 ) ? 'dropdown-item ' : 'nav-link nav-main-link ';
+            $attributes .= ( $args->walker->has_children ) ? ' class="'. $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="'. $nav_link_class . $active_class . '"';
+            
+            $menu_item_desc = get_post_meta( $item->ID, '_menu_item_desc', true );
+            if ( !empty($menu_item_desc) ) {
+                $menu_item_desc;
+            } else {
+                $menu_item_desc = 'fa fa-link';
+            }
+
+            $item_output = $args->before;
+            $item_output .= '<a' . $attributes . '>';
+            $item_output .= $args->link_before;
+            $item_output .= '<i class="nav-main-link-icon ' . $menu_item_desc . '"></i>';
+            $item_output .= '<span class="nav-main-link-name">' . apply_filters('the_title', $item->title, $item->ID) . '</span>';
+            $item_output .= $args->link_after;
+            $item_output .= '</a>';
+            $item_output .= $args->after;
+
+        
+            
+            $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+        }
+    }
+    // register a new menu
+    register_nav_menu('main-menu', 'Main menu');
+    register_nav_menu('quick-menu', 'Quick menu');
+    register_nav_menu('events-menu', 'Eventos');
+    register_nav_menu('content-menu', 'Conteúdo');
+    
+    //Thumbnails ou miniaturas
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 1920, 9999 );
+    add_image_size( 'popular-posts-img', 100, 100 );
+    
+    //Logo customizado
+    $logo_width  = 300;
+    $logo_height = 100;
+    
+    add_theme_support(
+        'custom-logo',
+        array(
+            'height'               => $logo_height,
+            'width'                => $logo_width,
+            'flex-width'           => true,
+            'flex-height'          => true,
+            'unlink-homepage-logo' => true,
+            )
+        );
+        
+        // Add support for full and wide align images
+        add_theme_support( 'align-wide' );
+        
+    }
+add_action( 'after_setup_theme', 'base_setup' );
+    
+    // Add support for responsive embedded content.
+    add_theme_support( 'responsive-embeds' );
+    
+    // Add support for custom line height controls.
+    add_theme_support( 'custom-line-height' );
+    
+    // Add support for experimental link color control.
+    add_theme_support( 'experimental-link-color' );
+    
+    // Add support for experimental cover block spacing.
+    add_theme_support( 'custom-spacing' );
+    
+    //Hide admin bar if the user is NOT admin
+    add_action('after_setup_theme', 'remove_admin_bar');
+    function remove_admin_bar() {
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+    }
+                
+    function fix_svg() {
+        echo '<style type="text/css">
+        .attachment-266x266, .thumbnail img {
+            width: 100% !important;
+            height: auto !important;
+        }
+        </style>';
+    }
+    add_action( 'admin_head', 'fix_svg' );
+
+    /* Creating option pages on ACF plugin */
+    add_action('acf/init', 'my_acf_op_init');
+    function my_acf_op_init() {
+    
+    // Check function exists.
+    if( function_exists('acf_add_options_page') ) {
+        
+        // Add parent.
+        $parent = acf_add_options_page(array(
+            'page_title'  => __('Theme General Settings'),
+            'menu_title'  => __('Theme Settings'),
+            'icon_url'    => 'dashicons-welcome-write-blog',
+            'position'    => 60,
+            'redirect'    => false,
+        ));
+        
+        // Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('Social Settings'),
+            'menu_title'  => __('Social Media'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+        
+        // Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('Footer Settings'),
+            'menu_title'  => __('Footer'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+        
+        
+    }
+}
+
+/* Removing WP editor */
+// add_action('init', 'remove_guttenberg_from_pages', 10);
+// function remove_guttenberg_from_pages()
+// {
+//     remove_post_type_support('page', 'editor');
+// }
+    
+function the_breadcrumb() {
+    echo '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
+    if (is_front_page()) {
+        echo '<li class="breadcrumb-item">';
+        echo 'Painel';
+        echo "</li>";
+    }
+    elseif (!is_home()) {
+        echo '<li class="breadcrumb-item"><a href="';
+        echo get_option('home');
+        echo '">';
+        echo 'Home';
+        echo "</a></li>";
+        if (is_category() || is_single()) {
+            echo '<li class="breadcrumb-item">';
+            the_category(' </li><li class="breadcrumb-item"> ');
+            if (is_single()) {
+                echo "</li><li class='breadcrumb-item active'>";
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_page()) {
+            echo '<li class="breadcrumb-item">';
+            echo the_title();
+            echo '</li>';
+        }
+    }
+    elseif (is_tag()) {single_tag_title();}
+    elseif (is_day()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('F jS, Y'); echo'</li>';}
+    elseif (is_month()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('F, Y'); echo'</li>';}
+    elseif (is_year()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('Y'); echo'</li>';}
+    elseif (is_author()) {echo"<li class='breadcrumb-item'>Author Archive"; echo'</li>';}
+    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
+    elseif (is_search()) {echo"<li class='breadcrumb-item'>Search Results"; echo'</li>';}
+    echo '</ol></nav>';
+}
+
+//Excerpt size
+function mytheme_custom_excerpt_length( $length ) {
+    return 35;
+}
+add_filter( 'excerpt_length', 'mytheme_custom_excerpt_length', 999 );
+
+// wp_localize_script( 'twentyfifteen-script', 'ajax_posts', array(
+//     'ajaxurl' => admin_url( 'admin-ajax.php' ),
+//     'noposts' => __('No older posts found', 'twentyfifteen'),
+// ));
+
+//Page Slug
+
+function get_the_slug() {
+    global $post;
+    $slug = $post->post_name ?? '';
+
+    if ( ! $slug ) {
+        $slug = basename( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) );
+    }
+    return $slug;
+}
+
+//Estimated Reading Time
+function reading_time() {
+    $content = get_post_field( 'post_content', get_the_ID() );
+    $word_count = str_word_count( strip_tags( $content ) );
+    $readingtime = ceil($word_count / 200);
+    
+    if ($readingtime == 1) {
+    $timer = " minuto";
+    } else {
+    $timer = " minutos";
+    }
+    $totalreadingtime = $readingtime . $timer;
+    
+    return $totalreadingtime;
+}
+
+//Change WP Login Page
+function wpb_login_logo() { ?>
+<style type="text/css">
+#login {
+  padding: 2% 0 0 !important;
+}
+
+#login h1 a,
+.login h1 a {
+  background-image: url(<?php echo get_stylesheet_directory_uri();
+  ?>/assets/media/mt/icon-arvore.png);
+  height: 140px;
+  width: 140px;
+  background-size: 140px 140px;
+  background-repeat: no-repeat;
+  padding-bottom: 10px;
+}
+
+.login #login_error,
+.login .message,
+.login .success {
+  border-radius: 7px;
+}
+
+.login h1 {
+  background: #fff;
+  margin-bottom: -30px;
+  position: relative;
+  z-index: 10;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  padding-top: 20px;
+}
+
+#lostpasswordform #wp-submit,
+#loginform #wp-submit {
+  width: 100%;
+  height: 35px;
+  background-color: #ffc536;
+  border: 1px solid #ffc536;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  border-radius: 4px;
+  margin-top: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+#lostpasswordform #wp-submit:hover,
+#loginform #wp-submit:hover {
+  outline: 0;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #ffc536;
+  background-color: transparent;
+}
+
+body.wp-core-ui {
+  background:
+    /* url(<?php //echo get_stylesheet_directory_uri(); ?>/assets/media/mt/bg-404.jpg), */
+    rgb(255, 197, 54, 1) !important;
+}
+
+.wp-core-ui .button-secondary .dashicons {
+  color: #ffc536;
+}
+
+#lostpasswordform,
+#loginform {
+  border: none;
+  border-radius: 7px;
+  box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
+}
+
+#lostpasswordform input,
+#loginform input {
+  border: 1px solid #ffc536;
+  border-radius: 0px;
+}
+
+#lostpasswordform input[type="checkbox"]:checked::before,
+#loginform input[type="checkbox"]:checked::before {
+  margin: -0.250rem 0 0 -0.35rem;
+}
+
+#lostpasswordform #wp-submit {
+  width: 160px;
+}
+
+.login #login_error,
+.login .message,
+.login .success {
+  border-left: none !important;
+}
+
+.login .button.wp-hide-pw:focus {
+  border-color: none !important;
+  box-shadow: none !important;
+}
+
+#backtoblog {
+  display: none;
+}
+</style>
+<?php }
+    add_action( 'login_enqueue_scripts', 'wpb_login_logo' );
+    
+    function wpb_login_logo_url() {
+        return home_url();
+    }
+    add_filter( 'login_headerurl', 'wpb_login_logo_url' );
+      
+    function wpb_login_logo_url_title() {
+        return 'Área do Meditante - Meditação Transcendental';
+    }
+    add_filter( 'login_headertitle', 'wpb_login_logo_url_title' );
+    
+    //Disable Login language
+    add_filter( 'login_display_language_dropdown', '__return_false' );
+
+ /**
+ * WordPress function for redirecting users on login based on user role
+ */
+function wpdocs_my_login_redirect( $url, $request, $user ) {
+    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
+        if ( $user->has_cap( 'administrator' ) ) {
+            $url = admin_url();
+        } else {
+            $url = home_url();
+        }
+    }
+    return $url;
+}
+
+add_filter( 'login_redirect', 'wpdocs_my_login_redirect', 10, 3 );
+
+
+//Displays User Info
+function display_user_info( $param ) {
+
+    $current_user = wp_get_current_user();
+
+    if ( ! ( $current_user instanceof WP_User ) ) {
+        return;
+    }
+
+    if ( $param == 'role' ) {
+        printf( esc_html( ( array ) $current_user->roles ) );
+    }
+    elseif( $param == 'name' ) {
+        if ( $current_user->display_name ) {
+            printf( esc_html( $current_user->display_name ) );
+        }
+        elseif ( $current_user->user_firstname ) {
+            printf( esc_html( $current_user->user_firstname ) );
+        }
+        elseif ( $current_user->user_login ) {
+            printf( esc_html( $current_user->user_login ) );
+        }
+    } 
+    elseif ( $param == 'email' ) {
+        printf( esc_html( $current_user->user_email ) );
+    }
+    // elseif ( $param == 'lastname' ) {
+    //     printf( esc_html( $current_user->user_lastname ) );
+    // }
+    elseif ( $param == 'id' ) {
+        printf( esc_html( $current_user->ID ) );
+    }
+    
+}
+
+add_action('login_init', function(){
+    ?>
+<style>
+.login-header {
+  color: #FFFFFF;
+  text-align: center;
+  padding: 5% 0 0 !important;
+}
+
+.login-header .login-header-h2 {
+  font-family: 'Work Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 3.125rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.login-header .login-header-p {
+  font-family: 'Work Sans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+</style>
+<div class="login-header">
+  <h2 class="login-header-h2">Bem-vindo a área de meditantes.</h2>
+  <p class="login-header-p">Por favor, informe seus dados abaixo.</p>
+</div>
+<?php
+
+});
+
+/*
+* Disable comments
+*/
+// First, this will disable support for comments and trackbacks in post types
+function df_disable_comments_post_types_support() {
+    $post_types = get_post_types();
+    foreach ($post_types as $post_type) {
+       if(post_type_supports($post_type, 'comments')) {
+          remove_post_type_support($post_type, 'comments');
+          remove_post_type_support($post_type, 'trackbacks');
+       }
+    }
+ }
+ # https://keithgreer.uk/wordpress-code-completely-disable-comments-using-functions-php
+ 
+ add_action('admin_init', 'df_disable_comments_post_types_support');
+ 
+ // Then close any comments open comments on the front-end just in case
+ function df_disable_comments_status() {
+    return false;
+ }
+ add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+ add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+ 
+ // Finally, hide any existing comments that are on the site. 
+ function df_disable_comments_hide_existing_comments($comments) {
+    $comments = array();
+    return $comments;
+ }
+ add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
+
+/*
+* Rename User roles
+*/
+function change_role_name() {
+    global $wp_roles;
+
+    if ( ! isset( $wp_roles ) )
+        $wp_roles = new WP_Roles();
+
+    //You can list all currently available roles like this...
+    //$roles = $wp_roles->get_names();
+    //print_r($roles);
+
+    //You can replace "administrator" with any other role "editor", "author", "contributor" or "subscriber"...
+    $wp_roles->roles['author']['name'] = 'Instrutor';
+    $wp_roles->role_names['author'] = 'Instrutor';           
+    $wp_roles->roles['contributor']['name'] = 'Associado';
+    $wp_roles->role_names['contributor'] = 'Associado';
+    $wp_roles->roles['subscriber']['name'] = 'Meditante';
+    $wp_roles->role_names['subscriber'] = 'Meditante';
+    $wp_roles->roles['editor']['name'] = 'Equipe MT';
+    $wp_roles->role_names['editor'] = 'Equipe MT';
+}
+add_action('init', 'change_role_name');
+
+/**
+ * Create custom roles
+ */
+add_role( 'colmeia', 'Colmeia', get_role( 'editor' )->capabilities );
+
+
+/**
+ * Remove capabilities from contributors.
+ *
+ * Call the function when your plugin/theme is activated.
+ */
+function contributor_set_capabilities() {
+
+    // Get the role object.
+    $editor = get_role( 'contributor' );
+
+	// A list of capabilities to remove from editors.
+    $caps = array(
+        'edit_posts',
+        'delete_posts',
+    );
+
+    foreach ( $caps as $cap ) {
+    
+        // Remove the capability.
+        $editor->remove_cap( $cap );
+    }
+}
+add_action( 'init', 'contributor_set_capabilities' );
+
+//Remove screen options to whom did not get admin role
+function wpb_remove_screen_options() {
+    if (!current_user_can('manage_options')) {
+        return false;
+    }
+    return true;
+}
+add_filter('screen_options_show_screen', 'wpb_remove_screen_options');
+
+//Remove help tab
+add_filter( 'contextual_help', 'mytheme_remove_help_tabs', 999, 3 );
+function mytheme_remove_help_tabs($old_help, $screen_id, $screen){
+    $screen->remove_help_tabs();
+    return $old_help;
+}
+
+//Remove all widgets from dashboard
+add_action('wp_dashboard_setup', 'wpdocs_remove_dashboard_widgets');
+
+/**
+ * Remove all dashboard widgets
+ */
+function wpdocs_remove_dashboard_widgets(){
+    if ( ! current_user_can( 'delete_others_pages' ) ) { // Only run if the user is an Author or lower.
+        remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
+        remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); // Recent Comments
+        remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
+        remove_meta_box('dashboard_plugins', 'dashboard', 'normal');   // Plugins
+        remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
+        remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');  // Recent Drafts
+        remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
+        remove_meta_box('dashboard_secondary', 'dashboard', 'side');   // Other WordPress News
+        // use 'dashboard-network' as the second parameter to remove widgets from a network dashboard.
+    }
+}
+add_action( 'do_meta_boxes', 'wpdocs_remove_dashboard_widgets' );
+
+//Add active class to current menu item
+add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
+function special_nav_class($classes, $item){
+     if( in_array('current-menu-item', $classes) ){
+             $classes[] = 'active ';
+     }
+     return $classes;
+}
+
+
+
+/**
+* !important
+* TODO: CUSTOM POST TYPES
+*
+**/
+
+//Notícias em Destaque
+add_action( 'init', 'cpt_register_news' );
+
+function cpt_register_news() {
+
+
+    $supports = array(
+        'title', // post title
+        'editor', // post content
+        'excerpt', // post author
+        'author', // post author
+        'revisions', // post revisions
+    );
+
+   $labels = array(
+
+      'name'                     => __( 'Notícias em destaque', 'mt-area' ),
+      'singular_name'            => __( 'Notícia em destaque', 'mt-area' ),
+      'add_new'                  => __( 'Adicionar Nova', 'mt-area' ),
+      'add_new_item'             => __( 'Adicionar Nova Notícia', 'mt-area' ),
+      'edit_item'                => __( 'Editar Notícia', 'mt-area' ),
+      'new_item'                 => __( 'Nova Notícia', 'mt-area' ),
+      'view_item'                => __( 'Ver Notícia', 'mt-area' ),
+      'view_items'               => __( 'Ver Notícias', 'mt-area' ),
+      'search_items'             => __( 'Buscar Notícias', 'mt-area' ),
+      'not_found'                => __( 'Nenhuma notícias encontrada.', 'mt-area' ),
+      'not_found_in_trash'       => __( 'Nenhuma notícia encontrada na Lixeira.', 'mt-area' ),
+      'parent_item_colon'        => __( 'Pai de Notícia:', 'mt-area' ),
+      'all_items'                => __( 'Todas as Notícias', 'mt-area' ),
+      'archives'                 => __( 'Arquivo de Notícias', 'mt-area' ),
+      'attributes'               => __( 'Atributos de Notícias', 'mt-area' ),
+      'insert_into_item'         => __( 'Inserir na Notícia', 'mt-area' ),
+      'uploaded_to_this_item'    => __( 'Carregado para a Notícia', 'mt-area' ),
+      'featured_image'           => __( 'Imagem Destacada', 'mt-area' ),
+      'set_featured_image'       => __( 'Definir imagem destacada', 'mt-area' ),
+      'remove_featured_image'    => __( 'Remover imagem destacada', 'mt-area' ),
+      'use_featured_image'       => __( 'Usar como imagem destacada', 'mt-area' ),
+      'menu_name'                => __( 'Notícias', 'mt-area' ),
+      'filter_items_list'        => __( 'Filtrar lista de Notícias', 'mt-area' ),
+      'filter_by_date'           => __( 'Filtrar por data', 'mt-area' ),
+      'items_list_navigation'    => __( 'Lista de navegação de Notícias', 'mt-area' ),
+      'items_list'               => __( 'Lista de Notícias', 'mt-area' ),
+      'item_published'           => __( 'Notícia publicada.', 'mt-area' ),
+      'item_published_privately' => __( 'Notícia publicada de forma privada.', 'mt-area' ),
+      'item_reverted_to_draft'   => __( 'Notícia revertida para rascunho.', 'mt-area' ),
+      'item_scheduled'           => __( 'Notícia agendada.', 'mt-area' ),
+      'item_updated'             => __( 'Notícia atualizada.', 'mt-area' ),
+      'item_link'                => __( 'Link da notícia', 'mt-area' ),
+      'item_link_description'    => __( 'Um link para uma notícia.', 'mt-area' ),
+
+   );
+
+   $args = array(
+
+      'labels'                => $labels,
+      'description'           => __( 'Organize e gerencie as Notícias em Destaque', 'mt-area' ),
+      'public'                => true,
+      'show_in_rest'          => true,
+      'menu_position'         => 5,
+      'menu_icon'             => 'dashicons-bell',
+      'supports'              => $supports,
+      'taxonomies'            => array('cpt_news'),
+      'has_archive'           => true,
+      'rewrite'               => array( 'slug' => 'news' ),
+    //   'query_var'             => true,
+    //   'delete_with_user'      => false,
+    
+
+   );
+
+   register_post_type( 'cpt_register_news', $args );
+}
+
+

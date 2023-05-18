@@ -1,0 +1,92 @@
+//
+// Custom Main
+//
+// Add your own styles or override existing ones
+//
+// This file is included last, so you have access
+// to all Bootstrap and Dashmix functions/mixins/styles etc
+// --------------------------------------------------
+
+// If you have many custom styles, you can create and import additional files
+// For example you can create _component1.scss and include it as follows:
+// @import 'component1';
+
+//MT Theme Background Colours
+@include bg-variant(".bg-mt-default", #ffc536);
+@include bg-variant(".bg-mt-dark-blue", #323B50);
+@include bg-variant(".bg-mt-red", #f49093);
+@include bg-variant(".bg-mt-green", #a6d491);
+@include bg-variant(".bg-mt-blue", #7896c1);
+@include bg-variant(".bg-mt-orange", #f29f05);
+
+@include bg-variant(".bg-mt-default-op", rgba(#ffc536, 0.75));
+@include bg-variant(".bg-mt-dark-blue-op", rgba(#323B50, 0.75));
+@include bg-variant(".bg-mt-red-op", rgba(#f49093, 0.75));
+@include bg-variant(".bg-mt-green-op", rgba(#a6d491, 0.75));
+@include bg-variant(".bg-mt-blue-op", rgba(#7896c1, 0.75));
+@include bg-variant(".bg-mt-orange-op", rgba(#f29f05, 0.75));
+
+@include bg-variant(".bg-mt-gray-op", rgba(#323B50, 0.7));
+
+@include bg-gradient-variant-linear('.bg-gd-mt-default', 135deg, #ffc536, #ffe636);
+@include bg-gradient-variant-linear('.bg-gd-mt-dark-blue', 135deg, #323B50, #444f69);
+@include bg-gradient-variant-linear('.bg-gd-mt-red', 135deg, #f49093, #f4a890);
+@include bg-gradient-variant-linear('.bg-gd-mt-green', 135deg, #91d4a4, #a6d491);
+@include bg-gradient-variant-linear('.bg-gd-mt-blue', 135deg, #7896c1, #78a9c1);
+@include bg-gradient-variant-linear('.bg-gd-mt-orange', 135deg, #f29f05, #fec04c);
+
+@include bg-gradient-variant-linear('.bg-gd-mt-default-op', 135deg, rgba(#ffc536, .8), rgba(#ffc536, .5));
+@include bg-gradient-variant-linear('.bg-gd-mt-dark-blue-op', 135deg, rgba(#323B50, .8), rgba(#323B50, .5));
+@include bg-gradient-variant-linear('.bg-gd-mt-red-op', 135deg, rgba(#f49093, .8), rgba(#f49093, .5));
+@include bg-gradient-variant-linear('.bg-gd-mt-green-op', 135deg, rgba(#a6d491, .8), rgba(#a6d491, .5));
+@include bg-gradient-variant-linear('.bg-gd-mt-blue-op', 135deg, rgba(#7896c1, .8), rgba(#7896c1, .5));
+@include bg-gradient-variant-linear('.bg-gd-mt-orange-op', 135deg, rgba(#f29f05, .8), rgba(#f29f05, .5));
+
+
+//Images Header and Footer Logo
+.img-logo-header {
+  max-width: 145px;
+  transition: 1s all ease-in-out;
+}
+.img-logo-header-small {
+  max-width: 30px;
+  transition: 1s all ease-in-out;
+}
+.img-logo-footer {
+  max-width: 50px;
+}
+
+//Animation Loop
+.animated-loop {
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+//Page 404
+.page-404 {
+  h1 {
+    font-weight: 700;
+    font-size: 288px;
+    line-height: 309px;
+    letter-spacing: -0.02em;
+    color: #f29f05;
+    margin: 0 auto;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 138.6px;
+    line-height: 149px;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: -128px;
+  }
+}
+
+.quick-menu-text {
+  @media only screen and (max-width: 1200px) {
+    font-size: 0.8rem;  
+  }
+}
