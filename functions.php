@@ -772,6 +772,8 @@ add_action('init', 'change_role_name');
  * Create custom roles
  */
 add_role( 'colmeia', 'Colmeia', get_role( 'editor' )->capabilities );
+add_role( 'sidhas_meditante', 'Sidhas Meditante', get_role( 'subscriber' )->capabilities );
+add_role( 'sidhas_associado', 'Sidhas Associado', get_role( 'contributor' )->capabilities );
 
 
 /**
