@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( 'template-parts/quick-menu' ) ?>
+  <?php get_template_part( '/patterns/quick-menu' ) ?>
 
   <!-- Page Content -->
   <div class="content">
@@ -10,7 +10,7 @@
     <!-- Latest Events + Live + Stats -->
     <div class="row">
       <div class="col-lg-8 order-2 order-lg-1">
-        <?php get_template_part( 'template-parts/calendar' ) ?>
+        <?php get_template_part( '/patterns/calendar' ) ?>
       </div>
       <div class="col-lg-4 d-flex flex-column order-1 order-lg-2">
         <!-- Stats -->
@@ -53,25 +53,27 @@
 
               <?php
             $args = array(
-              'post_type' => 'cpt_register_news',
+              'post_type' => 'noticia-em-destaque',
               'post_status' => 'publish',
-              'posts_per_page' => 4, 
+              'posts_per_page' => 3, 
               // 'orderby' => 'title', 
               // 'order' => 'ASC', 
           );
       
           $news = new WP_Query( $args ); 
               
-          while ( $news->have_posts() ) : $news->the_post(); ?>
+          while ( $news->have_posts() ) : $news->the_post(); 
+          $icone = get_field('destaque_icone');
+          ?>
 
               <li>
-                <a class="d-flex text-dark py-2" href="javascript:void(0)">
+                <a class="d-flex text-dark py-2" href="<?php the_permalink(); ?>">
                   <div class="flex-shrink-0 mx-3">
-                    <i class="fa fa-fw fa-check-circle text-success"></i>
+                    <i class="fa fa-fw fa-<?php if ( $icone == 'fa-solid fa-circle-check' ) { echo 'check-circle text-success'; } elseif ( $icone == 'fa-solid fa-circle-plus' ) { echo 'plus-circle text-info'; } elseif ( $icone == 'fa-solid fa-circle-xmark') { echo 'circle-xmark text-danger'; } elseif ( $icone == 'fa-solid fa-circle-exclamation') { echo 'circle-exclamation text-warning'; } else { echo 'check-circle text-success'; }; ?>"></i>
                   </div>
                   <div class="flex-grow-1 fs-sm pe-2">
                     <div class="fw-semibold"><?php the_title(); ?></div>
-                    <div class="text-muted"><?php the_excerpt(); ?></div>
+                    <div class="text-muted"><?php echo get_field( 'destaque_resumo' ); ?></div>
                   </div>
                 </a>
               </li>
@@ -81,40 +83,6 @@
           wp_reset_postdata(); 
             ?>
 
-
-              <!-- <li>
-                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                  <div class="flex-shrink-0 mx-3">
-                    <i class="fa fa-fw fa-check-circle text-success"></i>
-                  </div>
-                  <div class="flex-grow-1 fs-sm pe-2">
-                    <div class="fw-semibold">Evento "Lorem Ipsum" confirmado!</div>
-                    <div class="text-muted">3 min atrás</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                  <div class="flex-shrink-0 mx-3">
-                    <i class="fa fa-fw fa-user-plus text-info"></i>
-                  </div>
-                  <div class="flex-grow-1 fs-sm pe-2">
-                    <div class="fw-semibold">Novo curso "Lorem Ipsum Dolor Sit Amet" foi adicionado.</div>
-                    <div class="text-muted">2 dias atrás</div>
-                  </div>
-                </a>
-              </li>
-              <li>
-                <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                  <div class="flex-shrink-0 mx-3">
-                    <i class="fa fa-times-circle text-danger"></i>
-                  </div>
-                  <div class="flex-grow-1 fs-sm pe-2">
-                    <div class="fw-semibold">Curso "Lorem Ipsum" cancelado.</div>
-                    <div class="text-muted">1 semana atrás</div>
-                  </div>
-                </a>
-              </li> -->
             </ul>
           </div>
           <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
