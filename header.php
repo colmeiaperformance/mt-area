@@ -5,22 +5,22 @@ if ( !is_user_logged_in() ) {
 }
 ?>
 <!doctype html>
-<html lang="pt-br">
+<html lang="<?php bloginfo( 'language' ); ?>">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-  <title>Dashboard - Área de Meditantes</title>
+  <title><?php bloginfo( 'name' ); ?></title>
 
   <meta name="description" content="Dashboard &amp; Área de Meditantes">
   <meta name="author" content="Colmeia Performance">
   <meta name="robots" content="noindex, nofollow">
 
   <!-- Open Graph Meta -->
-  <meta property="og:title" content="Dashboard &amp; Área de Meditantes">
-  <meta property="og:site_name" content="Area do Meditante">
-  <meta property="og:description" content="Dashboard &amp; Área de Meditantes">
+  <meta property="og:title" content="<?php bloginfo( 'name' ); ?>">
+  <meta property="og:site_name" content="<?php bloginfo( 'name' ); ?>">
+  <meta property="og:description" content="<?php bloginfo( 'name' ); ?>">
   <meta property="og:type" content="website">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
@@ -64,7 +64,7 @@ if ( !is_user_logged_in() ) {
   <?php wp_head(); ?>
 </head>
 
-<body>
+<body <?php body_class() ?>>
 
   <!-- Page Container -->
   <!--
@@ -625,29 +625,42 @@ if ( !is_user_logged_in() ) {
 
         <!-- Right Section -->
         <div>
-          <!-- Notifications Dropdown -->
+          <!-- Cart -->
           <div class="dropdown d-inline-block">
             <button type="button" class="btn btn-alt-secondary" id="page-header-notifications-dropdown"
               data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="far fa-fw fa-flag"></i>
-              <span class="badge bg-primary rounded-pill">3</span>
+              <i class="fa-fw fa-regular fa-shopping-cart"></i>
+              <span class="badge bg-primary rounded-pill">
+                <!-- 
+                  /*
+                  TODO: Para cada item do carrinho, contar +1 aqui 
+                  */
+                -->
+                3
+              </span>
             </button>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
               aria-labelledby="page-header-notifications-dropdown">
               <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-3">
-                Avisos
+                Itens
               </div>
               <ul class="nav-items my-2">
                 <li>
-                  <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                    <div class="flex-shrink-0 mx-3">
-                      <i class="fa fa-fw fa-check-circle text-success"></i>
+                  <a class="d-flex text-dark py-2" href="#">
+                    <!--  /*
+                        TODO: Link do item no href acima 
+                    */  -->
+                    <div class="flex-shrink-0 mx-3 d-flex align-items-center">
+                      <i class="fa fa-fw fa-chalkboard text-primary"></i>
                     </div>
                     <div class="flex-grow-1 fs-sm pe-2">
-                      <div class="fw-semibold">Evento "Lorem Ipsum" confirmado!</div>
-                      <div class="text-muted">3 min atrás</div>
+                      <div class="fw-semibold">Curso Lorem Ipsum</div>
+                      <div class="text-muted">249,90</div>
                     </div>
                   </a>
+                    <div class="flex-shrink-0 mx-3 d-flex align-items-center">
+                      <i class="fa fa-fw fa-minus-circle text-danger"></i>
+                    </div>
                 </li>
                 <li>
                   <a class="d-flex text-dark py-2" href="javascript:void(0)">
@@ -675,12 +688,12 @@ if ( !is_user_logged_in() ) {
               <div class="p-2 border-top">
                 <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)" data-toggle="layout"
                   data-action="side_overlay_toggle">
-                  <i class="fa fa-fw fa-eye opacity-50 me-1"></i> Ver Tudo
+                  <i class="fa-fw fa-solid fa-shopping-cart opacity-50 me-1"></i> Ir para o Carrinho
                 </a>
               </div>
             </div>
           </div>
-          <!-- END Notifications Dropdown -->
+          <!-- END Cart -->
 
           <!-- User Dropdown -->
           <div class="dropdown d-inline-block">
