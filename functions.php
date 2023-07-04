@@ -9,6 +9,7 @@ function loading_styles(){
     wp_enqueue_style( 'dashmix-datatables-css', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
     wp_enqueue_style( 'dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
     wp_enqueue_style( 'dashmix-responsive-css', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/vendor/fontawesome/all.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
     wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/dashmix.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
     wp_enqueue_style( 'theme', get_template_directory_uri() . '/assets/css/themes/xmodern.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
     wp_enqueue_style( 'style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
@@ -37,6 +38,7 @@ function loading_scripts(){
     wp_register_script( 'plugin-fullcalendar-js', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
     wp_register_script( 'dashmix-fullcalendar-js', get_template_directory_uri() . '/assets/_js/pages/be_comp_calendar.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
     wp_register_script( 'phone-mask-js', get_template_directory_uri() . '/assets/js/lib/phone.mask.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
+    wp_register_script( 'fontawesome-js', get_template_directory_uri() . '/vendor/fontawesome/all.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
     wp_register_script( 'main-js', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
     
     // wp_enqueue_script( 'popper-js');
@@ -59,6 +61,7 @@ function loading_scripts(){
     wp_enqueue_script( 'plugin-fullcalendar-js');
     wp_enqueue_script( 'dashmix-fullcalendar-js');
     wp_enqueue_script( 'phone-mask-js');
+    wp_enqueue_script( 'fontawesome-js');
     wp_enqueue_script( 'main-js');
 }
 
@@ -73,10 +76,10 @@ function wpdocs_enqueue_custom_admin_style() {
     if ( current_user_can( 'subscriber' ) || current_user_can( 'contributor' ) || current_user_can( 'author' ) ) {
 
         if (current_user_can('subscriber') || current_user_can('contributor')) {
-            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/admin-subs-style.min.css', false, wp_get_theme()->get('Version'), 'all');
+            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/style-admin-subs.min.css', false, wp_get_theme()->get('Version'), 'all');
         }
         elseif ( current_user_can( 'author' ) ) {
-            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/admin-author-style.min.css', false, wp_get_theme()->get('Version'), 'all');
+            wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/style-admin-author.min.css', false, wp_get_theme()->get('Version'), 'all');
         }
 
 
@@ -168,6 +171,107 @@ function wp_boostrap_4_pagination(){
     
 }
 
+/**
+ * @param WP_Query|null $wp_query
+ * @param bool $echo
+ * @param array $params
+ *
+ * @return string|null
+ * 
+ * Using Bootstrap 4? see https://gist.github.com/mtx-z/f95af6cc6fb562eb1a1540ca715ed928
+ * 
+ * Accepts a WP_Query instance to build pagination (for custom wp_query()),
+ * or nothing to use the current global $wp_query (eg: taxonomy term page)
+ * - Tested on WP 5.7.1
+ * - Tested with Bootstrap 5.0 (https://getbootstrap.com/docs/5.0/components/pagination/)
+ * - Tested on Sage 9.0.9
+ *
+ * INSTALLATION:
+ * add this file content to your theme function.php or equivalent
+ *
+ * USAGE:
+ *     <?php echo bootstrap_pagination(); ?> //uses global $wp_query
+* or with custom WP_Query():
+* <?php
+ *      $query = new \WP_Query($args);
+ *       ... while(have_posts()), $query->posts stuff ... endwhile() ...
+ *       echo bootstrap_pagination($query);
+ *     ?>
+*/
+function wp_boostrap_5_pagination( \WP_Query $wp_query = null, $echo = true, $params = [] ) {
+if ( null === $wp_query ) {
+global $wp_query;
+}
+
+$add_args = [];
+
+//add query (GET) parameters to generated page URLs
+/*if (isset($_GET[ 'sort' ])) {
+$add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
+}*/
+
+$pages = paginate_links( array_merge( [
+'base' => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
+'format' => '?paged=%#%',
+'current' => max( 1, get_query_var( 'paged' ) ),
+'total' => $wp_query->max_num_pages,
+'type' => 'array',
+'show_all' => false,
+'end_size' => 3,
+'mid_size' => 1,
+'prev_next' => true,
+'prev_text' => __( '<i class="fa fa-angle-left"></i>' ),
+'next_text' => __( '<i class="fa fa-angle-right"></i>' ),
+'add_args' => $add_args,
+'add_fragment' => ''
+], $params )
+);
+
+if ( is_array( $pages ) ) {
+//$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+$pagination = '<nav aria-label="Page navigation">
+  <ul class="pagination">';
+
+    foreach ( $pages as $page ) {
+    $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' .
+      str_replace('page-numbers', 'page-link', $page) . '</li>';
+    }
+
+    $pagination .= '</ul>
+</nav>';
+
+if ( $echo ) {
+echo $pagination;
+} else {
+return $pagination;
+}
+}
+
+return null;
+}
+
+/**
+* Notes:
+* AJAX:
+* - When used with wp_ajax (generate pagination HTML from ajax) you'll need to provide base URL (or it'll be admin-ajax
+URL)
+* - Example for a term page: bootstrap_pagination( $query, false, ['base' => get_term_link($term) . '?paged=%#%'] )
+*
+* Images as next/prev:
+* - You can use image as next/prev buttons
+* - Example: 'prev_text' => '<img src="' . get_stylesheet_directory_uri() . '/assets/images/prev-arrow.svg">',
+*
+* Add query parameters to page URLs
+* - If you need custom URL parameters on your page URLS, use the "add_args" attribute
+* - Example (before paginate_links() call):
+* $arg = [];
+* if (isset($_GET[ 'sort' ])) {
+* $args[ 'sort' ] = (string)$_GET[ 'sort' ];
+* }
+* ...
+* 'add_args' => $args,
+*/
+
 
 /*
 * Custom Attribute for links
@@ -177,57 +281,55 @@ add_filter('next_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_at
 add_filter('previous_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_attributes');
 
 function wp_boostrap_4_pagination_posts_link_attributes() {
-    return 'class="page-link"';
+return 'class="page-link"';
 }
 
 function base_setup() {
-    
-    //Tradução
-    //load_theme_textdomain( 'base_language', get_template_directory() . '/languages' );
-    
-    //Wordpress gerencia o título
-    add_theme_support( 'title-tag' );
-    
-    //Formatos de posts
-    add_theme_support(
-        'post-formats',
-        array(
-            'aside',
-            'link',
-            'gallery',
-            'status',
-            'video',
-            )
-    );
 
-    //Add custom field to menu - font awesome
-    function menu_item_desc( $item_id, $item ) {
-        $menu_item_desc = get_post_meta( $item_id, '_menu_item_desc', true ); ?>
+//Tradução
+//load_theme_textdomain( 'base_language', get_template_directory() . '/languages' );
+
+//Wordpress gerencia o título
+add_theme_support('title-tag');
+
+//Formatos de posts
+add_theme_support(
+'post-formats',
+array(
+'video',
+)
+);
+
+//Add custom field to menu - font awesome
+function menu_item_desc($item_id, $item){
+$menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
 <div style="clear: both;">
-  <span class="fa-class"><?php _e( "Font Awesome Class", 'mt-area' ); ?></span><br />
+  <span class="fa-class"><?php _e("Font Awesome Class", 'mt-area'); ?></span><br />
   <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
   <div class="logged-input-holder">
     <input type="text" name="menu_item_desc[<?php echo $item_id ;?>]" id="menu-item-desc-<?php echo $item_id ;?>"
-      value="<?php echo esc_attr( $menu_item_desc ); ?>" />
+      value="<?php echo esc_attr($menu_item_desc); ?>" />
   </div>
+  <span
+    class="text-muted small"><?php _e('E.g.: fa-solid fa-link<br>You can check all Font-Awesome classes <a href="https://fontawesome.com/icons" target="_blank">here</a>', 'mt-area'); ?></span>
 </div>
 <?php }
-    add_action( 'wp_nav_menu_item_custom_fields', 'menu_item_desc', 10, 2 );
+    add_action('wp_nav_menu_item_custom_fields', 'menu_item_desc', 10, 2);
 
     //Save custom field in database
-    function save_menu_item_desc( $menu_id, $menu_item_db_id ) {
-        if ( isset( $_POST['menu_item_desc'][$menu_item_db_id]  ) ) {
-            $sanitized_data = sanitize_text_field( $_POST['menu_item_desc'][$menu_item_db_id] );
-            update_post_meta( $menu_item_db_id, '_menu_item_desc', $sanitized_data );
+    function save_menu_item_desc($menu_id, $menu_item_db_id){
+        if (isset($_POST['menu_item_desc'][$menu_item_db_id])) {
+            $sanitized_data = sanitize_text_field($_POST['menu_item_desc'][$menu_item_db_id]);
+            update_post_meta($menu_item_db_id, '_menu_item_desc', $sanitized_data);
         } else {
-            delete_post_meta( $menu_item_db_id, '_menu_item_desc' );
+            delete_post_meta($menu_item_db_id, '_menu_item_desc');
         }
     }
-    add_action( 'wp_update_nav_menu_item', 'save_menu_item_desc', 10, 2 );
+    add_action('wp_update_nav_menu_item', 'save_menu_item_desc', 10, 2);
 
-        
+
     // bootstrap 5 wp_nav_menu walker
-    class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu {
+    class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu{
         private $current_item;
         private $dropdown_menu_alignment_values = [
             'dropdown-menu-start',
@@ -243,8 +345,9 @@ function base_setup() {
             'dropdown-menu-xxl-start',
             'dropdown-menu-xxl-end'
         ];
-        
-        function start_lvl(&$output, $depth = 0, $args = null){
+
+        public function start_lvl(&$output, $depth = 0, $args = null)
+        {
             $dropdown_menu_class[] = '';
             foreach($this->current_item->classes as $class) {
                 if(in_array($class, $this->dropdown_menu_alignment_values)) {
@@ -253,45 +356,46 @@ function base_setup() {
             }
             $indent = str_repeat("\t", $depth);
             $submenu = ($depth > 0) ? ' sub-menu' : '';
-            $output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr(implode(" ",$dropdown_menu_class)) . " depth_$depth\">\n";
+            $output .= "\n$indent<ul class=\"dropdown-menu$submenu " . esc_attr(implode(" ", $dropdown_menu_class)) . " depth_$depth\">\n";
         }
-        
-        function start_el(&$output, $item, $depth = 0, $args = null, $id = 0){
+
+        public function start_el(&$output, $item, $depth = 0, $args = null, $id = 0)
+        {
             $this->current_item = $item;
-            
+
             $indent = ($depth) ? str_repeat("\t", $depth) : '';
-            
+
             $li_attributes = '';
             $class_names = $value = '';
-            
+
             $classes = empty($item->classes) ? array() : (array) $item->classes;
-            
+
             $classes[] = ($args->walker->has_children) ? 'dropdown' : '';
             $classes[] = 'nav-item';
             $classes[] = 'nav-item-' . $item->ID;
             if ($depth && $args->walker->has_children) {
                 $classes[] = 'dropdown-menu dropdown-menu-end';
             }
-            
+
             $class_names =  join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
             $class_names = ' class="' . esc_attr($class_names) . '"';
-            
+
             $id = apply_filters('nav_menu_item_id', 'menu-item-' . $item->ID, $item, $args);
             $id = strlen($id) ? ' id="' . esc_attr($id) . '"' : '';
-            
+
             $output .= $indent . '<li ' . $id . $value . $class_names . $li_attributes . '>';
-            
+
             $attributes = !empty($item->attr_title) ? ' title="' . esc_attr($item->attr_title) . '"' : '';
             $attributes .= !empty($item->target) ? ' target="' . esc_attr($item->target) . '"' : '';
             $attributes .= !empty($item->xfn) ? ' rel="' . esc_attr($item->xfn) . '"' : '';
             $attributes .= !empty($item->url) ? ' href="' . esc_attr($item->url) . '"' : '';
-            
+
             $active_class = ($item->current || $item->current_item_ancestor || in_array("current_page_parent", $item->classes, true) || in_array("current-post-ancestor", $item->classes, true)) ? 'active' : '';
-            $nav_link_class = ( $depth > 0 ) ? 'dropdown-item ' : 'nav-link nav-main-link ';
-            $attributes .= ( $args->walker->has_children ) ? ' class="'. $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="'. $nav_link_class . $active_class . '"';
-            
-            $menu_item_desc = get_post_meta( $item->ID, '_menu_item_desc', true );
-            if ( !empty($menu_item_desc) ) {
+            $nav_link_class = ($depth > 0) ? 'dropdown-item ' : 'nav-link nav-main-link ';
+            $attributes .= ($args->walker->has_children) ? ' class="'. $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="'. $nav_link_class . $active_class . '"';
+
+            $menu_item_desc = get_post_meta($item->ID, '_menu_item_desc', true);
+            if (!empty($menu_item_desc)) {
                 $menu_item_desc;
             } else {
                 $menu_item_desc = 'fa fa-link';
@@ -306,8 +410,8 @@ function base_setup() {
             $item_output .= '</a>';
             $item_output .= $args->after;
 
-        
-            
+
+
             $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
         }
     }
@@ -316,16 +420,16 @@ function base_setup() {
     register_nav_menu('quick-menu', 'Quick menu');
     register_nav_menu('events-menu', 'Eventos');
     register_nav_menu('content-menu', 'Conteúdo');
-    
+
     //Thumbnails ou miniaturas
-    add_theme_support( 'post-thumbnails' );
-    set_post_thumbnail_size( 1920, 9999 );
-    add_image_size( 'popular-posts-img', 100, 100 );
-    
+    add_theme_support('post-thumbnails');
+    set_post_thumbnail_size(1920, 9999);
+    add_image_size('popular-posts-img', 100, 100);
+
     //Logo customizado
     $logo_width  = 300;
     $logo_height = 100;
-    
+
     add_theme_support(
         'custom-logo',
         array(
@@ -335,12 +439,12 @@ function base_setup() {
             'flex-height'          => true,
             'unlink-homepage-logo' => true,
             )
-        );
-        
-        // Add support for full and wide align images
-        add_theme_support( 'align-wide' );
-        
-    }
+    );
+
+    // Add support for full and wide align images
+    add_theme_support('align-wide');
+
+}
 add_action( 'after_setup_theme', 'base_setup' );
     
     // Add support for responsive embedded content.
@@ -716,32 +820,32 @@ add_action('login_init', function(){
 * Disable comments
 */
 // First, this will disable support for comments and trackbacks in post types
-function df_disable_comments_post_types_support() {
-    $post_types = get_post_types();
-    foreach ($post_types as $post_type) {
-       if(post_type_supports($post_type, 'comments')) {
-          remove_post_type_support($post_type, 'comments');
-          remove_post_type_support($post_type, 'trackbacks');
-       }
-    }
- }
+// function df_disable_comments_post_types_support() {
+//     $post_types = get_post_types();
+//     foreach ($post_types as $post_type) {
+//        if(post_type_supports($post_type, 'comments')) {
+//           remove_post_type_support($post_type, 'comments');
+//           remove_post_type_support($post_type, 'trackbacks');
+//        }
+//     }
+//  }
  # https://keithgreer.uk/wordpress-code-completely-disable-comments-using-functions-php
  
- add_action('admin_init', 'df_disable_comments_post_types_support');
+//  add_action('admin_init', 'df_disable_comments_post_types_support');
  
  // Then close any comments open comments on the front-end just in case
- function df_disable_comments_status() {
-    return false;
- }
- add_filter('comments_open', 'df_disable_comments_status', 20, 2);
- add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+//  function df_disable_comments_status() {
+//     return false;
+//  }
+//  add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+//  add_filter('pings_open', 'df_disable_comments_status', 20, 2);
  
  // Finally, hide any existing comments that are on the site. 
- function df_disable_comments_hide_existing_comments($comments) {
-    $comments = array();
-    return $comments;
- }
- add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
+//  function df_disable_comments_hide_existing_comments($comments) {
+//     $comments = array();
+//     return $comments;
+//  }
+//  add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
 
 /*
 * Rename User roles
@@ -845,86 +949,3 @@ function special_nav_class($classes, $item){
      }
      return $classes;
 }
-
-
-
-/**
-* !important
-* TODO: CUSTOM POST TYPES
-*
-**/
-
-//Notícias em Destaque
-add_action( 'init', 'cpt_register_news' );
-
-function cpt_register_news() {
-
-
-    $supports = array(
-        'title', // post title
-        'editor', // post content
-        'excerpt', // post author
-        'author', // post author
-        'revisions', // post revisions
-    );
-
-   $labels = array(
-
-      'name'                     => __( 'Notícias em destaque', 'mt-area' ),
-      'singular_name'            => __( 'Notícia em destaque', 'mt-area' ),
-      'add_new'                  => __( 'Adicionar Nova', 'mt-area' ),
-      'add_new_item'             => __( 'Adicionar Nova Notícia', 'mt-area' ),
-      'edit_item'                => __( 'Editar Notícia', 'mt-area' ),
-      'new_item'                 => __( 'Nova Notícia', 'mt-area' ),
-      'view_item'                => __( 'Ver Notícia', 'mt-area' ),
-      'view_items'               => __( 'Ver Notícias', 'mt-area' ),
-      'search_items'             => __( 'Buscar Notícias', 'mt-area' ),
-      'not_found'                => __( 'Nenhuma notícias encontrada.', 'mt-area' ),
-      'not_found_in_trash'       => __( 'Nenhuma notícia encontrada na Lixeira.', 'mt-area' ),
-      'parent_item_colon'        => __( 'Pai de Notícia:', 'mt-area' ),
-      'all_items'                => __( 'Todas as Notícias', 'mt-area' ),
-      'archives'                 => __( 'Arquivo de Notícias', 'mt-area' ),
-      'attributes'               => __( 'Atributos de Notícias', 'mt-area' ),
-      'insert_into_item'         => __( 'Inserir na Notícia', 'mt-area' ),
-      'uploaded_to_this_item'    => __( 'Carregado para a Notícia', 'mt-area' ),
-      'featured_image'           => __( 'Imagem Destacada', 'mt-area' ),
-      'set_featured_image'       => __( 'Definir imagem destacada', 'mt-area' ),
-      'remove_featured_image'    => __( 'Remover imagem destacada', 'mt-area' ),
-      'use_featured_image'       => __( 'Usar como imagem destacada', 'mt-area' ),
-      'menu_name'                => __( 'Notícias', 'mt-area' ),
-      'filter_items_list'        => __( 'Filtrar lista de Notícias', 'mt-area' ),
-      'filter_by_date'           => __( 'Filtrar por data', 'mt-area' ),
-      'items_list_navigation'    => __( 'Lista de navegação de Notícias', 'mt-area' ),
-      'items_list'               => __( 'Lista de Notícias', 'mt-area' ),
-      'item_published'           => __( 'Notícia publicada.', 'mt-area' ),
-      'item_published_privately' => __( 'Notícia publicada de forma privada.', 'mt-area' ),
-      'item_reverted_to_draft'   => __( 'Notícia revertida para rascunho.', 'mt-area' ),
-      'item_scheduled'           => __( 'Notícia agendada.', 'mt-area' ),
-      'item_updated'             => __( 'Notícia atualizada.', 'mt-area' ),
-      'item_link'                => __( 'Link da notícia', 'mt-area' ),
-      'item_link_description'    => __( 'Um link para uma notícia.', 'mt-area' ),
-
-   );
-
-   $args = array(
-
-      'labels'                => $labels,
-      'description'           => __( 'Organize e gerencie as Notícias em Destaque', 'mt-area' ),
-      'public'                => true,
-      'show_in_rest'          => true,
-      'menu_position'         => 5,
-      'menu_icon'             => 'dashicons-bell',
-      'supports'              => $supports,
-      'taxonomies'            => array('cpt_news'),
-      'has_archive'           => true,
-      'rewrite'               => array( 'slug' => 'news' ),
-    //   'query_var'             => true,
-    //   'delete_with_user'      => false,
-    
-
-   );
-
-   register_post_type( 'cpt_register_news', $args );
-}
-
-
