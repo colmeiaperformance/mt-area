@@ -9,7 +9,7 @@ if (!is_user_logged_in()) {
 ?>
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( 'template-parts/quick-menu' ) ?>
+  <?php get_template_part( '/patterns/quick-menu' ) ?>
 
   <!-- Page Content -->
   <div class="content content-full">
@@ -48,10 +48,10 @@ if (!is_user_logged_in()) {
           </button>
         </li>
         <li class="nav-item">
-          <button class="nav-link space-x-1" id="account-password-tab" data-bs-toggle="tab"
-            data-bs-target="#account-password" role="tab" aria-controls="account-password" aria-selected="false">
+          <button class="nav-link space-x-1" id="account-courses-tab" data-bs-toggle="tab"
+            data-bs-target="#account-courses" role="tab" aria-controls="account-courses" aria-selected="false">
             <i class="fa fa-asterisk d-sm-none"></i>
-            <span class="d-none d-sm-inline">Senha</span>
+            <span class="d-none d-sm-inline">Meus Cursos</span>
           </button>
         </li>
         <li class="nav-item">
@@ -233,38 +233,12 @@ if (!is_user_logged_in()) {
             </div>
           </div>
         </div>
-        <div class="tab-pane" id="account-password" role="tabpanel" aria-labelledby="account-password-tab" tabindex="0">
+        <div class="tab-pane" id="account-courses" role="tabpanel" aria-labelledby="account-courses-tab" tabindex="0">
           <div class="row push p-sm-2 p-lg-4">
-            <div class="offset-xl-1 col-xl-4 order-xl-1">
-              <p class="bg-body-light p-4 rounded-3 text-muted fs-sm">
-                Changing your sign in password is an easy way to keep your account secure.
-              </p>
-            </div>
-            <div class="col-xl-6 order-xl-0">
-              <form action="be_pages_generic_profile_v2_edit.html" method="POST" onsubmit="return false;">
-                <div class="mb-4">
-                  <label class="form-label" for="dm-profile-edit-password">Current Password</label>
-                  <input type="password" class="form-control" id="dm-profile-edit-password"
-                    name="dm-profile-edit-password">
-                </div>
-                <div class="row mb-4">
-                  <div class="col-12">
-                    <label class="form-label" for="dm-profile-edit-password-new">New Password</label>
-                    <input type="password" class="form-control" id="dm-profile-edit-password-new"
-                      name="dm-profile-edit-password-new">
-                  </div>
-                </div>
-                <div class="row mb-4">
-                  <div class="col-12">
-                    <label class="form-label" for="dm-profile-edit-password-new-confirm">Confirm New Password</label>
-                    <input type="password" class="form-control" id="dm-profile-edit-password-new-confirm"
-                      name="dm-profile-edit-password-new-confirm">
-                  </div>
-                </div>
-                <button type="submit" class="btn btn-alt-primary">
-                  <i class="fa fa-check-circle opacity-50 me-1"></i> Update Password
-                </button>
-              </form>
+            <div class="col">
+            
+            Cursos
+
             </div>
           </div>
         </div>
