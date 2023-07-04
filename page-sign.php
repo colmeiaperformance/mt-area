@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( 'template-parts/quick-menu' ) ?>
+  <?php get_template_part( '/patterns/quick-menu' ) ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed"
