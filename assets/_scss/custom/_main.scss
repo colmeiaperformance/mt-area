@@ -90,3 +90,22 @@
     font-size: 0.8rem;  
   }
 }
+
+.img-livros-grid {
+  max-height: 200px;
+}
+
+//Fontawesome duotone icons
+
+.icon-success {
+  --fa-secondary-opacity: 1.0;
+  --fa-primary-color: $icon-success;
+  --fa-secondary-color: $icon-success;
+}
+
+// $icon-success-emphasis: #198754;
+// $icon-warning: #ffc107;
+// $icon-info: #3c90df;
+// $icon-doubt: #0dcaf0;
+// $icon-danger: #e04f1a;
+// $icon-danger-emphasis: #dc3545;
