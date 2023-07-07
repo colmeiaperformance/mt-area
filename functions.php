@@ -1,174 +1,176 @@
-<?php 
+<?php
 
 //Stylesheets
-function loading_styles(){
-    wp_enqueue_style( 'source-sans-pro-font', 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'icons-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'dashmix-fullcalendar-css', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'dashmix-datatables-css', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'dashmix-responsive-css', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'fontawesome', get_template_directory_uri() . '/vendor/fontawesome/all.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'main', get_template_directory_uri() . '/assets/css/dashmix.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'theme', get_template_directory_uri() . '/assets/css/themes/xmodern.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
-    wp_enqueue_style( 'style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get( 'Version' ), 'all' );
+function loading_styles()
+{
+    wp_enqueue_style('source-sans-pro-font', 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('icons-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('dashmix-fullcalendar-css', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('dashmix-datatables-css', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('dashmix-responsive-css', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/vendor/fontawesome/all.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/dashmix.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('theme', get_template_directory_uri() . '/assets/css/themes/xmodern.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get('Version'), 'all');
 }
 
 //Scripts
-function loading_scripts(){
+function loading_scripts()
+{
     // wp_register_script( 'popper-js', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
     // wp_register_script( 'bootstrap-js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
 
-    wp_register_script( 'dashmix-js', get_template_directory_uri() . '/assets/js/dashmix.app.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'jquery-sparkline-js', get_template_directory_uri() . '/assets/js/lib/jquery.min.js', array(), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'sparkline-js', get_template_directory_uri() . '/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'datatables-js', get_template_directory_uri() . '/assets/js/plugins/datatables/jquery.dataTables.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'datatables-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'datatables-responsive-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'responsive-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'buttons-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'buttons-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'jszip-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-jszip/jszip.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'pdfmake-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'vfs-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'print-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.print.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'buttons-html5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.html5.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'tables-datatables-js', get_template_directory_uri() . '/assets/js/pages/be_tables_datatables.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'plugin-fullcalendar-js', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'dashmix-fullcalendar-js', get_template_directory_uri() . '/assets/_js/pages/be_comp_calendar.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'phone-mask-js', get_template_directory_uri() . '/assets/js/lib/phone.mask.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'fontawesome-js', get_template_directory_uri() . '/vendor/fontawesome/all.min.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    wp_register_script( 'main-js', get_template_directory_uri() . '/assets/js/main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-    
+    wp_register_script('dashmix-js', get_template_directory_uri() . '/assets/js/dashmix.app.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('jquery-sparkline-js', get_template_directory_uri() . '/assets/js/lib/jquery.min.js', array(), wp_get_theme()->get('Version'), true);
+    wp_register_script('sparkline-js', get_template_directory_uri() . '/assets/js/plugins/jquery-sparkline/jquery.sparkline.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('datatables-js', get_template_directory_uri() . '/assets/js/plugins/datatables/jquery.dataTables.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('datatables-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/js/dataTables.bootstrap5.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('datatables-responsive-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive/js/dataTables.responsive.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('responsive-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/js/responsive.bootstrap5.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('buttons-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/dataTables.buttons.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('buttons-bs5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/js/buttons.bootstrap5.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('jszip-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-jszip/jszip.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('pdfmake-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/pdfmake.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('vfs-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-pdfmake/vfs_fonts.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('print-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.print.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('buttons-html5-js', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons/buttons.html5.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('tables-datatables-js', get_template_directory_uri() . '/assets/js/pages/be_tables_datatables.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('plugin-fullcalendar-js', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('dashmix-fullcalendar-js', get_template_directory_uri() . '/assets/_js/pages/be_comp_calendar.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('phone-mask-js', get_template_directory_uri() . '/assets/js/lib/phone.mask.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('fontawesome-js', get_template_directory_uri() . '/vendor/fontawesome/all.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), wp_get_theme()->get('Version'), true);
+
     // wp_enqueue_script( 'popper-js');
     // wp_enqueue_script( 'bootstrap-js');
-    wp_enqueue_script( 'dashmix-js');
-    wp_enqueue_script( 'jquery-sparkline-js');
-    wp_enqueue_script( 'sparkline-js');
-    wp_enqueue_script( 'datatables-js');
-    wp_enqueue_script( 'datatables-bs5-js');
-    wp_enqueue_script( 'datatables-responsive-js');
-    wp_enqueue_script( 'responsive-bs5-js');
-    wp_enqueue_script( 'buttons-js');
-    wp_enqueue_script( 'buttons-bs5-js');
-    wp_enqueue_script( 'jszip-js');
-    wp_enqueue_script( 'pdfmake-js');
-    wp_enqueue_script( 'vfs-js');
-    wp_enqueue_script( 'print-js');
-    wp_enqueue_script( 'buttons-html5-js');
-    wp_enqueue_script( 'tables-datatables-js');
-    wp_enqueue_script( 'plugin-fullcalendar-js');
-    wp_enqueue_script( 'dashmix-fullcalendar-js');
-    wp_enqueue_script( 'phone-mask-js');
-    wp_enqueue_script( 'fontawesome-js');
-    wp_enqueue_script( 'main-js');
+    wp_enqueue_script('dashmix-js');
+    wp_enqueue_script('jquery-sparkline-js');
+    wp_enqueue_script('sparkline-js');
+    wp_enqueue_script('datatables-js');
+    wp_enqueue_script('datatables-bs5-js');
+    wp_enqueue_script('datatables-responsive-js');
+    wp_enqueue_script('responsive-bs5-js');
+    wp_enqueue_script('buttons-js');
+    wp_enqueue_script('buttons-bs5-js');
+    wp_enqueue_script('jszip-js');
+    wp_enqueue_script('pdfmake-js');
+    wp_enqueue_script('vfs-js');
+    wp_enqueue_script('print-js');
+    wp_enqueue_script('buttons-html5-js');
+    wp_enqueue_script('tables-datatables-js');
+    wp_enqueue_script('plugin-fullcalendar-js');
+    wp_enqueue_script('dashmix-fullcalendar-js');
+    wp_enqueue_script('phone-mask-js');
+    wp_enqueue_script('fontawesome-js');
+    wp_enqueue_script('main-js');
 }
 
-add_action( 'wp_enqueue_scripts', 'loading_styles' );
-add_action( 'wp_enqueue_scripts', 'loading_scripts' );
+add_action('wp_enqueue_scripts', 'loading_styles');
+add_action('wp_enqueue_scripts', 'loading_scripts');
 
 
 /**
  * Register and enqueue a custom stylesheet in the WordPress admin to subscribers and redirect them to profile page.
  */
-function wpdocs_enqueue_custom_admin_style() {
-    if ( current_user_can( 'subscriber' ) || current_user_can( 'contributor' ) || current_user_can( 'author' ) ) {
+function wpdocs_enqueue_custom_admin_style()
+{
+    if (current_user_can('subscriber') || current_user_can('contributor') || current_user_can('author')) {
 
         if (current_user_can('subscriber') || current_user_can('contributor')) {
             wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/style-admin-subs.min.css', false, wp_get_theme()->get('Version'), 'all');
-        }
-        elseif ( current_user_can( 'author' ) ) {
+        } elseif (current_user_can('author')) {
             wp_enqueue_style('custom_wp_admin_css', get_template_directory_uri() . '/style-admin-author.min.css', false, wp_get_theme()->get('Version'), 'all');
         }
 
 
-        wp_register_script( 'admin-main-js', get_template_directory_uri() . '/assets/js/admin-main.js', array( 'jquery' ), wp_get_theme()->get( 'Version' ), true  );
-        wp_enqueue_script( 'admin-main-js');
+        wp_register_script('admin-main-js', get_template_directory_uri() . '/assets/js/admin-main.js', array('jquery'), wp_get_theme()->get('Version'), true);
+        wp_enqueue_script('admin-main-js');
         $admins = array(
-            home_url( 'wp-admin', 'relative' ),
-            home_url( 'dashboard', 'relative' ),
-            home_url( 'admin', 'relative' ),
-            site_url( 'dashboard', 'relative' ),
-            site_url( 'admin', 'relative' ),
+            home_url('wp-admin', 'relative'),
+            home_url('dashboard', 'relative'),
+            home_url('admin', 'relative'),
+            site_url('dashboard', 'relative'),
+            site_url('admin', 'relative'),
         );
-        if ( in_array( untrailingslashit( $_SERVER['REQUEST_URI'] ), $admins, true ) ) {
-            wp_redirect( admin_url( 'profile.php' ) );
+        if (in_array(untrailingslashit($_SERVER['REQUEST_URI']), $admins, true)) {
+            wp_redirect(admin_url('profile.php'));
             exit;
         }
-    } 
+    }
 }
-add_action( 'admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style' );
+add_action('admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style');
 
 
 /* Add native pagination.  */
-function wp_boostrap_4_pagination(){
-    
-    if( is_singular() )
-    return;
-    
+function wp_boostrap_4_pagination()
+{
+
+    if (is_singular())
+        return;
+
     global $wp_query;
-    
+
     /** Check number of pages **/
-    if( $wp_query->max_num_pages <= 1 )
-    return;
-    
-    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
-    $max   = intval( $wp_query->max_num_pages );
-    
+    if ($wp_query->max_num_pages <= 1)
+        return;
+
+    $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
+    $max   = intval($wp_query->max_num_pages);
+
     /** Add current page to the array */
-    if ( $paged >= 1 )
-    $links[] = $paged;
-    
+    if ($paged >= 1)
+        $links[] = $paged;
+
     /** Add the pages around the current page to the array */
-    if ( $paged >= 3 ) {
+    if ($paged >= 3) {
         $links[] = $paged - 1;
         $links[] = $paged - 2;
     }
-    
-    if ( ( $paged + 2 ) <= $max ) {
+
+    if (($paged + 2) <= $max) {
         $links[] = $paged + 2;
         $links[] = $paged + 1;
     }
-    
+
     echo '<nav aria-label="Page navigation"><ul class="pagination justify-content-center push">' . "\n";
-    
+
     /** Previous Post Link */
-    if ( get_previous_posts_link() )
-    printf( '<li class="page-item">%s</li>' . "\n", get_previous_posts_link( '<i class="fa fa-angle-left"></i>' ) );
-    
+    if (get_previous_posts_link())
+        printf('<li class="page-item">%s</li>' . "\n", get_previous_posts_link('<i class="fa fa-angle-left"></i>'));
+
     /** Link to first page, plus ellipses if necessary */
-    if ( ! in_array( 1, $links ) ) {
+    if (!in_array(1, $links)) {
         $class = 1 == $paged ? ' class="page-item active"' : ' class="page-item"';
-        
-        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
-        
-        if ( ! in_array( 2, $links ) )
-        echo '<li class="page-empty">…</li>';
+
+        printf('<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link(1)), '1');
+
+        if (!in_array(2, $links))
+            echo '<li class="page-empty">…</li>';
     }
-    
+
     /** Link to current page, plus 2 pages in either direction if necessary */
-    sort( $links );
-    foreach ( (array) $links as $link ) {
+    sort($links);
+    foreach ((array) $links as $link) {
         $class = $paged == $link ? ' class="page-item active"' : ' class="page-item"';
-        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+        printf('<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($link)), $link);
     }
-    
+
     /** Link to last page, plus ellipses if necessary */
-    if ( ! in_array( $max, $links ) ) {
-        if ( ! in_array( $max - 1, $links ) )
-        echo '<li class="page-empty">…</li>' . "\n";
-        
+    if (!in_array($max, $links)) {
+        if (!in_array($max - 1, $links))
+            echo '<li class="page-empty">…</li>' . "\n";
+
         $class = $paged == $max ? ' class="page-item active"' : ' class="page-item"';
-        printf( '<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+        printf('<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
     }
-    
+
     /** Next Post Link */
-    if ( get_next_posts_link() )
-    printf( '<li class="page-item">%s</li>' . "\n", get_next_posts_link( '<i class="fa fa-angle-right"></i>' ) );
-    
+    if (get_next_posts_link())
+        printf('<li class="page-item">%s</li>' . "\n", get_next_posts_link('<i class="fa fa-angle-right"></i>'));
+
     echo '</ul></nav>' . "\n";
-    
 }
 
 /**
@@ -191,86 +193,88 @@ function wp_boostrap_4_pagination(){
  *
  * USAGE:
  *     <?php echo bootstrap_pagination(); ?> //uses global $wp_query
-* or with custom WP_Query():
-* <?php
+ * or with custom WP_Query():
+ * <?php
  *      $query = new \WP_Query($args);
  *       ... while(have_posts()), $query->posts stuff ... endwhile() ...
  *       echo bootstrap_pagination($query);
  *     ?>
-*/
-function wp_boostrap_5_pagination( \WP_Query $wp_query = null, $echo = true, $params = [] ) {
-if ( null === $wp_query ) {
-global $wp_query;
-}
+ */
+function wp_boostrap_5_pagination(\WP_Query $wp_query = null, $echo = true, $params = [])
+{
+    if (null === $wp_query) {
+        global $wp_query;
+    }
 
-$add_args = [];
+    $add_args = [];
 
-//add query (GET) parameters to generated page URLs
-/*if (isset($_GET[ 'sort' ])) {
+    //add query (GET) parameters to generated page URLs
+    /*if (isset($_GET[ 'sort' ])) {
 $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
 }*/
 
-$pages = paginate_links( array_merge( [
-'base' => str_replace( 999999999, '%#%', esc_url( get_pagenum_link( 999999999 ) ) ),
-'format' => '?paged=%#%',
-'current' => max( 1, get_query_var( 'paged' ) ),
-'total' => $wp_query->max_num_pages,
-'type' => 'array',
-'show_all' => false,
-'end_size' => 3,
-'mid_size' => 1,
-'prev_next' => true,
-'prev_text' => __( '<i class="fa fa-angle-left"></i>' ),
-'next_text' => __( '<i class="fa fa-angle-right"></i>' ),
-'add_args' => $add_args,
-'add_fragment' => ''
-], $params )
-);
+    $pages = paginate_links(
+        array_merge([
+            'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+            'format' => '?paged=%#%',
+            'current' => max(1, get_query_var('paged')),
+            'total' => $wp_query->max_num_pages,
+            'type' => 'array',
+            'show_all' => false,
+            'end_size' => 3,
+            'mid_size' => 1,
+            'prev_next' => true,
+            'prev_text' => __('<i class="fa fa-angle-left"></i>'),
+            'next_text' => __('<i class="fa fa-angle-right"></i>'),
+            'add_args' => $add_args,
+            'add_fragment' => ''
+        ], $params)
+    );
 
-if ( is_array( $pages ) ) {
-//$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
-$pagination = '<nav aria-label="Page navigation">
+    if (is_array($pages)) {
+        //$current_page = ( get_query_var( 'paged' ) == 0 ) ? 1 : get_query_var( 'paged' );
+        $pagination = '<nav aria-label="Page navigation">
   <ul class="pagination">';
 
-    foreach ( $pages as $page ) {
-    $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' .
-      str_replace('page-numbers', 'page-link', $page) . '</li>';
-    }
+        foreach ($pages as $page) {
+            $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' .
+                str_replace('page-numbers', 'page-link', $page) . '</li>';
+        }
 
-    $pagination .= '</ul>
+        $pagination .= '</ul>
 </nav>';
 
-if ( $echo ) {
-echo $pagination;
-} else {
-return $pagination;
-}
-}
+        if ($echo) {
+            echo $pagination;
+        } else {
+            return $pagination;
+        }
+    }
 
-return null;
+    return null;
 }
 
 /**
-* Notes:
-* AJAX:
-* - When used with wp_ajax (generate pagination HTML from ajax) you'll need to provide base URL (or it'll be admin-ajax
+ * Notes:
+ * AJAX:
+ * - When used with wp_ajax (generate pagination HTML from ajax) you'll need to provide base URL (or it'll be admin-ajax
 URL)
-* - Example for a term page: bootstrap_pagination( $query, false, ['base' => get_term_link($term) . '?paged=%#%'] )
-*
-* Images as next/prev:
-* - You can use image as next/prev buttons
-* - Example: 'prev_text' => '<img src="' . get_stylesheet_directory_uri() . '/assets/images/prev-arrow.svg">',
-*
-* Add query parameters to page URLs
-* - If you need custom URL parameters on your page URLS, use the "add_args" attribute
-* - Example (before paginate_links() call):
-* $arg = [];
-* if (isset($_GET[ 'sort' ])) {
-* $args[ 'sort' ] = (string)$_GET[ 'sort' ];
-* }
-* ...
-* 'add_args' => $args,
-*/
+ * - Example for a term page: bootstrap_pagination( $query, false, ['base' => get_term_link($term) . '?paged=%#%'] )
+ *
+ * Images as next/prev:
+ * - You can use image as next/prev buttons
+ * - Example: 'prev_text' => '<img src="' . get_stylesheet_directory_uri() . '/assets/images/prev-arrow.svg">',
+ *
+ * Add query parameters to page URLs
+ * - If you need custom URL parameters on your page URLS, use the "add_args" attribute
+ * - Example (before paginate_links() call):
+ * $arg = [];
+ * if (isset($_GET[ 'sort' ])) {
+ * $args[ 'sort' ] = (string)$_GET[ 'sort' ];
+ * }
+ * ...
+ * 'add_args' => $args,
+ */
 
 
 /*
@@ -280,44 +284,46 @@ URL)
 add_filter('next_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_attributes');
 add_filter('previous_posts_link_attributes', 'wp_boostrap_4_pagination_posts_link_attributes');
 
-function wp_boostrap_4_pagination_posts_link_attributes() {
-return 'class="page-link"';
+function wp_boostrap_4_pagination_posts_link_attributes()
+{
+    return 'class="page-link"';
 }
 
-function base_setup() {
+function base_setup()
+{
 
-//Tradução
-//load_theme_textdomain( 'base_language', get_template_directory() . '/languages' );
+    //Tradução
+    //load_theme_textdomain( 'base_language', get_template_directory() . '/languages' );
 
-//Wordpress gerencia o título
-add_theme_support('title-tag');
+    //Wordpress gerencia o título
+    add_theme_support('title-tag');
 
-//Formatos de posts
-add_theme_support(
-'post-formats',
-array(
-'video',
-)
-);
+    //Formatos de posts
+    add_theme_support(
+        'post-formats',
+        array(
+            'video',
+        )
+    );
 
-//Add custom field to menu - font awesome
-function menu_item_desc($item_id, $item){
-$menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
-<div style="clear: both;">
-  <span class="fa-class"><?php _e("Font Awesome Class", 'mt-area'); ?></span><br />
-  <input type="hidden" class="nav-menu-id" value="<?php echo $item_id ;?>" />
-  <div class="logged-input-holder">
-    <input type="text" name="menu_item_desc[<?php echo $item_id ;?>]" id="menu-item-desc-<?php echo $item_id ;?>"
-      value="<?php echo esc_attr($menu_item_desc); ?>" />
-  </div>
-  <span
-    class="text-muted small"><?php _e('E.g.: fa-solid fa-link<br>You can check all Font-Awesome classes <a href="https://fontawesome.com/icons" target="_blank">here</a>', 'mt-area'); ?></span>
-</div>
-<?php }
+    //Add custom field to menu - font awesome
+    function menu_item_desc($item_id, $item)
+    {
+        $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
+        <div style="clear: both;">
+            <span class="fa-class"><?php _e("Classe Font Awesome", 'mt-area'); ?></span><br />
+            <input type="hidden" class="nav-menu-id" value="<?php echo $item_id; ?>" />
+            <div class="logged-input-holder">
+                <input type="text" name="menu_item_desc[<?php echo $item_id; ?>]" id="menu-item-desc-<?php echo $item_id; ?>" value="<?php echo esc_attr($menu_item_desc); ?>" />
+            </div>
+            <span class="text-muted small"><?php _e('E.g.: fa-solid fa-link<br>Você pode checar todas as classes do Font-Awesome <a href="https://fontawesome.com/icons" target="_blank">aqui</a>', 'mt-area'); ?></span>
+        </div>
+    <?php }
     add_action('wp_nav_menu_item_custom_fields', 'menu_item_desc', 10, 2);
 
     //Save custom field in database
-    function save_menu_item_desc($menu_id, $menu_item_db_id){
+    function save_menu_item_desc($menu_id, $menu_item_db_id)
+    {
         if (isset($_POST['menu_item_desc'][$menu_item_db_id])) {
             $sanitized_data = sanitize_text_field($_POST['menu_item_desc'][$menu_item_db_id]);
             update_post_meta($menu_item_db_id, '_menu_item_desc', $sanitized_data);
@@ -329,7 +335,8 @@ $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
 
 
     // bootstrap 5 wp_nav_menu walker
-    class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu{
+    class bootstrap_5_wp_nav_menu_walker extends Walker_Nav_menu
+    {
         private $current_item;
         private $dropdown_menu_alignment_values = [
             'dropdown-menu-start',
@@ -349,8 +356,8 @@ $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
         public function start_lvl(&$output, $depth = 0, $args = null)
         {
             $dropdown_menu_class[] = '';
-            foreach($this->current_item->classes as $class) {
-                if(in_array($class, $this->dropdown_menu_alignment_values)) {
+            foreach ($this->current_item->classes as $class) {
+                if (in_array($class, $this->dropdown_menu_alignment_values)) {
                     $dropdown_menu_class[] = $class;
                 }
             }
@@ -392,7 +399,7 @@ $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
 
             $active_class = ($item->current || $item->current_item_ancestor || in_array("current_page_parent", $item->classes, true) || in_array("current-post-ancestor", $item->classes, true)) ? 'active' : '';
             $nav_link_class = ($depth > 0) ? 'dropdown-item ' : 'nav-link nav-main-link ';
-            $attributes .= ($args->walker->has_children) ? ' class="'. $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="'. $nav_link_class . $active_class . '"';
+            $attributes .= ($args->walker->has_children) ? ' class="' . $nav_link_class . $active_class . ' dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"' : ' class="' . $nav_link_class . $active_class . '"';
 
             $menu_item_desc = get_post_meta($item->ID, '_menu_item_desc', true);
             if (!empty($menu_item_desc)) {
@@ -438,76 +445,78 @@ $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
             'flex-width'           => true,
             'flex-height'          => true,
             'unlink-homepage-logo' => true,
-            )
+        )
     );
 
     // Add support for full and wide align images
     add_theme_support('align-wide');
-
 }
-add_action( 'after_setup_theme', 'base_setup' );
-    
-    // Add support for responsive embedded content.
-    add_theme_support( 'responsive-embeds' );
-    
-    // Add support for custom line height controls.
-    add_theme_support( 'custom-line-height' );
-    
-    // Add support for experimental link color control.
-    add_theme_support( 'experimental-link-color' );
-    
-    // Add support for experimental cover block spacing.
-    add_theme_support( 'custom-spacing' );
-    
-    //Hide admin bar if the user is NOT admin
-    add_action('after_setup_theme', 'remove_admin_bar');
-    function remove_admin_bar() {
+add_action('after_setup_theme', 'base_setup');
+
+// Add support for responsive embedded content.
+add_theme_support('responsive-embeds');
+
+// Add support for custom line height controls.
+add_theme_support('custom-line-height');
+
+// Add support for experimental link color control.
+add_theme_support('experimental-link-color');
+
+// Add support for experimental cover block spacing.
+add_theme_support('custom-spacing');
+
+//Hide admin bar if the user is NOT admin
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar()
+{
     if (!current_user_can('administrator') && !is_admin()) {
         show_admin_bar(false);
     }
-    }
-                
-    function fix_svg() {
-        echo '<style type="text/css">
+}
+
+function fix_svg()
+{
+    echo '<style type="text/css">
         .attachment-266x266, .thumbnail img {
             width: 100% !important;
             height: auto !important;
         }
         </style>';
-    }
-    add_action( 'admin_head', 'fix_svg' );
+}
+add_action('admin_head', 'fix_svg');
 
-    /* Creating option pages on ACF plugin */
-    add_action('acf/init', 'my_acf_op_init');
-    function my_acf_op_init() {
-    
+/* Creating option pages on ACF plugin */
+add_action('acf/init', 'my_acf_op_init');
+function my_acf_op_init()
+{
+
     // Check function exists.
-    if( function_exists('acf_add_options_page') ) {
-        
+    if (function_exists('acf_add_options_page')) {
+
         // Add parent.
         $parent = acf_add_options_page(array(
-            'page_title'  => __('Theme General Settings'),
-            'menu_title'  => __('Theme Settings'),
-            'icon_url'    => 'dashicons-welcome-write-blog',
-            'position'    => 60,
-            'redirect'    => false,
+            'page_title'  => __('Ajustes', 'mt-area'),
+            'menu_title'  => __('Ajustes', 'mt-area'),
+            'icon_url'    => 'dashicons-admin-generic',
+            'position'    => 24,
+            'redirect'    => true,
         ));
-        
+
         // Add sub page.
         $child = acf_add_options_page(array(
-            'page_title'  => __('Social Settings'),
-            'menu_title'  => __('Social Media'),
+            'page_title'  => __('Meditação Coletiva Online', 'mt-area'),
+            'menu_title'  => __('Meditação Coletiva Online', 'mt-area'),
             'parent_slug' => $parent['menu_slug'],
         ));
-        
+
         // Add sub page.
-        $child = acf_add_options_page(array(
-            'page_title'  => __('Footer Settings'),
-            'menu_title'  => __('Footer'),
-            'parent_slug' => $parent['menu_slug'],
-        ));
-        
-        
+        // $child = acf_add_options_page(array(
+        //     'page_title'  => __('Footer Settings'),
+        //     'menu_title'  => __('Footer'),
+        //     'parent_slug' => $parent['menu_slug'],
+        // ));
+
+
     }
 }
 
@@ -517,15 +526,15 @@ add_action( 'after_setup_theme', 'base_setup' );
 // {
 //     remove_post_type_support('page', 'editor');
 // }
-    
-function the_breadcrumb() {
+
+function the_breadcrumb()
+{
     echo '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
     if (is_front_page()) {
         echo '<li class="breadcrumb-item">';
         echo 'Painel';
         echo "</li>";
-    }
-    elseif (!is_home()) {
+    } elseif (!is_home()) {
         echo '<li class="breadcrumb-item"><a href="';
         echo get_option('home');
         echo '">';
@@ -544,22 +553,39 @@ function the_breadcrumb() {
             echo the_title();
             echo '</li>';
         }
+    } elseif (is_tag()) {
+        single_tag_title();
+    } elseif (is_day()) {
+        echo "<li class='breadcrumb-item'>Archive for ";
+        the_time('F jS, Y');
+        echo '</li>';
+    } elseif (is_month()) {
+        echo "<li class='breadcrumb-item'>Archive for ";
+        the_time('F, Y');
+        echo '</li>';
+    } elseif (is_year()) {
+        echo "<li class='breadcrumb-item'>Archive for ";
+        the_time('Y');
+        echo '</li>';
+    } elseif (is_author()) {
+        echo "<li class='breadcrumb-item'>Author Archive";
+        echo '</li>';
+    } elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {
+        echo "<li>Blog Archives";
+        echo '</li>';
+    } elseif (is_search()) {
+        echo "<li class='breadcrumb-item'>Search Results";
+        echo '</li>';
     }
-    elseif (is_tag()) {single_tag_title();}
-    elseif (is_day()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('F jS, Y'); echo'</li>';}
-    elseif (is_month()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('F, Y'); echo'</li>';}
-    elseif (is_year()) {echo"<li class='breadcrumb-item'>Archive for "; the_time('Y'); echo'</li>';}
-    elseif (is_author()) {echo"<li class='breadcrumb-item'>Author Archive"; echo'</li>';}
-    elseif (isset($_GET['paged']) && !empty($_GET['paged'])) {echo "<li>Blog Archives"; echo'</li>';}
-    elseif (is_search()) {echo"<li class='breadcrumb-item'>Search Results"; echo'</li>';}
     echo '</ol></nav>';
 }
 
 //Excerpt size
-function mytheme_custom_excerpt_length( $length ) {
+function mytheme_custom_excerpt_length($length)
+{
     return 35;
 }
-add_filter( 'excerpt_length', 'mytheme_custom_excerpt_length', 999 );
+add_filter('excerpt_length', 'mytheme_custom_excerpt_length', 999);
 
 // wp_localize_script( 'twentyfifteen-script', 'ajax_posts', array(
 //     'ajaxurl' => admin_url( 'admin-ajax.php' ),
@@ -568,173 +594,180 @@ add_filter( 'excerpt_length', 'mytheme_custom_excerpt_length', 999 );
 
 //Page Slug
 
-function get_the_slug() {
+function get_the_slug()
+{
     global $post;
     $slug = $post->post_name ?? '';
 
-    if ( ! $slug ) {
-        $slug = basename( parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ) );
+    if (!$slug) {
+        $slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
     }
     return $slug;
 }
 
 //Estimated Reading Time
-function reading_time() {
-    $content = get_post_field( 'post_content', get_the_ID() );
-    $word_count = str_word_count( strip_tags( $content ) );
+function reading_time()
+{
+    $content = get_post_field('post_content', get_the_ID());
+    $word_count = str_word_count(strip_tags($content));
     $readingtime = ceil($word_count / 200);
-    
+
     if ($readingtime == 1) {
-    $timer = " minuto";
+        $timer = " minuto";
     } else {
-    $timer = " minutos";
+        $timer = " minutos";
     }
     $totalreadingtime = $readingtime . $timer;
-    
+
     return $totalreadingtime;
 }
 
 //Change WP Login Page
-function wpb_login_logo() { ?>
-<style type="text/css">
-#login {
-  padding: 2% 0 0 !important;
-}
+function wpb_login_logo()
+{ ?>
+    <style type="text/css">
+        #login {
+            padding: 2% 0 0 !important;
+        }
 
-#login h1 a,
-.login h1 a {
-  background-image: url(<?php echo get_stylesheet_directory_uri();
-  ?>/assets/media/mt/icon-arvore.png);
-  height: 140px;
-  width: 140px;
-  background-size: 140px 140px;
-  background-repeat: no-repeat;
-  padding-bottom: 10px;
-}
+        #login h1 a,
+        .login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri();
+                                    ?>/assets/media/mt/icon-arvore.png);
+            height: 140px;
+            width: 140px;
+            background-size: 140px 140px;
+            background-repeat: no-repeat;
+            padding-bottom: 10px;
+        }
 
-.login #login_error,
-.login .message,
-.login .success {
-  border-radius: 7px;
-}
+        .login #login_error,
+        .login .message,
+        .login .success {
+            border-radius: 7px;
+        }
 
-.login h1 {
-  background: #fff;
-  margin-bottom: -30px;
-  position: relative;
-  z-index: 10;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-  padding-top: 20px;
-}
+        .login h1 {
+            background: #fff;
+            margin-bottom: -30px;
+            position: relative;
+            z-index: 10;
+            border-top-left-radius: 7px;
+            border-top-right-radius: 7px;
+            padding-top: 20px;
+        }
 
-#lostpasswordform #wp-submit,
-#loginform #wp-submit {
-  width: 100%;
-  height: 35px;
-  background-color: #ffc536;
-  border: 1px solid #ffc536;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 17px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  letter-spacing: -0.015em;
-  color: #FFFFFF;
-  border-radius: 4px;
-  margin-top: 10px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  user-select: none;
-  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-}
+        #lostpasswordform #wp-submit,
+        #loginform #wp-submit {
+            width: 100%;
+            height: 35px;
+            background-color: #ffc536;
+            border: 1px solid #ffc536;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 17px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            letter-spacing: -0.015em;
+            color: #FFFFFF;
+            border-radius: 4px;
+            margin-top: 10px;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
 
-#lostpasswordform #wp-submit:hover,
-#loginform #wp-submit:hover {
-  outline: 0;
-  -webkit-box-shadow: none;
-  box-shadow: none;
-  color: #ffc536;
-  background-color: transparent;
-}
+        #lostpasswordform #wp-submit:hover,
+        #loginform #wp-submit:hover {
+            outline: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            color: #ffc536;
+            background-color: transparent;
+        }
 
-body.wp-core-ui {
-  background:
-    /* url(<?php //echo get_stylesheet_directory_uri(); ?>/assets/media/mt/bg-404.jpg), */
-    rgb(255, 197, 54, 1) !important;
-}
+        body.wp-core-ui {
+            background:
+                /* url(<?php //echo get_stylesheet_directory_uri(); 
+                        ?>/assets/media/mt/bg-404.jpg), */
+                rgb(255, 197, 54, 1) !important;
+        }
 
-.wp-core-ui .button-secondary .dashicons {
-  color: #ffc536;
-}
+        .wp-core-ui .button-secondary .dashicons {
+            color: #ffc536;
+        }
 
-#lostpasswordform,
-#loginform {
-  border: none;
-  border-radius: 7px;
-  box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
-}
+        #lostpasswordform,
+        #loginform {
+            border: none;
+            border-radius: 7px;
+            box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
+        }
 
-#lostpasswordform input,
-#loginform input {
-  border: 1px solid #ffc536;
-  border-radius: 0px;
-}
+        #lostpasswordform input,
+        #loginform input {
+            border: 1px solid #ffc536;
+            border-radius: 0px;
+        }
 
-#lostpasswordform input[type="checkbox"]:checked::before,
-#loginform input[type="checkbox"]:checked::before {
-  margin: -0.250rem 0 0 -0.35rem;
-}
+        #lostpasswordform input[type="checkbox"]:checked::before,
+        #loginform input[type="checkbox"]:checked::before {
+            margin: -0.250rem 0 0 -0.35rem;
+        }
 
-#lostpasswordform #wp-submit {
-  width: 160px;
-}
+        #lostpasswordform #wp-submit {
+            width: 160px;
+        }
 
-.login #login_error,
-.login .message,
-.login .success {
-  border-left: none !important;
-}
+        .login #login_error,
+        .login .message,
+        .login .success {
+            border-left: none !important;
+        }
 
-.login .button.wp-hide-pw:focus {
-  border-color: none !important;
-  box-shadow: none !important;
-}
+        .login .button.wp-hide-pw:focus {
+            border-color: none !important;
+            box-shadow: none !important;
+        }
 
-#backtoblog {
-  display: none;
-}
-</style>
+        #backtoblog {
+            display: none;
+        }
+    </style>
 <?php }
-    add_action( 'login_enqueue_scripts', 'wpb_login_logo' );
-    
-    function wpb_login_logo_url() {
-        return home_url();
-    }
-    add_filter( 'login_headerurl', 'wpb_login_logo_url' );
-      
-    function wpb_login_logo_url_title() {
-        return 'Área do Meditante - Meditação Transcendental';
-    }
-    add_filter( 'login_headertitle', 'wpb_login_logo_url_title' );
-    
-    //Disable Login language
-    add_filter( 'login_display_language_dropdown', '__return_false' );
+add_action('login_enqueue_scripts', 'wpb_login_logo');
 
- /**
+function wpb_login_logo_url()
+{
+    return home_url();
+}
+add_filter('login_headerurl', 'wpb_login_logo_url');
+
+function wpb_login_logo_url_title()
+{
+    return 'Área do Meditante - Meditação Transcendental';
+}
+add_filter('login_headertitle', 'wpb_login_logo_url_title');
+
+//Disable Login language
+add_filter('login_display_language_dropdown', '__return_false');
+
+/**
  * WordPress function for redirecting users on login based on user role
  */
-function wpdocs_my_login_redirect( $url, $request, $user ) {
-    if ( $user && is_object( $user ) && is_a( $user, 'WP_User' ) ) {
-        if ( $user->has_cap( 'administrator' ) ) {
+function wpdocs_my_login_redirect($url, $request, $user)
+{
+    if ($user && is_object($user) && is_a($user, 'WP_User')) {
+        if ($user->has_cap('administrator')) {
             $url = admin_url();
         } else {
             $url = home_url();
@@ -743,75 +776,71 @@ function wpdocs_my_login_redirect( $url, $request, $user ) {
     return $url;
 }
 
-add_filter( 'login_redirect', 'wpdocs_my_login_redirect', 10, 3 );
+add_filter('login_redirect', 'wpdocs_my_login_redirect', 10, 3);
 
 
 //Displays User Info
-function display_user_info( $param ) {
+function display_user_info($param)
+{
 
     $current_user = wp_get_current_user();
 
-    if ( ! ( $current_user instanceof WP_User ) ) {
+    if (!($current_user instanceof WP_User)) {
         return;
     }
 
-    if ( $param == 'role' ) {
-        printf( esc_html( ( array ) $current_user->roles ) );
-    }
-    elseif( $param == 'name' ) {
-        if ( $current_user->display_name ) {
-            printf( esc_html( $current_user->display_name ) );
+    if ($param == 'role') {
+        printf(esc_html((array) $current_user->roles));
+    } elseif ($param == 'name') {
+        if ($current_user->display_name) {
+            printf(esc_html($current_user->display_name));
+        } elseif ($current_user->user_firstname) {
+            printf(esc_html($current_user->user_firstname));
+        } elseif ($current_user->user_login) {
+            printf(esc_html($current_user->user_login));
         }
-        elseif ( $current_user->user_firstname ) {
-            printf( esc_html( $current_user->user_firstname ) );
-        }
-        elseif ( $current_user->user_login ) {
-            printf( esc_html( $current_user->user_login ) );
-        }
-    } 
-    elseif ( $param == 'email' ) {
-        printf( esc_html( $current_user->user_email ) );
+    } elseif ($param == 'email') {
+        printf(esc_html($current_user->user_email));
     }
     // elseif ( $param == 'lastname' ) {
     //     printf( esc_html( $current_user->user_lastname ) );
     // }
-    elseif ( $param == 'id' ) {
-        printf( esc_html( $current_user->ID ) );
+    elseif ($param == 'id') {
+        printf(esc_html($current_user->ID));
     }
-    
 }
 
-add_action('login_init', function(){
-    ?>
-<style>
-.login-header {
-  color: #FFFFFF;
-  text-align: center;
-  padding: 5% 0 0 !important;
-}
+add_action('login_init', function () {
+?>
+    <style>
+        .login-header {
+            color: #FFFFFF;
+            text-align: center;
+            padding: 5% 0 0 !important;
+        }
 
-.login-header .login-header-h2 {
-  font-family: 'Work Sans', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 3.125rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
+        .login-header .login-header-h2 {
+            font-family: 'Work Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 3.125rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
 
-.login-header .login-header-p {
-  font-family: 'Work Sans', sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 2.5rem;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-}
-</style>
-<div class="login-header">
-  <h2 class="login-header-h2">Bem-vindo a área de meditantes.</h2>
-  <p class="login-header-p">Por favor, informe seus dados abaixo.</p>
-</div>
+        .login-header .login-header-p {
+            font-family: 'Work Sans', sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            font-size: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+    </style>
+    <div class="login-header">
+        <h2 class="login-header-h2">Bem-vindo a área de meditantes.</h2>
+        <p class="login-header-p">Por favor, informe seus dados abaixo.</p>
+    </div>
 <?php
 
 });
@@ -829,18 +858,18 @@ add_action('login_init', function(){
 //        }
 //     }
 //  }
- # https://keithgreer.uk/wordpress-code-completely-disable-comments-using-functions-php
- 
+# https://keithgreer.uk/wordpress-code-completely-disable-comments-using-functions-php
+
 //  add_action('admin_init', 'df_disable_comments_post_types_support');
- 
- // Then close any comments open comments on the front-end just in case
+
+// Then close any comments open comments on the front-end just in case
 //  function df_disable_comments_status() {
 //     return false;
 //  }
 //  add_filter('comments_open', 'df_disable_comments_status', 20, 2);
 //  add_filter('pings_open', 'df_disable_comments_status', 20, 2);
- 
- // Finally, hide any existing comments that are on the site. 
+
+// Finally, hide any existing comments that are on the site. 
 //  function df_disable_comments_hide_existing_comments($comments) {
 //     $comments = array();
 //     return $comments;
@@ -850,10 +879,11 @@ add_action('login_init', function(){
 /*
 * Rename User roles
 */
-function change_role_name() {
+function change_role_name()
+{
     global $wp_roles;
 
-    if ( ! isset( $wp_roles ) )
+    if (!isset($wp_roles))
         $wp_roles = new WP_Roles();
 
     //You can list all currently available roles like this...
@@ -862,7 +892,7 @@ function change_role_name() {
 
     //You can replace "administrator" with any other role "editor", "author", "contributor" or "subscriber"...
     $wp_roles->roles['author']['name'] = 'Instrutor';
-    $wp_roles->role_names['author'] = 'Instrutor';           
+    $wp_roles->role_names['author'] = 'Instrutor';
     $wp_roles->roles['contributor']['name'] = 'Associado';
     $wp_roles->role_names['contributor'] = 'Associado';
     $wp_roles->roles['subscriber']['name'] = 'Meditante';
@@ -874,10 +904,11 @@ add_action('init', 'change_role_name');
 
 /**
  * Create custom roles
+ * ! DO NOT REMOVE
  */
-add_role( 'colmeia', 'Colmeia', get_role( 'editor' )->capabilities );
-add_role( 'sidhas_meditante', 'Sidhas Meditante', get_role( 'subscriber' )->capabilities );
-add_role( 'sidhas_associado', 'Sidhas Associado', get_role( 'contributor' )->capabilities );
+add_role('colmeia', 'Colmeia', get_role('editor')->capabilities);
+add_role('sidhas_meditante', 'Sidhas Meditante', get_role('subscriber')->capabilities);
+add_role('sidhas_associado', 'Sidhas Associado', get_role('contributor')->capabilities);
 
 
 /**
@@ -885,27 +916,29 @@ add_role( 'sidhas_associado', 'Sidhas Associado', get_role( 'contributor' )->cap
  *
  * Call the function when your plugin/theme is activated.
  */
-function contributor_set_capabilities() {
+function contributor_set_capabilities()
+{
 
     // Get the role object.
-    $editor = get_role( 'contributor' );
+    $editor = get_role('contributor');
 
-	// A list of capabilities to remove from editors.
+    // A list of capabilities to remove from editors.
     $caps = array(
         'edit_posts',
         'delete_posts',
     );
 
-    foreach ( $caps as $cap ) {
-    
+    foreach ($caps as $cap) {
+
         // Remove the capability.
-        $editor->remove_cap( $cap );
+        $editor->remove_cap($cap);
     }
 }
-add_action( 'init', 'contributor_set_capabilities' );
+add_action('init', 'contributor_set_capabilities');
 
 //Remove screen options to whom did not get admin role
-function wpb_remove_screen_options() {
+function wpb_remove_screen_options()
+{
     if (!current_user_can('manage_options')) {
         return false;
     }
@@ -914,8 +947,9 @@ function wpb_remove_screen_options() {
 add_filter('screen_options_show_screen', 'wpb_remove_screen_options');
 
 //Remove help tab
-add_filter( 'contextual_help', 'mytheme_remove_help_tabs', 999, 3 );
-function mytheme_remove_help_tabs($old_help, $screen_id, $screen){
+add_filter('contextual_help', 'mytheme_remove_help_tabs', 999, 3);
+function mytheme_remove_help_tabs($old_help, $screen_id, $screen)
+{
     $screen->remove_help_tabs();
     return $old_help;
 }
@@ -926,8 +960,9 @@ add_action('wp_dashboard_setup', 'wpdocs_remove_dashboard_widgets');
 /**
  * Remove all dashboard widgets
  */
-function wpdocs_remove_dashboard_widgets(){
-    if ( ! current_user_can( 'delete_others_pages' ) ) { // Only run if the user is an Author or lower.
+function wpdocs_remove_dashboard_widgets()
+{
+    if (!current_user_can('delete_others_pages')) { // Only run if the user is an Author or lower.
         remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
         remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); // Recent Comments
         remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
@@ -939,13 +974,23 @@ function wpdocs_remove_dashboard_widgets(){
         // use 'dashboard-network' as the second parameter to remove widgets from a network dashboard.
     }
 }
-add_action( 'do_meta_boxes', 'wpdocs_remove_dashboard_widgets' );
+add_action('do_meta_boxes', 'wpdocs_remove_dashboard_widgets');
 
 //Add active class to current menu item
-add_filter('nav_menu_css_class' , 'special_nav_class' , 10 , 2);
-function special_nav_class($classes, $item){
-     if( in_array('current-menu-item', $classes) ){
-             $classes[] = 'active ';
-     }
-     return $classes;
+add_filter('nav_menu_css_class', 'special_nav_class', 10, 2);
+function special_nav_class($classes, $item)
+{
+    if (in_array('current-menu-item', $classes)) {
+        $classes[] = 'active ';
+    }
+    return $classes;
 }
+
+// Admin footer modification
+function remove_footer_admin()
+{
+    echo '<span id="footer-thankyou">' . __('Desenvolvido por ', 'mt-area') . '<a href="https://www.colmeiaperformance.com.br" target="_blank\">Colmeia Performance</a></span>';
+}
+
+add_filter('admin_footer_text', 'remove_footer_admin');
+
