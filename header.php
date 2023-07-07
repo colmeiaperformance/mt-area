@@ -431,7 +431,7 @@ if ( !is_user_logged_in() ) {
       <div class="bg-header-dark">
         <div class="content-header bg-white-5">
           <!-- Logo -->
-          <a class="fw-semibold text-white tracking-wide" href="index.html">
+          <a class="fw-semibold text-white tracking-wide" href="<?php echo home_url(); ?>">
             <span class="smini-visible">
               <!-- M<span class="opacity-75">T</span> -->
               <span class="opacity-75">
