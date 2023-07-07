@@ -8,6 +8,6 @@
       value="<?php the_search_query(); ?>" />
     <input type="hidden" value="post" name="post_type" id="post_type" />
     <input class="btn btn-primary" type="submit" id="searchsubmit"
-      value="<?php echo esc_attr__( 'Search', 'mt-area' ); ?>" />
+      value="<?php echo esc_attr__( 'Busca', 'mt-area' ); ?>" />
   </div>
 </form>
