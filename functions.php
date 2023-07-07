@@ -994,3 +994,10 @@ function remove_footer_admin()
 
 add_filter('admin_footer_text', 'remove_footer_admin');
 
+// Função para verificar o horário atual em Brasília
+function get_brasilia_current_time()
+{
+    $timezone = new DateTimeZone('America/Sao_Paulo');
+    $datetime = new DateTime('now', $timezone);
+    return $datetime->format('H:i');
+}
