@@ -1,13 +1,3 @@
-<?php
-/**
- * Title: Programas Regulares
- * Slug: mt-area/programas-regulares
- * Categories: query
- * Keywords: programas regulares
- * Block Types: core/template-part/calendar-regulares
- */
-?>
-
 <div class="block block-rounded block-mode-loading-refresh">
   <div class="block-header block-header-default bg-body-dark text-white py-3 <?php
   if ( is_front_page() ) {

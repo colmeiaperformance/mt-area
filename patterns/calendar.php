@@ -1,12 +1,3 @@
-<?php
-/**
- * Title: Calendar
- * Slug: mt-area/calendar
- * Categories: query
- * Keywords: calendar
- * Block Types: core/template-part/calendar
- */
-?>
 <!--  Latest Events -->
 <div class="block block-rounded block-mode-loading-refresh">
   <div class="block-header block-header-default bg-body-dark text-white py-3 <?php

@@ -1,13 +1,5 @@
 <?php
 
-/**
- * Title: Meditação Online Coletiva
- * Slug: mt-area/meditation
- * Categories: query
- * Keywords: meditation
- * Block Types: core/template-part/meditation
- */
-
 $is_online = false;
 $link_da_palestra = '#';
 $horario_atual = '';

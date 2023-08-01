@@ -1,12 +1,3 @@
-<?php
-/**
- * Title: Categories List
- * Slug: mt-area/categories-list
- * Categories: query
- * Keywords: categories list
- * Block Types: core/template-part/categories-list
- */
-?>
 <!-- Show Categories -->
 <div class="row items-push">
   <?php

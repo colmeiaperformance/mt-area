@@ -1,11 +1,4 @@
 <?php 
-/**
- * Title: Article
- * Slug: mt-area/article
- * Categories: query
- * Keywords: article
- * Block Types: core/template-part/article
- */
 
           if ( have_posts() ) {
             while ( have_posts() ) {

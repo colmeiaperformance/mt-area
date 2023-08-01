@@ -1,12 +1,3 @@
-<?php
-/**
- * Title: Hero
- * Slug: mt-area/hero
- * Categories: query
- * Keywords: hero
- * Block Types: core/template-part/hero
- */
-?>
   <!-- Hero -->
   <div class="bg-image bg-image-fixed"
     style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_artigos.jpg'; ?>');">
