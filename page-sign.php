@@ -23,7 +23,7 @@
   <div class="content">
 
     <!-- Plans -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center items-push">
       <div class="col-md-6 col-xl-3">
         <!-- Meditante Plan -->
         <a class="block block-link-pop block-rounded text-center h-100 d-flex flex-column justify-content-between" href="javascript:void(0)">
