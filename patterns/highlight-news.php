@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Title: Notícias Highlights
+ * Slug: mt-area/highlights-news
+ */
+?>
 <div class="row items-push">
   <div class="col-12">
     <!-- Blog #1 -->

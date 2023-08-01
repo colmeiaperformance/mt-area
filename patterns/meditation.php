@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Title: Meditação Coletiva Online
+ * Slug: mt-area/meditation
+ */
+
 $is_online = false;
 $link_da_palestra = '#';
 $horario_atual = '';

@@ -1,21 +1,26 @@
+<?php
+
+/**
+ * Title: Programas Regulares
+ * Slug: mt-area/calendar-regulares
+ */
+?>
 <div class="block block-rounded block-mode-loading-refresh">
   <div class="block-header block-header-default bg-body-dark text-white py-3 <?php
-  if ( is_front_page() ) {
-    echo 'bg-mt-dark-blue';
-  } else {
-    echo 'bg-primary';
-  }
-  ?>">
+                                                                              if (is_front_page()) {
+                                                                                echo 'bg-mt-dark-blue';
+                                                                              } else {
+                                                                                echo 'bg-primary';
+                                                                              }
+                                                                              ?>">
     <h3 class="block-title">
       Programas Regulares
     </h3>
     <div class="block-options">
-      <button type="button" class="btn-block-option text-white" data-toggle="block-option" data-action="state_toggle"
-        data-action-mode="demo">
+      <button type="button" class="btn-block-option text-white" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
         <i class="si si-refresh"></i>
       </button>
-      <button type="button" class="btn-block-option text-white" data-toggle="block-option"
-        data-action="fullscreen_toggle"></button>
+      <button type="button" class="btn-block-option text-white" data-toggle="block-option" data-action="fullscreen_toggle"></button>
     </div>
   </div>
   <div class="block-content pb-3">

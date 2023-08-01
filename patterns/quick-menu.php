@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Title: Quick Menu
+ * Slug: mt-area/quick-menu
+ */
+?>
 <div class="bg-body-light border-top border-bottom d-none d-md-block">
   <div class="content content-full py-1">
     <div class="d-flex flex-column flex-sm-row justify-content-sm-between align-items-sm-center">

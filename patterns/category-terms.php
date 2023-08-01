@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Title: Termos da Categoria
+ * Slug: mt-area/category-terms
+ */
+
 // Verifica o tipo de post personalizado do post atual
 $post_type = get_post_type();
 $post_taxonomy = get_object_taxonomies($post_type);

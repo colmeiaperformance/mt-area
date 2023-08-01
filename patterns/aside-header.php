@@ -1,11 +1,17 @@
+<?php
+
+/**
+ * Title: Aside Header
+ * Slug: mt-area/aside-header
+ */
+?>
 <div class="bg-image" style="background-image: url('<?php //echo get_template_directory_uri() . '/assets/media/various/bg_side_overlay_header.jpg';
                                                     ?>');">
   <div class="bg-primary-op">
     <div class="content-header">
       <!-- User Avatar -->
       <span class="me-1">
-        <img class="img-avatar img-avatar48"
-          src="<?php echo get_template_directory_uri() . '/assets/media/avatars/avatar10.jpg'; ?>" alt="">
+        <img class="img-avatar img-avatar48" src="<?php echo get_template_directory_uri() . '/assets/media/avatars/avatar10.jpg'; ?>" alt="">
       </span>
       <!-- END User Avatar -->
 

@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Title: Highlights Sidhas
+ * Slug: mt-area/highlights-news-sidhas
+ */
+?>
 <div class="row items-push">
   <div class="col-12">
     <!-- Blog #1 -->

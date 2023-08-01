@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Title: Calendário Védico
+ * Slug: mt-area/calendario-vedico
+ */
+?>
 <div class="col">
   <div class="block block-rounded h-100 mb-0">
     <div class="block-content block-content-full d-flex align-items-center justify-content-between bg-body-dark text-white bg-mt-dark-blue py-3">

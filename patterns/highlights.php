@@ -1,3 +1,10 @@
+<?php
+
+/**
+ * Title: Highlights
+ * Slug: mt-area/highlights
+ */
+?>
 <div class="block block-rounded d-flex flex-column flex-grow-1 h-100">
   <div class="block-content h-100">
     <p class="text-uppercase fs-sm fw-bold text-center mt-2 mb-4">
