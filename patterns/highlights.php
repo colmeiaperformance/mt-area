@@ -9,10 +9,10 @@
  */
 ?>
 
-<div class="block block-rounded d-flex flex-column flex-grow-1">
+<div class="block block-rounded d-flex flex-column flex-grow-1 h-100">
   <div class="block-content h-100">
     <p class="text-uppercase fs-sm fw-bold text-center mt-2 mb-4">
-      Notícias em Destaque
+      <?php _e('Notícias em Destaque', 'mt-area'); ?>
     </p>
     <ul class="nav-items my-2">
 
@@ -20,7 +20,7 @@
       $args = array(
         'post_type' => 'noticia-em-destaque',
         'post_status' => 'publish',
-        'posts_per_page' => 3,
+        'posts_per_page' => 5,
         // 'orderby' => 'title', 
         // 'order' => 'ASC', 
       );
@@ -48,7 +48,9 @@
             </div>
             <div class="flex-grow-1 fs-sm pe-2">
               <div class="fw-semibold"><?php the_title(); ?></div>
-              <div class="text-muted"><?php echo get_field('destaque_resumo'); ?></div>
+              <div class="text-muted">
+                <?php echo get_the_excerpt(); ?>
+              </div>
             </div>
           </a>
         </li>
@@ -62,7 +64,7 @@
   </div>
   <div class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
     <a class="fw-medium" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-      Ver Todos
+      <?php _e('Ver Todos', 'mt-area'); ?>
       <i class="fa fa-arrow-right ms-1 opacity-25"></i>
     </a>
   </div>

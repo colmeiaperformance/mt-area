@@ -12,9 +12,9 @@
         <h1 class="fw-bold text-white mt-3 mb-2">
           <?php the_title(); ?>
         </h1>
-        <h3 class="fw-normal text-white-75 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
+        <!-- <h3 class="fw-normal text-white-75 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique
           autem veritatis
-        </h3>
+        </h3> -->
       </div>
     </div>
   </div>

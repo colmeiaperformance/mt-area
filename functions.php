@@ -498,7 +498,7 @@ function my_acf_op_init()
             'page_title'  => __('Ajustes', 'mt-area'),
             'menu_title'  => __('Ajustes', 'mt-area'),
             'icon_url'    => 'dashicons-admin-generic',
-            'position'    => 24,
+            'position'    => 58,
             'redirect'    => true,
         ));
 
@@ -509,14 +509,19 @@ function my_acf_op_init()
             'parent_slug' => $parent['menu_slug'],
         ));
 
-        // Add sub page.
-        // $child = acf_add_options_page(array(
-        //     'page_title'  => __('Footer Settings'),
-        //     'menu_title'  => __('Footer'),
-        //     'parent_slug' => $parent['menu_slug'],
-        // ));
+        //Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('Meditação Coletiva Presencial', 'mt-area'),
+            'menu_title'  => __('Meditação Coletiva Presencial', 'mt-area'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
 
-
+        //Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('Calendário Védico', 'mt-area'),
+            'menu_title'  => __('Calendário Védico', 'mt-area'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
     }
 }
 
@@ -532,19 +537,41 @@ function the_breadcrumb()
     echo '<nav aria-label="breadcrumb"><ol class="breadcrumb">';
     if (is_front_page()) {
         echo '<li class="breadcrumb-item">';
-        echo 'Painel';
+        _e('Painel', 'mt-area');
         echo "</li>";
     } elseif (!is_home()) {
         echo '<li class="breadcrumb-item"><a href="';
         echo get_option('home');
         echo '">';
-        echo 'Home';
+        echo 'Painel';
         echo "</a></li>";
-        if (is_category() || is_single()) {
+        if (is_category() || is_single() && !is_custom_post_type()) {
             echo '<li class="breadcrumb-item">';
             the_category(' </li><li class="breadcrumb-item"> ');
             if (is_single()) {
                 echo "</li><li class='breadcrumb-item active'>";
+                the_title();
+                echo '</li>';
+            }
+        } elseif (is_custom_post_type()) {
+            if (is_post_type_archive()) {
+                echo '<li class="breadcrumb-item">';
+                echo '<a href="';
+                echo get_post_type_archive_link(get_post_type(get_the_ID()));
+                echo '">';
+                echo post_type_archive_title();
+                echo '</a></li>';
+            } elseif (is_singular()) {
+                echo '<li class="breadcrumb-item">';
+                echo '<a href="';
+                echo get_post_type_archive_link(get_post_type(get_the_ID()));
+                echo '">';
+                $post_type_obj = get_post_type_object(get_post_type(get_the_ID()));
+                echo $post_type_obj->labels->name;
+                echo '</a></li>';
+            }
+            if (is_singular()) {
+                echo "<li class='breadcrumb-item active'>";
                 the_title();
                 echo '</li>';
             }
@@ -624,10 +651,15 @@ function reading_time()
 
 //Change WP Login Page
 function wpb_login_logo()
-{ ?>
+{
+    //Add bootstrap to login/register page
+    wp_enqueue_style('style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    ?>
     <style type="text/css">
         #login {
             padding: 2% 0 0 !important;
+            width: 50% !important;
+            min-width: 320px;
         }
 
         #login h1 a,
@@ -742,6 +774,16 @@ function wpb_login_logo()
         #backtoblog {
             display: none;
         }
+
+        .login .message {
+            font-size: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        #login #registerform {
+            border-radius: 7px;
+        }
     </style>
 <?php }
 add_action('login_enqueue_scripts', 'wpb_login_logo');
@@ -760,6 +802,13 @@ add_filter('login_headertitle', 'wpb_login_logo_url_title');
 
 //Disable Login language
 add_filter('login_display_language_dropdown', '__return_false');
+
+//Registration redirect
+add_filter('registration_redirect', 'my_redirect_home');
+function my_redirect_home($registration_redirect)
+{
+    return home_url('/obrigado-por-se-registrar');
+}
 
 /**
  * WordPress function for redirecting users on login based on user role
@@ -877,8 +926,94 @@ add_action('login_init', function () {
 //  add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
 
 /*
-* Rename User roles
+* Rename User roles - Change Capabilities
 */
+
+/**
+ * Edit capabilities from roles.
+ * Call the function when your plugin/theme is activated.
+ */
+function contributor_set_capabilities()
+{
+
+    // Get the role object.
+    $contributor = get_role('contributor');
+
+    // A list of capabilities to remove from editors.
+    $caps = array(
+        'edit_posts',
+        'delete_posts',
+    );
+
+    foreach ($caps as $cap) {
+
+        // Remove the capability.
+        $contributor->remove_cap($cap);
+    }
+}
+add_action('init', 'contributor_set_capabilities');
+
+function subscriber_set_capabilities()
+{
+
+    // Get the role object.
+    $subscriber = get_role('subscriber');
+
+    // A list of capabilities to remove from editors.
+    $caps = array(
+        'read'
+    );
+
+    foreach ($caps as $cap) {
+
+        // Remove the capability.
+        $subscriber->remove_cap($cap);
+    }
+}
+add_action('init', 'subscriber_set_capabilities');
+
+function author_set_capabilities()
+{
+
+    // Get the role object.
+    $author = get_role('author');
+
+    $caps_to_add = array(
+        'list_users',
+        'create_users',
+        'promote_users'
+
+    );
+
+    foreach ($caps_to_add as $caps) {
+        $author->add_cap($caps);
+    }
+}
+add_action('init', 'author_set_capabilities');
+function editor_set_capabilities()
+{
+
+    // Get the role object.
+    $editor = get_role('editor');
+
+    $caps_to_add = array(
+        'list_users',
+        'create_users',
+        'edit_users',
+        'remove_users',
+        'promote_users'
+    );
+
+    foreach ($caps_to_add as $caps) {
+        $editor->add_cap($caps);
+    }
+}
+add_action('init', 'editor_set_capabilities');
+
+/**
+ * Customize role names - create new roles
+ */
+
 function change_role_name()
 {
     global $wp_roles;
@@ -895,8 +1030,8 @@ function change_role_name()
     $wp_roles->role_names['author'] = 'Instrutor';
     $wp_roles->roles['contributor']['name'] = 'Associado';
     $wp_roles->role_names['contributor'] = 'Associado';
-    $wp_roles->roles['subscriber']['name'] = 'Meditante';
-    $wp_roles->role_names['subscriber'] = 'Meditante';
+    $wp_roles->roles['subscriber']['name'] = 'Cadastrado';
+    $wp_roles->role_names['subscriber'] = 'Cadastrado';
     $wp_roles->roles['editor']['name'] = 'Equipe MT';
     $wp_roles->role_names['editor'] = 'Equipe MT';
 }
@@ -906,35 +1041,13 @@ add_action('init', 'change_role_name');
  * Create custom roles
  * ! DO NOT REMOVE
  */
+add_role('meditante', 'Meditante', array('read' => true));
 add_role('colmeia', 'Colmeia', get_role('editor')->capabilities);
-add_role('sidhas_meditante', 'Sidhas Meditante', get_role('subscriber')->capabilities);
+add_role('sidhas_meditante', 'Sidhas Meditante', get_role('meditante')->capabilities);
 add_role('sidhas_associado', 'Sidhas Associado', get_role('contributor')->capabilities);
 
 
-/**
- * Remove capabilities from contributors.
- *
- * Call the function when your plugin/theme is activated.
- */
-function contributor_set_capabilities()
-{
 
-    // Get the role object.
-    $editor = get_role('contributor');
-
-    // A list of capabilities to remove from editors.
-    $caps = array(
-        'edit_posts',
-        'delete_posts',
-    );
-
-    foreach ($caps as $cap) {
-
-        // Remove the capability.
-        $editor->remove_cap($cap);
-    }
-}
-add_action('init', 'contributor_set_capabilities');
 
 //Remove screen options to whom did not get admin role
 function wpb_remove_screen_options()
@@ -1000,4 +1113,94 @@ function get_brasilia_current_time()
     $timezone = new DateTimeZone('America/Sao_Paulo');
     $datetime = new DateTime('now', $timezone);
     return $datetime->format('H:i');
+}
+
+//Reorder menu admin items
+/**
+ * Activates the 'menu_order' filter and then hooks into 'menu_order'
+ */
+add_filter('custom_menu_order', function () {
+    return true;
+});
+add_filter('menu_order', 'my_new_admin_menu_order');
+/**
+ * Filters WordPress' default menu order
+ */
+function my_new_admin_menu_order($menu_order)
+{
+    // define your new desired menu positions here
+    // for example, move 'upload.php' to position #9 and built-in pages to position #1
+    $new_positions = array(
+        'edit.php?post_type=page' => 1,
+        'edit.php' => '2.1',
+        'upload.php' => '2.2',
+        'edit-comments.php' => '12'
+    );
+    // helper function to move an element inside an array
+    function move_element(&$array, $a, $b)
+    {
+        $out = array_splice($array, $a, 1);
+        array_splice($array, $b, 0, $out);
+    }
+    // traverse through the new positions and move 
+    // the items if found in the original menu_positions
+    foreach ($new_positions as $value => $new_index) {
+        if ($current_index = array_search($value, $menu_order)) {
+            move_element($menu_order, $current_index, $new_index);
+        }
+    }
+    return $menu_order;
+};
+
+
+//Check if it is a custom post type
+/**
+ * Check if a post is a custom post type.
+ * @param  mixed $post Post object or ID
+ * @return boolean
+ */
+function is_custom_post_type($post = NULL)
+{
+    $all_custom_post_types = get_post_types(array('_builtin' => FALSE));
+
+    // there are no custom post types
+    if (empty($all_custom_post_types))
+        return FALSE;
+
+    $custom_types      = array_keys($all_custom_post_types);
+    $current_post_type = get_post_type($post);
+
+    // could not detect current type
+    if (!$current_post_type)
+        return FALSE;
+
+    return in_array($current_post_type, $custom_types);
+}
+
+// PHP program to sort array of dates 
+
+// user-defined comparison function 
+// based on timestamp
+function compareByTimeStamp($date1, $date2)
+{
+    $time1 = DateTime::createFromFormat('d/m', $date1)->getTimestamp();
+    $time2 = DateTime::createFromFormat('d/m', $date2)->getTimestamp();
+
+    if ($time1 < $time2)
+        return -1;
+    elseif ($time1 > $time2)
+        return 1;
+    else
+        return 0;
+}
+
+
+function check_user()
+{
+    $user = wp_get_current_user();
+    if (!$user->ID || in_array('subscriber', $user->roles) || in_array('contributor', $user->roles) || in_array('meditante', $user->roles)) {
+        // user is not logged or is a subscriber, contributor or meditante
+        return false;
+    }
+    return true;
 }

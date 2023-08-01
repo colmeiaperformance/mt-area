@@ -27,40 +27,42 @@
             <table class="table">
               <thead class="bg-body-dark">
                 <tr>
+                  <th scope="col"><?php _e('Localidade', 'mt-area'); ?></th>
                   <th scope="col"><?php _e('Horário de Início', 'mt-area'); ?></th>
                   <th scope="col"><?php _e('Horário de Encerramento', 'mt-area'); ?></th>
                 </tr>
               </thead>
               <tbody>
                 <?php
-                $meditacao_coletiva_online = get_field('configuracao', 'option');
-                if ($meditacao_coletiva_online) :
+                $meditacao_coletiva_presencial = get_field('mcp_configuracao', 'option');
+                if ($meditacao_coletiva_presencial) :
 
                   // Criar um array auxiliar para armazenar os horários de início
                   $horarios_de_inicio = array();
 
-                  // Percorrer o array de meditações coletivas online
-                  foreach ($meditacao_coletiva_online as $meditacao) {
+                  // Percorrer o array de meditações coletivas presencial
+                  foreach ($meditacao_coletiva_presencial as $meditacao) {
 
                     // Armazenar os horários de início no array auxiliar
-                    $horarios_de_inicio[] = $meditacao['horario_de_inicio'];
+                    $horarios_de_inicio[] = $meditacao['mcp_horario_de_inicio'];
                   }
                   // Ordenar os horários de início em ordem cronológica
-                  asort($horarios_de_inicio);
+                  sort($horarios_de_inicio);
 
                   // Percorrer o array ordenado de horários de início
                   foreach ($horarios_de_inicio as $horario_de_inicio) {
 
                     // Procurar a meditação correspondente ao horário de início
-                    foreach ($meditacao_coletiva_online as $meditacao) {
+                    foreach ($meditacao_coletiva_presencial as $meditacao) {
 
-                      if ($meditacao['horario_de_inicio'] === $horario_de_inicio) {
+                      if ($meditacao['mcp_horario_de_inicio'] === $horario_de_inicio) {
                         // Exibir a linha correspondente 
                 ?>
 
                         <tr class="">
-                          <td scope="row"><?= $meditacao['horario_de_inicio']; ?></td>
-                          <td><?= $meditacao['horario_de_encerramento']; ?></td>
+                          <td scope="row"><?= $meditacao['mcp_localidade']; ?></td>
+                          <td><?= $meditacao['mcp_horario_de_inicio']; ?></td>
+                          <td><?= $meditacao['mcp_horario_de_encerramento']; ?></td>
                         </tr>
 
                 <?php

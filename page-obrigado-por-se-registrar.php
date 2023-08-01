@@ -1,8 +1,5 @@
 <?php
-if (!is_user_logged_in()) {
-  header('location: ' . home_url('/wp-admin'));
-  die();
-}
+
 ?>
 <!doctype html>
 <html lang="pt-br" style="margin-top: 0 !important;">
@@ -52,13 +49,12 @@ if (!is_user_logged_in()) {
 
   <div class="hero-section" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/bg-404.jpg'; ?>'); background-position:center;">
     <div class="hero-text">
-      <h1>404</h1>
-      <h2>Oops</h2>
-      <h3>Página não encontrada. Sentimos muito!</h3>
-      <p>Gostaria de voltar à <a href="<?php echo home_url(); ?>" class="">página inicial?</a></p>
+      <h1>MT</h1>
+      <h2>Obrigado!</h2>
+      <h3>Seu cadastro foi enviado para moderação<br>Um e-mail será enviado assim que um membro da Equipe MT aprová-lo!</h3>
+      <p>Gostaria de conhecer nosso <a href="https://www.meditacaotranscendental.com.br" class="">site oficial?</a></p>
     </div>
   </div>
-
 
 
 </body>

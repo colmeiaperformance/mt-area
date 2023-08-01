@@ -24,7 +24,7 @@ if (!is_user_logged_in()) {
         <div class="ms-3 flex-grow-1 text-center text-md-start my-3 my-md-0">
           <h1 class="fs-4 fw-bold mb-1">John Smith</h1>
           <h2 class="fs-sm fw-medium text-muted mb-0">
-            Edit Account
+            <?php _e('Editar Perfil', 'mt-area'); ?>
           </h2>
         </div>
         <div class="space-x-1">

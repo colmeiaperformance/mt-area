@@ -1,13 +1,13 @@
 <?php
 /**
- * Title: Calendar
- * Slug: mt-area/calendar
+ * Title: Programas Regulares
+ * Slug: mt-area/programas-regulares
  * Categories: query
- * Keywords: calendar
- * Block Types: core/template-part/calendar
+ * Keywords: programas regulares
+ * Block Types: core/template-part/calendar-regulares
  */
 ?>
-<!--  Latest Events -->
+
 <div class="block block-rounded block-mode-loading-refresh">
   <div class="block-header block-header-default bg-body-dark text-white py-3 <?php
   if ( is_front_page() ) {
@@ -17,7 +17,7 @@
   }
   ?>">
     <h3 class="block-title">
-      Destaques da Agenda
+      Programas Regulares
     </h3>
     <div class="block-options">
       <button type="button" class="btn-block-option text-white" data-toggle="block-option" data-action="state_toggle"
@@ -34,9 +34,9 @@
         <tr class="text-uppercase">
           <th class="d-none">Evento</th>
           <th>Data</th>
-          <th class="d-none d-xxl-table-cell">Tipo</th>
-          <th class="d-none d-xxl-table-cell">Instrutor</th>
-          <th class="d-none d-sm-table-cell text-end" style="width: 25%;">Local</th>
+          <th>Tipo</th>
+          <th>Instrutor</th>
+          <th class="text-end" style="width: 25%;">Local</th>
           <th></th>
         </tr>
       </thead>
@@ -48,13 +48,13 @@
           <td>
             <span class="fs-sm text-muted">01/03/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-warning">Residencial</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">João Torres</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class="text-end fw-medium">
             São Paulo/SP
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -70,13 +70,13 @@
           <td>
             <span class="fs-sm text-muted">04/03/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-info">Curso</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">Maria Barros</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Rio de Janeiro/RJ
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -93,13 +93,13 @@
           <td>
             <span class="fs-sm text-muted">10/03/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-warning">Residencial</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">Márcio Nunes</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Fortaleza/CE
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -116,13 +116,13 @@
           <td>
             <span class="fs-sm text-muted">20/03/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-info">Curso</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">João Torres</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Minas Gerais
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -138,13 +138,13 @@
           <td>
             <span class="fs-sm text-muted">02/04/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-success">Geral</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">Joana Machado</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Curitiba/PR
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -160,13 +160,13 @@
           <td>
             <span class="fs-sm text-muted">20/04/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-danger">Live</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">João Torres</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Online
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -182,13 +182,13 @@
           <td>
             <span class="fs-sm text-muted">03/05/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-success">Geral</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">Maria Barros</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             São Paulo/SP
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -204,13 +204,13 @@
           <td>
             <span class="fs-sm text-muted">11/05/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-success">Geral</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">Joana Machado</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Rio de Janeiro/RJ
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -227,13 +227,13 @@
           <td>
             <span class="fs-sm text-muted">19/05/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-warning">Residencial</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">João Torres</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Porto Alegre/RS
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -249,13 +249,13 @@
           <td>
             <span class="fs-sm text-muted">27/05/2023</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fw-semibold text-danger">Live</span>
           </td>
-          <td class="d-none d-xxl-table-cell">
+          <td class="">
             <span class="fs-sm text-muted">João Torres</span>
           </td>
-          <td class="d-none d-sm-table-cell text-end fw-medium">
+          <td class=" text-end fw-medium">
             Online
           </td>
           <td class="text-center text-nowrap fw-medium">
@@ -268,4 +268,3 @@
     </table>
   </div>
 </div>
-<!-- END Latest Events -->

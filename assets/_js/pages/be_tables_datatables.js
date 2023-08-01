@@ -23,7 +23,7 @@ class pageTablesDatatables {
       language: {
         lengthMenu: "_MENU_",
         search: "_INPUT_",
-        searchPlaceholder: "Search..",
+        searchPlaceholder: "Buscar..",
         info: "Page <strong>_PAGE_</strong> of <strong>_PAGES_</strong>",
         paginate: {
           first: '<i class="fa fa-angle-double-left"></i>',
@@ -98,4 +98,6 @@ class pageTablesDatatables {
 }
 
 // Initialize when page loads
-Dashmix.onLoad(() => pageTablesDatatables.init());
+setTimeout (
+Dashmix.onLoad(() => pageTablesDatatables.init()), 1000
+);

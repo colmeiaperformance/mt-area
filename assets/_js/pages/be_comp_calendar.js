@@ -18,8 +18,8 @@ class pageCompCalendar {
     let y = date.getFullYear();
 
     let calendar = new FullCalendar.Calendar(document.getElementById('js-calendar'), {
-      themeSystem: 'bootstrap5',
-      //themeSystem: 'standard',
+      //themeSystem: 'bootstrap5',
+      themeSystem: 'standard',
       initialView: 'listMonth',
       titleFormat: { year: 'numeric', month: 'long' },
       timeZone: 'America/Sao_Paulo',

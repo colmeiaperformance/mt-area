@@ -63,91 +63,13 @@
               </div>
               <!-- END Shipping Method -->
 
-              <!-- Shipping Address -->
-              <div class="block block-rounded">
-                <div class="block-header block-header-default">
-                  <h3 class="block-title">
-                    2. Shipping Address
-                  </h3>
-                </div>
-                <div class="block-content">
-                  <div class="mb-4">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="checkout-company" name="checkout-company"
-                        placeholder="Enter your company">
-                      <label class="form-label" for="checkout-company">Company (optional)</label>
-                    </div>
-                  </div>
-                  <div class="row mb-4">
-                    <div class="col-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="checkout-firstname" name="checkout-firstname"
-                          placeholder="Enter your firstname">
-                        <label class="form-label" for="checkout-firstname">Firstname</label>
-                      </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="checkout-lastname" name="checkout-lastname"
-                          placeholder="Enter your lastname">
-                        <label class="form-label" for="checkout-lastname">Lastname</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="checkout-street-1" name="checkout-street-1"
-                        placeholder="Enter your street address 1">
-                      <label class="form-label" for="checkout-street-1">Street Address 1</label>
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="checkout-street-2" name="checkout-street-2"
-                        placeholder="Enter your street address 2">
-                      <label class="form-label" for="checkout-street-1">Street Address 2</label>
-                    </div>
-                  </div>
-                  <div class="row mb-4">
-                    <div class="col-7">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="checkout-city" name="checkout-city"
-                          placeholder="Enter your city">
-                        <label class="form-label" for="checkout-city">City</label>
-                      </div>
-                    </div>
-                    <div class="col-5">
-                      <div class="form-floating">
-                        <input type="text" class="form-control" id="checkout-postal" name="checkout-postal"
-                          placeholder="Enter your postal">
-                        <label class="form-label" for="checkout-postal">Postal</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="checkout-phone" name="checkout-phone"
-                        placeholder="Enter your phone number">
-                      <label class="form-label" for="checkout-phone">Phone Number</label>
-                    </div>
-                  </div>
-                  <div class="mb-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" value="" id="checkout-billing-address-same"
-                        name="checkout-billing-address-same" checked>
-                      <label class="form-check-label fw-medium text-muted" for="checkout-billing-address-same">Billing
-                        address is the same</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!-- END Shipping Address -->
+             
 
               <!-- Payment -->
               <div class="block block-rounded">
                 <div class="block-header block-header-default">
                   <h3 class="block-title">
-                    3. Payment
+                    2. Payment
                   </h3>
                 </div>
                 <div class="block-content block-content-full">

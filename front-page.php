@@ -8,9 +8,11 @@
   <div class="content">
 
     <!-- Latest Events + Live + Stats -->
-    <div class="row">
+    <div class="row items-push">
       <div class="col-lg-8 order-2 order-lg-1">
-        <?php get_template_part('/patterns/calendar') ?>
+        <!-- Stats -->
+        <?php get_template_part('/patterns/highlights') ?>
+        <!-- END Stats -->
       </div>
       <div class="col-lg-4 d-flex flex-column order-1 order-lg-2">
 
@@ -18,9 +20,11 @@
         <?php get_template_part('/patterns/meditation') ?>
         <!-- END Live -->
 
-        <!-- Stats -->
-        <?php get_template_part('/patterns/highlights') ?>
-        <!-- END Stats -->
+        <!-- Calendário Védico -->
+        <?php get_template_part('/patterns/calendario-vedico') ?>
+        <!-- END Calendário Védico -->
+
+
       </div>
     </div>
     <!-- END Latest Events + Live + Stats -->
@@ -30,17 +34,33 @@
     <!-- For more info and examples you can check out https://fullcalendar.io/ -->
     <div class="row d-flex items-push flex-xl-grow-1">
       <!-- Programas Regulares -->
-      <?php get_template_part('/patterns/programas-regulares') ?>
+      <div class="col-md-6">
+        <?php get_template_part('/patterns/calendar-regulares') ?>
+      </div>
       <!-- END Programas Regulares -->
-      <!-- Calendário Védico -->
-      <?php get_template_part('/patterns/calendario-vedico') ?>
-      <!-- END Calendário Védico -->
+      <!-- Agenda -->
+      <div class="col-md-6">
+      <?php get_template_part('/patterns/calendar') ?>
+      </div>
+      <!-- END Agenda -->
     </div>
     <!-- END full calendar -->
+
+    <!-- Sidhas News -->
+    <?php 
+    if (check_user()) {
+      get_template_part('/patterns/highlight-news-sidhas');
+    }
+    ?>
+    <!-- END Sidhas News -->
 
     <!-- News -->
     <?php get_template_part('/patterns/highlight-news') ?>
     <!-- END News -->
+
+    <!-- Maharishi -->
+    <?php get_template_part('/patterns/tecnologias') ?>
+    <!-- END Mararishi -->
 
     <!-- Highlight Media -->
     <div class="row items-push">

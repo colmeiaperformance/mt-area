@@ -10,14 +10,16 @@
 <!-- Show Categories -->
 <div class="row items-push">
   <?php
+  $post_type = get_post_type();
       $categories = get_categories( array(
+        'post_type' => $post_type,
         'orderby' => 'name',
         'parent'  => 0
       ) );
 ?>
   <div class="dropdown text-center text-lg-end">
     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Filtrar por categoria
+      <?php _e('Filtrar por categoria', 'mt-area'); ?>
     </button>
 
     <ul class="dropdown-menu">

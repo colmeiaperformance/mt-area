@@ -10,12 +10,13 @@
 
 $is_online = false;
 $link_da_palestra = '#';
+$horario_atual = '';
 // Obtém o horário atual em Brasília (get_brasilia_current_time criado em functions.php)
 $current_time = get_brasilia_current_time();
 
 // Obtém os itens do campo repetidor 'configuracao' na página de opções do ACF
 $configuracoes = get_field('configuracao', 'option');
-//Coloca os itens em ordem cronológica
+// Coloca os itens em ordem cronológica
 sort($configuracoes);
 
 if ($configuracoes) {
@@ -29,26 +30,28 @@ if ($configuracoes) {
       // Exibe o horário de início e encerramento que se encaixou na condição
       $is_online = true;
       $link_da_palestra = $configuracao['link_da_meditacao_coletiva_online'];
-      echo $horario_de_inicio . ' - ' . $horario_de_encerramento;
+      $horario_atual = $horario_de_inicio . ' - ' . $horario_de_encerramento;
       break;
     }
   }
 }
+
 ?>
 
 <div class="block block-rounded">
-  <div class="block-content block-content-full d-flex justify-content-center align-items-center flex-grow-1 ribbon 
-  <?php if ($is_online == false) {
-    echo 'ribbon-light';
-  } else {
-    echo 'ribbon-danger';
-  } ?>">
+  <div id="ribbon-container" class="block-content block-content-full d-flex justify-content-center align-items-center flex-grow-1 ribbon
+        <?php if ($is_online == false) {
+          echo 'ribbon-light';
+        } else {
+          echo 'ribbon-danger';
+        } ?>">
     <a class="link-fw" href="<?php echo $link_da_palestra; ?>">
       <div class="text-center">
-        <div class="item item-circle bg-body-light mx-auto push">
+        <div class="item item-circle bg-body-light mx-auto hover-scale push">
           <i class="fa fa-2x fa-circle-play text-primary"></i>
         </div>
         <h4 class="text-primary-dark mb-0"><?php _e('Meditação Coletiva Online', 'mt-area'); ?></h4>
+        <p class="text-muted"><?= $horario_atual; ?></p>
         <?php if ($is_online == true) {
           echo '<p id="status-box" class="text-muted">' . _e('Clique para participar agora', 'mt-area') . '</p>';
         } ?>
@@ -67,9 +70,14 @@ if ($configuracoes) {
     <?php } ?>
   </div>
   <div id="link-status-online" class="block-content block-content-full block-content-sm bg-body-light fs-sm text-center">
+    <span class="text-muted">Todos os horários:</span>
     <a class="fw-medium" href="./meditacao-coletiva-online">
-      <?php _e('Todos os horários', 'mt-area'); ?>
-      <i class="fa fa-arrow-right ms-1 opacity-25"></i>
+      <?php _e('Online', 'mt-area'); ?>
+      <i class="fa fa-globe ms-1 opacity-25"></i>
+    </a> <span class="text-muted">|</span>
+    <a class="fw-medium" href="./meditacao-coletiva-presencial">
+      <?php _e('Presenciais', 'mt-area'); ?>
+      <i class="fa fa-building ms-1 opacity-25"></i>
     </a>
   </div>
 </div>
