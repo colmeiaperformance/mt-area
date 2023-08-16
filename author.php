@@ -1,15 +1,14 @@
 <?php include("header.php"); ?>
-
 <?php
-// Verifica se o usuário está logado
-if (!is_user_logged_in()) {
-  wp_redirect(home_url());
-  exit;
-}
+$author_id = get_the_author_meta('ID');
+$avatar_image = get_field('profile_imagem_de_perfil', 'user_' . $author_id);
+$profile_cpf = get_field('profile_cpf', 'user_' . $author_id);
+$profile_rg = get_field('profile_rg', 'user_' . $author_id);
 ?>
+
+
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
 
   <!-- Page Content -->
   <div class="content content-full">
@@ -54,7 +53,13 @@ if (!is_user_logged_in()) {
       </ul>
       <div class="block-content tab-content">
         <div class="tab-pane active" id="account-profile" role="tabpanel" aria-labelledby="account-profile-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-user') ?>
+
+
+
+          <img src="<?php echo $avatar_image['url']; ?>" alt="<?php echo $avatar_image['alt']; ?>" />
+          <input value="<?php echo $profile_cpf; ?>">
+          <input value="<?php echo $profile_rg; ?>">
+
         </div>
         <div class="tab-pane" id="account-courses" role="tabpanel" aria-labelledby="account-courses-tab" tabindex="0">
           <?php echo get_template_part('/patterns/profile-purchases') ?>
@@ -67,8 +72,6 @@ if (!is_user_logged_in()) {
     <!-- END Edit Account -->
   </div>
   <!-- END Page Content -->
-
-
 
 </main>
 <!-- END Main Container -->

@@ -11,6 +11,7 @@ function loading_styles()
     wp_enqueue_style('dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('dashmix-responsive-css', get_template_directory_uri() . '/assets/js/plugins/datatables-responsive-bs5/css/responsive.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('fontawesome', get_template_directory_uri() . '/vendor/fontawesome/all.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('sweetalert2', get_template_directory_uri() . '/vendor/sweetalert2/sweetalert2.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/dashmix.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('theme', get_template_directory_uri() . '/assets/css/themes/xmodern.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get('Version'), 'all');
@@ -41,6 +42,7 @@ function loading_scripts()
     wp_register_script('dashmix-fullcalendar-js', get_template_directory_uri() . '/assets/_js/pages/be_comp_calendar.js', array('jquery'), wp_get_theme()->get('Version'), true);
     wp_register_script('phone-mask-js', get_template_directory_uri() . '/assets/js/lib/phone.mask.js', array('jquery'), wp_get_theme()->get('Version'), true);
     wp_register_script('fontawesome-js', get_template_directory_uri() . '/vendor/fontawesome/all.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
+    wp_register_script('sweetalert2-js', get_template_directory_uri() . '/vendor/sweetalert2/sweetalert2.min.js', array('jquery'), wp_get_theme()->get('Version'), true);
     wp_register_script('main-js', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), wp_get_theme()->get('Version'), true);
 
     // wp_enqueue_script( 'popper-js');
@@ -64,6 +66,7 @@ function loading_scripts()
     wp_enqueue_script('dashmix-fullcalendar-js');
     wp_enqueue_script('phone-mask-js');
     wp_enqueue_script('fontawesome-js');
+    wp_enqueue_script('sweetalert2-js');
     wp_enqueue_script('main-js');
 }
 
@@ -887,8 +890,8 @@ add_action('login_init', function () {
         }
     </style>
     <div class="login-header">
-        <h2 class="login-header-h2">Bem-vindo a área de meditantes.</h2>
-        <p class="login-header-p">Por favor, informe seus dados abaixo.</p>
+        <h2 class="login-header-h2">Bem-vindo à Comunidade MT Brasil.</h2>
+        <p class="login-header-p">Área exclusiva aos praticantes da Meditação Transcendental.</p>
     </div>
 <?php
 
@@ -1060,12 +1063,18 @@ function wpb_remove_screen_options()
 add_filter('screen_options_show_screen', 'wpb_remove_screen_options');
 
 //Remove help tab
-add_filter('contextual_help', 'mytheme_remove_help_tabs', 999, 3);
-function mytheme_remove_help_tabs($old_help, $screen_id, $screen)
+add_action('admin_head', 'mytheme_remove_help_tabs');
+function mytheme_remove_help_tabs()
 {
-    $screen->remove_help_tabs();
-    return $old_help;
+    // Verifique se é uma tela de administração antes de remover as abas de ajuda
+    if (is_admin()) {
+        $screen = get_current_screen();
+        if ($screen) {
+            $screen->remove_help_tabs();
+        }
+    }
 }
+
 
 //Remove all widgets from dashboard
 add_action('wp_dashboard_setup', 'wpdocs_remove_dashboard_widgets');
@@ -1132,9 +1141,9 @@ function my_new_admin_menu_order($menu_order)
     // for example, move 'upload.php' to position #9 and built-in pages to position #1
     $new_positions = array(
         'edit.php?post_type=page' => 1,
-        'edit.php' => '2.1',
-        'upload.php' => '2.2',
-        'edit-comments.php' => '12'
+        'edit.php' => 2,
+        'upload.php' => 2,
+        'edit-comments.php' => 12
     );
     // helper function to move an element inside an array
     function move_element(&$array, $a, $b)
@@ -1151,6 +1160,7 @@ function my_new_admin_menu_order($menu_order)
     }
     return $menu_order;
 };
+
 
 
 //Check if it is a custom post type
@@ -1194,7 +1204,7 @@ function compareByTimeStamp($date1, $date2)
         return 0;
 }
 
-
+//Função para checar o usuário
 function check_user()
 {
     $user = wp_get_current_user();
@@ -1204,3 +1214,15 @@ function check_user()
     }
     return true;
 }
+
+//Mensagem para enviar ao usuário quando trocar a role
+function user_role_update($user_id, $new_role)
+{
+    $site_url = get_bloginfo('wpurl');
+    $user_info = get_userdata($user_id);
+    $to = $user_info->user_email;
+    $subject = "Cadastro Aprovado! " . $site_url . "";
+    $message = "Olá " . $user_info->display_name . "! Seu cadastro foi aprovado no site " . $site_url . ". Parabéns! Agora você é um " . $new_role . ". <a href=\"https://comunidade.meditacaotranscendental.com.br\">Clique</a> aqui para fazer o login e acessar toda a nossa base de conhecimento.";
+    wp_mail($to, $subject, $message);
+}
+add_action('set_user_role', 'user_role_update', 10, 2);

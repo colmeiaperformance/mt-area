@@ -1,6 +1,6 @@
 <?php
-if (!is_user_logged_in()) {
-  header('location: ' . home_url('/wp-admin'));
+if (!is_user_logged_in() && !is_page( 'login' )) {
+  header('location: ' . home_url('/login'));
   die();
 }
 ?>
@@ -47,7 +47,10 @@ if (!is_user_logged_in()) {
 
 
 
-  <?php wp_head(); ?>
+  <?php
+  acf_form_head();
+  wp_head();
+  ?>
 </head>
 
 <body <?php body_class() ?>>
@@ -338,15 +341,12 @@ if (!is_user_logged_in()) {
               </span>
             </button>
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0" aria-labelledby="page-header-notifications-dropdown">
-              <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-3">
-                Itens
+              <div class="bg-primary-dark rounded-top fw-semibold text-white text-center p-2">
+                Carrinho
               </div>
               <ul class="nav-items my-2">
                 <li>
                   <a class="d-flex text-dark py-2" href="#">
-                    <!--  /*
-                        TODO: Link do item no href acima 
-                    */  -->
                     <div class="flex-shrink-0 mx-3 d-flex align-items-center">
                       <i class="fa fa-fw fa-chalkboard text-primary"></i>
                     </div>
@@ -355,36 +355,37 @@ if (!is_user_logged_in()) {
                       <div class="text-muted">249,90</div>
                     </div>
                   </a>
-                  <div class="flex-shrink-0 mx-3 d-flex align-items-center">
-                    <i class="fa fa-fw fa-minus-circle text-danger"></i>
-                  </div>
                 </li>
                 <li>
-                  <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                    <div class="flex-shrink-0 mx-3">
-                      <i class="fa fa-fw fa-user-plus text-info"></i>
+                  <a class="d-flex text-dark py-2" href="#">
+                    <div class="flex-shrink-0 mx-3 d-flex align-items-center">
+                      <i class="fa fa-fw fa-book text-primary"></i>
                     </div>
                     <div class="flex-grow-1 fs-sm pe-2">
-                      <div class="fw-semibold">Novo curso "Lorem Ipsum Dolor Sit Amet" foi adicionado.</div>
-                      <div class="text-muted">2 dias atrás</div>
+                      <div class="fw-semibold">Livro Lorem ipsum</div>
+                      <div class="text-muted">29,90</div>
                     </div>
                   </a>
                 </li>
                 <li>
-                  <a class="d-flex text-dark py-2" href="javascript:void(0)">
-                    <div class="flex-shrink-0 mx-3">
-                      <i class="fa fa-times-circle text-danger"></i>
+                  <a class="d-flex text-dark py-2" href="#">
+                    <div class="flex-shrink-0 mx-3 d-flex align-items-center">
+                      <i class="fa fa-fw fa-calendar text-primary"></i>
                     </div>
                     <div class="flex-grow-1 fs-sm pe-2">
-                      <div class="fw-semibold">Curso "Lorem Ipsum" cancelado.</div>
-                      <div class="text-muted">1 semana atrás</div>
+                      <div class="fw-semibold">Evento Dolor sit amet</div>
+                      <div class="text-muted">49,90</div>
                     </div>
                   </a>
                 </li>
               </ul>
+              <div class="bg-primary-dark border-top fw-semibold text-white text-center p-2 d-flex align-items-center justify-content-center">
+                <div class="fw-semibold"><?php _e('Total: ', 'mt-area'); ?> R$ 49,90</div>&nbsp;
+              </div>
               <div class="p-2 border-top">
-                <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
-                  <i class="fa-fw fa-solid fa-shopping-cart opacity-50 me-1"></i> Ir para o Carrinho
+                <a class="btn btn-alt-primary w-100 text-center" href="<?php echo home_url() . '/checkout' ?>">
+                  <i class="fa-fw fa-solid fa-shopping-cart opacity-50 me-1"></i>
+                  <?php _e('Ir para o Carrinho', 'mt-area'); ?>
                 </a>
               </div>
             </div>

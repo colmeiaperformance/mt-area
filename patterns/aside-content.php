@@ -84,11 +84,11 @@
 
 
           <!-- Notification View All -->
-          <!-- <div class="block-content block-content-full border-top">
-                  <a class="btn w-100 btn-alt-primary" href="be_layout_api.html">
-                    <i class="fa fa-fw fa-eye me-1"></i> Ver Tudo
-                  </a>
-                </div> -->
+          <div class="block-content block-content-full border-top">
+            <a class="btn w-100 btn-alt-primary" href="<?php echo home_url() . '/noticias-em-destaque' ?>">
+              <i class="fa fa-fw fa-eye me-1"></i> Ver Tudo
+            </a>
+          </div>
           <!-- END Notification View All -->
         </div>
       </div>

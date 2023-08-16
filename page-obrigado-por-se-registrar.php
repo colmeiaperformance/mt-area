@@ -49,8 +49,8 @@
 
   <div class="hero-section" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/bg-404.jpg'; ?>'); background-position:center;">
     <div class="hero-text">
-      <h1>MT</h1>
-      <h2>Obrigado!</h2>
+      <h1 class="center-title">MT</h1>
+      <h2 class="center-subtitle">Obrigado!</h2>
       <h3>Seu cadastro foi enviado para moderação<br>Um e-mail será enviado assim que um membro da Equipe MT aprová-lo!</h3>
       <p>Gostaria de conhecer nosso <a href="https://www.meditacaotranscendental.com.br" class="">site oficial?</a></p>
     </div>

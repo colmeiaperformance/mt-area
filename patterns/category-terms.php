@@ -10,7 +10,7 @@ $post_type = get_post_type();
 $post_taxonomy = get_object_taxonomies($post_type);
 $taxonomy = implode('', $post_taxonomy);
 
-// Verifica se o post possui a taxonomia 'generos-literarios'
+// Verifica se o post possui a taxonomia
 $terms = get_the_terms(get_the_ID(), $taxonomy);
 
 // Verifica se há termos associados ao post

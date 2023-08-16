@@ -56,7 +56,7 @@
 
         wp_reset_postdata(); 
         endif; // end if
-        wp_boostrap_5_pagination();
+        get_template_part('/patterns/pagination');
           ?>
 
 

@@ -52,8 +52,8 @@ if (!is_user_logged_in()) {
 
   <div class="hero-section" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/bg-404.jpg'; ?>'); background-position:center;">
     <div class="hero-text">
-      <h1>404</h1>
-      <h2>Oops</h2>
+      <h1 class="center-title">404</h1>
+      <h2 class="center-subtitle">Oops</h2>
       <h3>Página não encontrada. Sentimos muito!</h3>
       <p>Gostaria de voltar à <a href="<?php echo home_url(); ?>" class="">página inicial?</a></p>
     </div>

@@ -66,14 +66,14 @@
 
                         <tr class="">
                           <td scope="row">
-                            <?php echo $calendario['vedico_data'] . '<br>';
+                            <?php echo $calendario['vedico_data'] . ' - ' . $calendario['nome_da_data'] . '<br>';
                             $tz_object = new DateTimeZone('Brazil/East');
                             $datetime = new DateTime();
                             $datetime->setTimezone($tz_object);
                             $date_today = $datetime->format('d\/m');
 
                             if ($date_today == $calendario['vedico_data']) { ?>
-                              <a href="<?php echo $calendario['vedico_audio']; ?>">Clique aqui para ouvir</a>
+                              <a target="_blank" href="<?php echo $calendario['vedico_audio']; ?>">Clique aqui para ouvir</a>
                             <?php } else {
                               echo '';
                             } ?>

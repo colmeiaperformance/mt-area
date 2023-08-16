@@ -29,7 +29,7 @@
           if ($highlight_maharishi_query->have_posts()) :
             while ($highlight_maharishi_query->have_posts()) : $highlight_maharishi_query->the_post(); ?>
               <div class="col-md-6 col-lg-3">
-                <a class="block block-rounded block-link-pop h-100 mb-0" href="#">
+                <a class="block block-rounded block-link-pop h-100 mb-0" href="<?php the_permalink(); ?>">
                   <div class="d-flex justify-content-center align-items-center badge py-5 rounded-0" style="background-color:<?php echo get_field('maharishi_cor_icone'); ?>"><i class="fa-solid <?php echo get_field('maharishi_icone'); ?> fa-5x"></i></div>
                   <div class="block-content">
                     <h4 class="mb-1"><?= the_title( ); ?></h4>

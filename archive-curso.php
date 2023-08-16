@@ -120,14 +120,9 @@ include("header.php"); ?>
       <?php endwhile;
 
       endif;
-      wp_reset_postdata(); ?>
+      wp_reset_postdata();
+      get_template_part('/patterns/pagination'); ?>
 
-      <div class="d-flex justify-content-center">
-
-        <?php
-        wp_boostrap_5_pagination();
-        ?>
-      </div>
 
     </div>
 

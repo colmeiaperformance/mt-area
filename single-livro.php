@@ -105,6 +105,76 @@
     </div>
     <!-- END Meta -->
 
+    <!-- Lessons -->
+    <div class="block block-rounded block-bordered">
+      <div class="block-content">
+        <table class="table table-striped table-borderless table-vcenter">
+          <tbody>
+
+            <tr>
+              <td>
+                <div class="p-4">
+                  <div class="fs-sm fw-bold text-uppercase mb-2">
+                    <span class="text-muted me-3"><?php _e('Informações', 'mt-area'); ?></span>
+                  </div>
+                  <p class="text-muted mb-0">
+                    <?php if (get_field('livro_editora')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Editora:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_editora'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_edicao')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Edição:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_edicao'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_numero_de_paginas')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Número de Páginas:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_numero_de_paginas'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php
+                    $livro_tipo_de_capa = get_field('livro_tipo_de_capa');
+                    if ($livro_tipo_de_capa != null) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Tipo:', 'mt-area'); ?>
+                        <strong>
+                          <?php echo $livro_tipo_de_capa = ($livro_tipo_de_capa) ? $livro_tipo_de_capa['label'] : ''; ?>
+                        </strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_data_da_publicacao')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Data da Publicação:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_data_da_publicacao'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_dimensoes')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Dimensões:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_dimensoes'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_idioma')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('Idioma:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_idioma'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                    <?php if (get_field('livro_isbn')) : ?>
+                      <span class="fs-sm text-muted"><?php _e('ISBN-10:', 'mt-area'); ?>
+                        <strong><?php echo get_field('livro_isbn'); ?></strong>
+                      </span><br>
+                    <?php endif; ?>
+                  </p>
+                </div>
+              </td>
+            </tr>
+
+
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- END Lessons -->
+
   </div>
   <!-- END Page Content -->
 </main>
