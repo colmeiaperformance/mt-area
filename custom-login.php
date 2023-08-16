@@ -10,6 +10,8 @@ if (is_user_logged_in()) {
   exit;
 }
 
+$error = ''; // Inicializa a variável de erro
+
 // Verifica se o formulário foi submetido
 if (isset($_POST['submit'])) {
   $username = $_POST['username'];
@@ -26,7 +28,6 @@ if (isset($_POST['submit'])) {
 
   if (is_wp_error($user)) {
     $error = $user->get_error_message();
-    return $error;
   } else {
     // Autenticação bem-sucedida, redireciona o usuário para a página inicial
     wp_redirect(home_url());
