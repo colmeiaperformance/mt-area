@@ -78,20 +78,6 @@
           </div>
         </a>
       </div>
-      <!-- <div class="col-4 col-md-2 col-xl-2">
-        <a class="block block-rounded text-center bg-image"
-          style="background-image: url('<?php //echo get_template_directory_uri() . '/assets/media/mt/qm_videos.jpg'; ?>');"
-          href="<?php //echo home_url( '/videos' ); ?>">
-          <div class="block-content block-content-full bg-mt-red-op ratio ratio-16x9">
-            <div class="d-flex justify-content-center align-items-center">
-              <div>
-                <i class="fa fa-2x fa-video text-white"></i>
-                <div class="fw-semibold mt-3 text-uppercase text-white quick-menu-text">Vídeos</div>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div> -->
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image"
           style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_livros.jpg'; ?>');"
@@ -101,6 +87,20 @@
               <div>
                 <i class="fa fa-2x fa-book text-white"></i>
                 <div class="fw-semibold mt-3 text-uppercase text-white quick-menu-text">Livros</div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-4 col-md-2 col-xl-2">
+        <a class="block block-rounded text-center bg-image"
+          style="background-image: url('<?php //echo get_template_directory_uri() . '/assets/media/mt/qm_videos.jpg'; ?>');"
+          href="<?php echo home_url( '/sign' ); ?>">
+          <div class="block-content block-content-full bg-mt-default ratio ratio-16x9">
+            <div class="d-flex justify-content-center align-items-center">
+              <div>
+                <i class="fa fa-2x fa-hands-holding-heart text-white"></i>
+                <div class="fw-semibold mt-3 text-uppercase text-white quick-menu-text">Seja sócio</div>
               </div>
             </div>
           </div>
