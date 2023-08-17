@@ -1226,3 +1226,10 @@ function user_role_update($user_id, $new_role)
     wp_mail($to, $subject, $message);
 }
 add_action('set_user_role', 'user_role_update', 10, 2);
+
+add_action('wp_logout', 'auto_redirect_after_logout');
+function auto_redirect_after_logout()
+{
+    wp_safe_redirect(home_url());
+    exit();
+}
