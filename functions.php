@@ -495,8 +495,9 @@ add_action('after_setup_theme', 'add_block_template_part_support');
 
 function add_block_template_part_support()
 {
-    remove_theme_support( 'block-templates' );
+    remove_theme_support('block-templates');
     remove_theme_support('block-template-parts');
+    remove_theme_support( 'wp-block-styles' );
 }
 
 function fix_svg()
@@ -755,7 +756,7 @@ function wpb_login_logo()
     body.wp-core-ui {
         background:
             /* url(<?php //echo get_stylesheet_directory_uri();
-            ?>
+        ?>
             /assets/media/mt/bg-404.jpg), */ rgb(255, 197, 54, 1) !important;
     }
 
