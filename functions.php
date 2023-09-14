@@ -801,7 +801,7 @@ function wpb_login_logo_url_title()
 {
     return 'Área do Meditante - Meditação Transcendental';
 }
-add_filter('login_headertitle', 'wpb_login_logo_url_title');
+add_filter('login_headertext', 'wpb_login_logo_url_title');
 
 //Disable Login language
 add_filter('login_display_language_dropdown', '__return_false');
