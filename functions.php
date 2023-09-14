@@ -497,7 +497,7 @@ function add_block_template_part_support()
 {
     remove_theme_support('block-templates');
     remove_theme_support('block-template-parts');
-    remove_theme_support( 'wp-block-styles' );
+    remove_theme_support('wp-block-styles');
 }
 
 function fix_svg()
@@ -756,7 +756,7 @@ function wpb_login_logo()
     body.wp-core-ui {
         background:
             /* url(<?php //echo get_stylesheet_directory_uri();
-        ?>
+    ?>
             /assets/media/mt/bg-404.jpg), */ rgb(255, 197, 54, 1) !important;
     }
 
@@ -1260,3 +1260,126 @@ function auto_redirect_after_logout()
     wp_safe_redirect(home_url());
     exit();
 }
+
+//Código para criar páginas necessárias para o tema funcionar 100%
+function create_pages_in_wp_panel()
+{
+    $pages = array(
+        array(
+            'title' => 'Associar-se',
+            'content' => '',
+            'slug' => 'sign'
+        ),
+        array(
+            'title' => 'Blog',
+            'content' => '',
+            'slug' => 'blog'
+        ),
+        array(
+            'title' => 'Calendário',
+            'content' => '',
+            'slug' => 'calendario'
+        ),
+        array(
+            'title' => 'Contato',
+            'content' => '',
+            'slug' => 'contato'
+        ),
+        array(
+            'title' => 'Cursos',
+            'content' => '',
+            'slug' => 'cursos'
+        ),
+        array(
+            'title' => 'Front Page',
+            'content' => '',
+            'slug' => 'front-page'
+        ),
+        array(
+            'title' => 'Inscrições',
+            'content' => '',
+            'slug' => 'subscriptions'
+        ),
+        array(
+            'title' => 'Livros',
+            'content' => '',
+            'slug' => 'livros'
+        ),
+        array(
+            'title' => 'Login',
+            'content' => '',
+            'slug' => 'login'
+        ),
+        array(
+            'title' => 'Meditação Coletiva Online',
+            'content' => '',
+            'slug' => 'meditacao-coletiva-online'
+        ),
+        array(
+            'title' => 'Meditação Coletiva Presencial',
+            'content' => '',
+            'slug' => 'meditacao-coletiva-presencial'
+        ),
+        array(
+            'title' => 'Meu Perfil',
+            'content' => '',
+            'slug' => 'profile'
+        ),
+        array(
+            'title' => 'Obrigado por se registrar!',
+            'content' => '',
+            'slug' => 'obrigado-por-se-registrar'
+        ),
+        array(
+            'title' => 'Pagamento',
+            'content' => '',
+            'slug' => 'checkout'
+        ),
+        array(
+            'title' => 'Pagamentos',
+            'content' => '',
+            'slug' => 'payments'
+        ),
+    );
+
+    foreach ($pages as $page) {
+        $custom_slug = $page['slug'];
+        $already_exist_page = get_page_by_path($custom_slug);
+
+        if (!$already_exist_page) {
+            $page_args = array(
+                'post_title'    => $page['title'],
+                'post_content'  => $page['content'],
+                'post_status'   => 'publish',
+                'post_type'     => 'page',
+                'post_name'     => $custom_slug,
+            );
+
+            $page_id = wp_insert_post($page_args);
+        }
+    }
+}
+
+// Ação para chamar a função de criação de páginas
+add_action('init', 'create_pages_in_wp_panel');
+
+// Define as páginas corretas como a Página Inicial e a Página de Posts
+function define_front_page_and_blog_through_slug()
+{
+    $front_page_slug = 'front-page';
+    $blog_page_slug = 'blog';
+    //Get their IDs
+    $front_page_id = get_page_by_path($front_page_slug)->ID;
+    $blog_page_id = get_page_by_path($blog_page_slug)->ID;
+
+    if ($front_page_id && $blog_page_id) {
+        //Define front page
+        update_option('page_on_front', $front_page_id);
+        update_option('show_on_front', 'page');
+        //Define blog
+        update_option('page_for_posts', $blog_page_id);
+    }
+}
+
+// Ação para chamar a função de definir as páginas
+add_action('after_setup_theme', 'define_front_page_and_blog_through_slug');
