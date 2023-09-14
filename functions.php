@@ -495,6 +495,7 @@ add_action('after_setup_theme', 'add_block_template_part_support');
 
 function add_block_template_part_support()
 {
+    remove_theme_support( 'block-templates' );
     remove_theme_support('block-template-parts');
 }
 
