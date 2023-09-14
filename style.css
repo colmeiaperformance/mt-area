@@ -5,6 +5,7 @@ Theme Name: MT Area
 Version: 1.0
 Author: Colmeia Performance
 Author URI: www.colmeiaperformance.com.br
+Template: mt-area
 URI: 
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -64016,4 +64017,4 @@ a.text-dark-muted:hover, a.text-dark-muted:focus {
      object-position: 50% 50%;
   -o-object-fit: cover;
   object-fit: cover;
-}/*# sourceMappingURL=style.css.map */
+}
