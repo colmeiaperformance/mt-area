@@ -110,21 +110,24 @@ add_action('admin_enqueue_scripts', 'wpdocs_enqueue_custom_admin_style');
 function wp_boostrap_4_pagination()
 {
 
-    if (is_singular())
+    if (is_singular()) {
         return;
+    }
 
     global $wp_query;
 
     /** Check number of pages **/
-    if ($wp_query->max_num_pages <= 1)
+    if ($wp_query->max_num_pages <= 1) {
         return;
+    }
 
     $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
     $max   = intval($wp_query->max_num_pages);
 
     /** Add current page to the array */
-    if ($paged >= 1)
+    if ($paged >= 1) {
         $links[] = $paged;
+    }
 
     /** Add the pages around the current page to the array */
     if ($paged >= 3) {
@@ -140,8 +143,9 @@ function wp_boostrap_4_pagination()
     echo '<nav aria-label="Page navigation"><ul class="pagination justify-content-center push">' . "\n";
 
     /** Previous Post Link */
-    if (get_previous_posts_link())
+    if (get_previous_posts_link()) {
         printf('<li class="page-item">%s</li>' . "\n", get_previous_posts_link('<i class="fa fa-angle-left"></i>'));
+    }
 
     /** Link to first page, plus ellipses if necessary */
     if (!in_array(1, $links)) {
@@ -149,8 +153,9 @@ function wp_boostrap_4_pagination()
 
         printf('<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link(1)), '1');
 
-        if (!in_array(2, $links))
+        if (!in_array(2, $links)) {
             echo '<li class="page-empty">…</li>';
+        }
     }
 
     /** Link to current page, plus 2 pages in either direction if necessary */
@@ -162,16 +167,18 @@ function wp_boostrap_4_pagination()
 
     /** Link to last page, plus ellipses if necessary */
     if (!in_array($max, $links)) {
-        if (!in_array($max - 1, $links))
+        if (!in_array($max - 1, $links)) {
             echo '<li class="page-empty">…</li>' . "\n";
+        }
 
         $class = $paged == $max ? ' class="page-item active"' : ' class="page-item"';
         printf('<li%s><a class="page-link" href="%s">%s</a></li>' . "\n", $class, esc_url(get_pagenum_link($max)), $max);
     }
 
     /** Next Post Link */
-    if (get_next_posts_link())
+    if (get_next_posts_link()) {
         printf('<li class="page-item">%s</li>' . "\n", get_next_posts_link('<i class="fa fa-angle-right"></i>'));
+    }
 
     echo '</ul></nav>' . "\n";
 }
@@ -182,9 +189,9 @@ function wp_boostrap_4_pagination()
  * @param array $params
  *
  * @return string|null
- * 
+ *
  * Using Bootstrap 4? see https://gist.github.com/mtx-z/f95af6cc6fb562eb1a1540ca715ed928
- * 
+ *
  * Accepts a WP_Query instance to build pagination (for custom wp_query()),
  * or nothing to use the current global $wp_query (eg: taxonomy term page)
  * - Tested on WP 5.7.1
@@ -196,13 +203,13 @@ function wp_boostrap_4_pagination()
  *
  * USAGE:
  *     <?php echo bootstrap_pagination(); ?> //uses global $wp_query
- * or with custom WP_Query():
- * <?php
+* or with custom WP_Query():
+* <?php
  *      $query = new \WP_Query($args);
  *       ... while(have_posts()), $query->posts stuff ... endwhile() ...
  *       echo bootstrap_pagination($query);
  *     ?>
- */
+*/
 function wp_boostrap_5_pagination(\WP_Query $wp_query = null, $echo = true, $params = [])
 {
     if (null === $wp_query) {
@@ -213,25 +220,25 @@ function wp_boostrap_5_pagination(\WP_Query $wp_query = null, $echo = true, $par
 
     //add query (GET) parameters to generated page URLs
     /*if (isset($_GET[ 'sort' ])) {
-$add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
-}*/
+    $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
+    }*/
 
     $pages = paginate_links(
         array_merge([
-            'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
-            'format' => '?paged=%#%',
-            'current' => max(1, get_query_var('paged')),
-            'total' => $wp_query->max_num_pages,
-            'type' => 'array',
-            'show_all' => false,
-            'end_size' => 3,
-            'mid_size' => 1,
-            'prev_next' => true,
-            'prev_text' => __('<i class="fa fa-angle-left"></i>'),
-            'next_text' => __('<i class="fa fa-angle-right"></i>'),
-            'add_args' => $add_args,
-            'add_fragment' => ''
-        ], $params)
+'base' => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+'format' => '?paged=%#%',
+'current' => max(1, get_query_var('paged')),
+'total' => $wp_query->max_num_pages,
+'type' => 'array',
+'show_all' => false,
+'end_size' => 3,
+'mid_size' => 1,
+'prev_next' => true,
+'prev_text' => __('<i class="fa fa-angle-left"></i>'),
+'next_text' => __('<i class="fa fa-angle-right"></i>'),
+'add_args' => $add_args,
+'add_fragment' => ''
+], $params)
     );
 
     if (is_array($pages)) {
@@ -241,7 +248,7 @@ $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
 
         foreach ($pages as $page) {
             $pagination .= '<li class="page-item' . (strpos($page, 'current') !== false ? ' active' : '') . '"> ' .
-                str_replace('page-numbers', 'page-link', $page) . '</li>';
+              str_replace('page-numbers', 'page-link', $page) . '</li>';
         }
 
         $pagination .= '</ul>
@@ -258,26 +265,26 @@ $add_args[ 'sort' ] = (string)$_GET[ 'sort' ];
 }
 
 /**
- * Notes:
- * AJAX:
- * - When used with wp_ajax (generate pagination HTML from ajax) you'll need to provide base URL (or it'll be admin-ajax
+* Notes:
+* AJAX:
+* - When used with wp_ajax (generate pagination HTML from ajax) you'll need to provide base URL (or it'll be admin-ajax
 URL)
- * - Example for a term page: bootstrap_pagination( $query, false, ['base' => get_term_link($term) . '?paged=%#%'] )
- *
- * Images as next/prev:
- * - You can use image as next/prev buttons
- * - Example: 'prev_text' => '<img src="' . get_stylesheet_directory_uri() . '/assets/images/prev-arrow.svg">',
- *
- * Add query parameters to page URLs
- * - If you need custom URL parameters on your page URLS, use the "add_args" attribute
- * - Example (before paginate_links() call):
- * $arg = [];
- * if (isset($_GET[ 'sort' ])) {
- * $args[ 'sort' ] = (string)$_GET[ 'sort' ];
- * }
- * ...
- * 'add_args' => $args,
- */
+* - Example for a term page: bootstrap_pagination( $query, false, ['base' => get_term_link($term) . '?paged=%#%'] )
+*
+* Images as next/prev:
+* - You can use image as next/prev buttons
+* - Example: 'prev_text' => '<img src="' . get_stylesheet_directory_uri() . '/assets/images/prev-arrow.svg">',
+*
+* Add query parameters to page URLs
+* - If you need custom URL parameters on your page URLS, use the "add_args" attribute
+* - Example (before paginate_links() call):
+* $arg = [];
+* if (isset($_GET[ 'sort' ])) {
+* $args[ 'sort' ] = (string)$_GET[ 'sort' ];
+* }
+* ...
+* 'add_args' => $args,
+*/
 
 
 /*
@@ -305,23 +312,29 @@ function base_setup()
     add_theme_support(
         'post-formats',
         array(
-            'video',
-        )
+'video',
+)
     );
 
     //Add custom field to menu - font awesome
     function menu_item_desc($item_id, $item)
     {
         $menu_item_desc = get_post_meta($item_id, '_menu_item_desc', true); ?>
-        <div style="clear: both;">
-            <span class="fa-class"><?php _e("Classe Font Awesome", 'mt-area'); ?></span><br />
-            <input type="hidden" class="nav-menu-id" value="<?php echo $item_id; ?>" />
-            <div class="logged-input-holder">
-                <input type="text" name="menu_item_desc[<?php echo $item_id; ?>]" id="menu-item-desc-<?php echo $item_id; ?>" value="<?php echo esc_attr($menu_item_desc); ?>" />
-            </div>
-            <span class="text-muted small"><?php _e('E.g.: fa-solid fa-link<br>Você pode checar todas as classes do Font-Awesome <a href="https://fontawesome.com/icons" target="_blank">aqui</a>', 'mt-area'); ?></span>
-        </div>
-    <?php }
+<div style="clear: both;">
+    <span
+        class="fa-class"><?php _e("Classe Font Awesome", 'mt-area'); ?></span><br />
+    <input type="hidden" class="nav-menu-id"
+        value="<?php echo $item_id; ?>" />
+    <div class="logged-input-holder">
+        <input type="text"
+            name="menu_item_desc[<?php echo $item_id; ?>]"
+            id="menu-item-desc-<?php echo $item_id; ?>"
+            value="<?php echo esc_attr($menu_item_desc); ?>" />
+    </div>
+    <span
+        class="text-muted small"><?php _e('E.g.: fa-solid fa-link<br>Você pode checar todas as classes do Font-Awesome <a href="https://fontawesome.com/icons" target="_blank">aqui</a>', 'mt-area'); ?></span>
+</div>
+<?php }
     add_action('wp_nav_menu_item_custom_fields', 'menu_item_desc', 10, 2);
 
     //Save custom field in database
@@ -475,6 +488,14 @@ function remove_admin_bar()
     if (!current_user_can('administrator') && !is_admin()) {
         show_admin_bar(false);
     }
+}
+
+//Remove block parts
+add_action('after_setup_theme', 'add_block_template_part_support');
+
+function add_block_template_part_support()
+{
+    remove_theme_support('block-template-parts');
 }
 
 function fix_svg()
@@ -658,136 +679,136 @@ function wpb_login_logo()
     //Add bootstrap to login/register page
     wp_enqueue_style('style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
     ?>
-    <style type="text/css">
-        #login {
-            padding: 2% 0 0 !important;
-            width: 50% !important;
-            min-width: 320px;
-        }
+<style type="text/css">
+    #login {
+        padding: 2% 0 0 !important;
+        width: 50% !important;
+        min-width: 320px;
+    }
 
-        #login h1 a,
-        .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri();
-                                    ?>/assets/media/mt/icon-arvore.png);
-            height: 140px;
-            width: 140px;
-            background-size: 140px 140px;
-            background-repeat: no-repeat;
-            padding-bottom: 10px;
-        }
+    #login h1 a,
+    .login h1 a {
+        background-image: url(<?php echo get_stylesheet_directory_uri();
+    ?>%pcs-comment-end#* //assets/media/mt/icon-arvore.png);
+        height: 140px;
+        width: 140px;
+        background-size: 140px 140px;
+        background-repeat: no-repeat;
+        padding-bottom: 10px;
+    }
 
-        .login #login_error,
-        .login .message,
-        .login .success {
-            border-radius: 7px;
-        }
+    .login #login_error,
+    .login .message,
+    .login .success {
+        border-radius: 7px;
+    }
 
-        .login h1 {
-            background: #fff;
-            margin-bottom: -30px;
-            position: relative;
-            z-index: 10;
-            border-top-left-radius: 7px;
-            border-top-right-radius: 7px;
-            padding-top: 20px;
-        }
+    .login h1 {
+        background: #fff;
+        margin-bottom: -30px;
+        position: relative;
+        z-index: 10;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        padding-top: 20px;
+    }
 
-        #lostpasswordform #wp-submit,
-        #loginform #wp-submit {
-            width: 100%;
-            height: 35px;
-            background-color: #ffc536;
-            border: 1px solid #ffc536;
-            font-weight: normal;
-            font-size: 14px;
-            line-height: 17px;
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            -webkit-box-pack: center;
-            -ms-flex-pack: center;
-            justify-content: center;
-            letter-spacing: -0.015em;
-            color: #FFFFFF;
-            border-radius: 4px;
-            margin-top: 10px;
-            text-align: center;
-            text-decoration: none;
-            cursor: pointer;
-            user-select: none;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
+    #lostpasswordform #wp-submit,
+    #loginform #wp-submit {
+        width: 100%;
+        height: 35px;
+        background-color: #ffc536;
+        border: 1px solid #ffc536;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        letter-spacing: -0.015em;
+        color: #FFFFFF;
+        border-radius: 4px;
+        margin-top: 10px;
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        user-select: none;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
 
-        #lostpasswordform #wp-submit:hover,
-        #loginform #wp-submit:hover {
-            outline: 0;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            color: #ffc536;
-            background-color: transparent;
-        }
+    #lostpasswordform #wp-submit:hover,
+    #loginform #wp-submit:hover {
+        outline: 0;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        color: #ffc536;
+        background-color: transparent;
+    }
 
-        body.wp-core-ui {
-            background:
-                /* url(<?php //echo get_stylesheet_directory_uri(); 
-                        ?>/assets/media/mt/bg-404.jpg), */
-                rgb(255, 197, 54, 1) !important;
-        }
+    body.wp-core-ui {
+        background:
+            /* url(<?php //echo get_stylesheet_directory_uri();
+            ?>
+            /assets/media/mt/bg-404.jpg), */ rgb(255, 197, 54, 1) !important;
+    }
 
-        .wp-core-ui .button-secondary .dashicons {
-            color: #ffc536;
-        }
+    .wp-core-ui .button-secondary .dashicons {
+        color: #ffc536;
+    }
 
-        #lostpasswordform,
-        #loginform {
-            border: none;
-            border-radius: 7px;
-            box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
-        }
+    #lostpasswordform,
+    #loginform {
+        border: none;
+        border-radius: 7px;
+        box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
+    }
 
-        #lostpasswordform input,
-        #loginform input {
-            border: 1px solid #ffc536;
-            border-radius: 0px;
-        }
+    #lostpasswordform input,
+    #loginform input {
+        border: 1px solid #ffc536;
+        border-radius: 0px;
+    }
 
-        #lostpasswordform input[type="checkbox"]:checked::before,
-        #loginform input[type="checkbox"]:checked::before {
-            margin: -0.250rem 0 0 -0.35rem;
-        }
+    #lostpasswordform input[type="checkbox"]:checked::before,
+    #loginform input[type="checkbox"]:checked::before {
+        margin: -0.250rem 0 0 -0.35rem;
+    }
 
-        #lostpasswordform #wp-submit {
-            width: 160px;
-        }
+    #lostpasswordform #wp-submit {
+        width: 160px;
+    }
 
-        .login #login_error,
-        .login .message,
-        .login .success {
-            border-left: none !important;
-        }
+    .login #login_error,
+    .login .message,
+    .login .success {
+        border-left: none !important;
+    }
 
-        .login .button.wp-hide-pw:focus {
-            border-color: none !important;
-            box-shadow: none !important;
-        }
+    .login .button.wp-hide-pw:focus {
+        border-color: none !important;
+        box-shadow: none !important;
+    }
 
-        #backtoblog {
-            display: none;
-        }
+    #backtoblog {
+        display: none;
+    }
 
-        .login .message {
-            font-size: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
+    .login .message {
+        font-size: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
 
-        #login #registerform {
-            border-radius: 7px;
-        }
-    </style>
+    #login #registerform {
+        border-radius: 7px;
+    }
+</style>
 <?php }
 add_action('login_enqueue_scripts', 'wpb_login_logo');
 
@@ -863,36 +884,36 @@ function display_user_info($param)
 }
 
 add_action('login_init', function () {
-?>
-    <style>
-        .login-header {
-            color: #FFFFFF;
-            text-align: center;
-            padding: 5% 0 0 !important;
-        }
+    ?>
+<style>
+    .login-header {
+        color: #FFFFFF;
+        text-align: center;
+        padding: 5% 0 0 !important;
+    }
 
-        .login-header .login-header-h2 {
-            font-family: 'Work Sans', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 3.125rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
+    .login-header .login-header-h2 {
+        font-family: 'Work Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 3.125rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
 
-        .login-header .login-header-p {
-            font-family: 'Work Sans', sans-serif;
-            font-style: normal;
-            font-weight: 400;
-            font-size: 2.5rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-    </style>
-    <div class="login-header">
-        <h2 class="login-header-h2">Bem-vindo à Comunidade MT Brasil.</h2>
-        <p class="login-header-p">Área exclusiva aos praticantes da Meditação Transcendental.</p>
-    </div>
+    .login-header .login-header-p {
+        font-family: 'Work Sans', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 2.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+</style>
+<div class="login-header">
+    <h2 class="login-header-h2">Bem-vindo à Comunidade MT Brasil.</h2>
+    <p class="login-header-p">Área exclusiva aos praticantes da Meditação Transcendental.</p>
+</div>
 <?php
 
 });
@@ -921,7 +942,7 @@ add_action('login_init', function () {
 //  add_filter('comments_open', 'df_disable_comments_status', 20, 2);
 //  add_filter('pings_open', 'df_disable_comments_status', 20, 2);
 
-// Finally, hide any existing comments that are on the site. 
+// Finally, hide any existing comments that are on the site.
 //  function df_disable_comments_hide_existing_comments($comments) {
 //     $comments = array();
 //     return $comments;
@@ -1021,8 +1042,9 @@ function change_role_name()
 {
     global $wp_roles;
 
-    if (!isset($wp_roles))
+    if (!isset($wp_roles)) {
         $wp_roles = new WP_Roles();
+    }
 
     //You can list all currently available roles like this...
     //$roles = $wp_roles->get_names();
@@ -1151,7 +1173,7 @@ function my_new_admin_menu_order($menu_order)
         $out = array_splice($array, $a, 1);
         array_splice($array, $b, 0, $out);
     }
-    // traverse through the new positions and move 
+    // traverse through the new positions and move
     // the items if found in the original menu_positions
     foreach ($new_positions as $value => $new_index) {
         if ($current_index = array_search($value, $menu_order)) {
@@ -1169,39 +1191,42 @@ function my_new_admin_menu_order($menu_order)
  * @param  mixed $post Post object or ID
  * @return boolean
  */
-function is_custom_post_type($post = NULL)
+function is_custom_post_type($post = null)
 {
-    $all_custom_post_types = get_post_types(array('_builtin' => FALSE));
+    $all_custom_post_types = get_post_types(array('_builtin' => false));
 
     // there are no custom post types
-    if (empty($all_custom_post_types))
-        return FALSE;
+    if (empty($all_custom_post_types)) {
+        return false;
+    }
 
     $custom_types      = array_keys($all_custom_post_types);
     $current_post_type = get_post_type($post);
 
     // could not detect current type
-    if (!$current_post_type)
-        return FALSE;
+    if (!$current_post_type) {
+        return false;
+    }
 
     return in_array($current_post_type, $custom_types);
 }
 
-// PHP program to sort array of dates 
+// PHP program to sort array of dates
 
-// user-defined comparison function 
+// user-defined comparison function
 // based on timestamp
 function compareByTimeStamp($date1, $date2)
 {
     $time1 = DateTime::createFromFormat('d/m', $date1)->getTimestamp();
     $time2 = DateTime::createFromFormat('d/m', $date2)->getTimestamp();
 
-    if ($time1 < $time2)
+    if ($time1 < $time2) {
         return -1;
-    elseif ($time1 > $time2)
+    } elseif ($time1 > $time2) {
         return 1;
-    else
+    } else {
         return 0;
+    }
 }
 
 //Função para checar o usuário
