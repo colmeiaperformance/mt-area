@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Highlights Cursos
- * Slug: mt-area/highlights-cursos
- */
-?>
 <div class="col-md-6">
   <!-- Cursos #1 -->
   <div class="block block-rounded h-100 mb-0 d-flex flex-column justify-content-between">

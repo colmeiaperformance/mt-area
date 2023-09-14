@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
 
   <!-- Hero -->
@@ -120,7 +120,7 @@
                 <tr>
                   <td>
                     <i class="fa fa-fw fa-tags me-1"></i>
-                    <?php get_template_part('/patterns/category-terms') ?>
+                    <?php get_template_part('/template-parts/category-terms') ?>
                   </td>
                 </tr>
               </tbody>

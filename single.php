@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( '/patterns/quick-menu' ) ?>
+  <?php get_template_part( '/template-parts/quick-menu' ) ?>
 
   <?php 
           if ( have_posts() ) {

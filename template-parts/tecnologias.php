@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Tecnologias
- * Slug: mt-area/tecnologias
- */
-?>
 <div class="row items-push">
   <div class="col-12">
     <!-- Tecnologias Maharishi -->

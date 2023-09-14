@@ -8,7 +8,7 @@ include("header.php"); ?>
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_cursos.jpg'; ?>');">
@@ -25,7 +25,7 @@ include("header.php"); ?>
   <!-- Page Content -->
   <div class="content content-full">
     <div class="row">
-      <?php get_template_part('/patterns/categories-list'); ?>
+      <?php get_template_part('/template-parts/categories-list'); ?>
     </div>
     <div class="row items-push gap">
 
@@ -121,7 +121,7 @@ include("header.php"); ?>
 
       endif;
       wp_reset_postdata();
-      get_template_part('/patterns/pagination'); ?>
+      get_template_part('/template-parts/pagination'); ?>
 
 
     </div>

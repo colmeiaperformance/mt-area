@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Page Content -->
   <div class="content">
@@ -11,17 +11,17 @@
     <div class="row items-push">
       <div class="col-lg-8 order-2 order-lg-1">
         <!-- Stats -->
-        <?php get_template_part('/patterns/highlights') ?>
+        <?php get_template_part('/template-parts/highlights') ?>
         <!-- END Stats -->
       </div>
       <div class="col-lg-4 d-flex flex-column order-1 order-lg-2">
 
         <!-- Live -->
-        <?php get_template_part('/patterns/meditation') ?>
+        <?php get_template_part('/template-parts/meditation') ?>
         <!-- END Live -->
 
         <!-- Calendário Védico -->
-        <?php get_template_part('/patterns/calendario-vedico') ?>
+        <?php get_template_part('/template-parts/calendario-vedico') ?>
         <!-- END Calendário Védico -->
 
 
@@ -35,12 +35,12 @@
     <div class="row d-flex items-push flex-xl-grow-1">
       <!-- Programas Regulares -->
       <div class="col-md-6">
-        <?php get_template_part('/patterns/calendar-regulares') ?>
+        <?php get_template_part('/template-parts/calendar-regulares') ?>
       </div>
       <!-- END Programas Regulares -->
       <!-- Agenda -->
       <div class="col-md-6">
-      <?php get_template_part('/patterns/calendar') ?>
+      <?php get_template_part('/template-parts/calendar') ?>
       </div>
       <!-- END Agenda -->
     </div>
@@ -49,26 +49,26 @@
     <!-- Sidhas News -->
     <?php 
     if (check_user()) {
-      get_template_part('/patterns/highlight-news-sidhas');
+      get_template_part('/template-parts/highlight-news-sidhas');
     }
     ?>
     <!-- END Sidhas News -->
 
     <!-- News -->
-    <?php get_template_part('/patterns/highlight-news') ?>
+    <?php get_template_part('/template-parts/highlight-news') ?>
     <!-- END News -->
 
     <!-- Maharishi -->
-    <?php get_template_part('/patterns/tecnologias') ?>
+    <?php get_template_part('/template-parts/tecnologias') ?>
     <!-- END Mararishi -->
 
     <!-- Highlight Media -->
     <div class="row items-push">
       <!-- Cursos -->
-      <?php get_template_part('/patterns/highlight-cursos') ?>
+      <?php get_template_part('/template-parts/highlight-cursos') ?>
       <!-- END Cursos -->
       <!-- Livros -->
-      <?php get_template_part('/patterns/highlight-livros') ?>
+      <?php get_template_part('/template-parts/highlight-livros') ?>
       <!-- END Livros -->
 
 

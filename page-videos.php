@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( '/patterns/quick-menu' ) ?>
+  <?php get_template_part( '/template-parts/quick-menu' ) ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed"
@@ -23,7 +23,7 @@
   <!-- Page Content -->
   <div class="content content-full">
     <div class="row">
-      <?php get_template_part( '/patterns/categories-list' ); ?>
+      <?php get_template_part( '/template-parts/categories-list' ); ?>
     </div>
     <div class="row justify-content-center items-push">
       <!-- Video -->

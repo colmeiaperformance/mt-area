@@ -1,11 +1,3 @@
-<?php
-
-/**
- * Title: User Profile
- * Slug: mt-area/profile-user
- */
-?>
-
 <div class="row push p-sm-2 p-lg-4">
   <div class="offset-xl-1 col-xl-4 order-xl-1">
     <p class="bg-body-light p-4 rounded-3 text-muted fs-sm">

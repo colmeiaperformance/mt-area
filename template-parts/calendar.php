@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Destaques da Agenda
- * Slug: mt-area/calendar
- */
-?>
 <!--  Latest Events -->
 <div class="block block-rounded block-mode-loading-refresh">
   <div class="block-header block-header-default bg-body-dark text-white py-3 <?php

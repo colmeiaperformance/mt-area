@@ -115,11 +115,11 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
     <!-- Side Overlay-->
     <aside id="side-overlay">
       <!-- Side Header -->
-      <?php get_template_part('/patterns/aside-header') ?>
+      <?php get_template_part('/template-parts/aside-header') ?>
       <!-- END Side Header -->
 
       <!-- Side Content -->
-      <?php get_template_part('/patterns/aside-content') ?>
+      <?php get_template_part('/template-parts/aside-content') ?>
       <!-- END Side Content -->
     </aside>
     <!-- END Side Overlay -->

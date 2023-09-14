@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( '/patterns/quick-menu' ) ?>
+  <?php get_template_part( '/template-parts/quick-menu' ) ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed"
@@ -26,7 +26,7 @@
     <!-- Form -->
     <div class="row">
       <div class="col">
-        <?php get_template_part( '/patterns/contact-form' ) ?>
+        <?php get_template_part( '/template-parts/contact-form' ) ?>
       </div>
     </div>
     <!-- END Form -->

@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Conteúdo Aside
- * Slug: mt-area/aside-content
- */
-?>
 <div class="content-side">
   <!-- Side Overlay Tabs -->
   <div class="block block-transparent pull-x pull-t mb-0">

@@ -9,7 +9,7 @@ if (!is_user_logged_in()) {
 ?>
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Page Content -->
   <div class="content content-full">
@@ -54,13 +54,13 @@ if (!is_user_logged_in()) {
       </ul>
       <div class="block-content tab-content">
         <div class="tab-pane active" id="account-profile" role="tabpanel" aria-labelledby="account-profile-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-user') ?>
+          <?php echo get_template_part('/template-parts/profile-user') ?>
         </div>
         <div class="tab-pane" id="account-courses" role="tabpanel" aria-labelledby="account-courses-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-purchases') ?>
+          <?php echo get_template_part('/template-parts/profile-purchases') ?>
         </div>
         <div class="tab-pane" id="account-sign" role="tabpanel" aria-labelledby="account-sign-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-signature') ?>
+          <?php echo get_template_part('/template-parts/profile-signature') ?>
         </div>
       </div>
     </div>

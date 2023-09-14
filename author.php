@@ -62,10 +62,10 @@ $profile_rg = get_field('profile_rg', 'user_' . $author_id);
 
         </div>
         <div class="tab-pane" id="account-courses" role="tabpanel" aria-labelledby="account-courses-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-purchases') ?>
+          <?php echo get_template_part('/template-parts/profile-purchases') ?>
         </div>
         <div class="tab-pane" id="account-sign" role="tabpanel" aria-labelledby="account-sign-tab" tabindex="0">
-          <?php echo get_template_part('/patterns/profile-signature') ?>
+          <?php echo get_template_part('/template-parts/profile-signature') ?>
         </div>
       </div>
     </div>

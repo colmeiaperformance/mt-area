@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-<?php get_template_part( '/patterns/quick-menu' ) ?>
+<?php get_template_part( '/template-parts/quick-menu' ) ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_agenda.jpg'; ?>');">

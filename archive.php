@@ -3,7 +3,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_artigos.jpg'; ?>');">
@@ -33,24 +33,24 @@
   <!-- Page Content -->
   <div class="content content-full">
     <div class="row">
-      <?php get_template_part('/patterns/categories-list'); ?>
+      <?php get_template_part('/template-parts/categories-list'); ?>
     </div>
     <div class="row items-push">
 
       <?php
       if (is_single()) {
-        get_template_part('/patterns/article');
+        get_template_part('/template-parts/article');
       } elseif (is_custom_post_type()) {
         get_template_part(get_the_archive_title());
         echo 'custom post type';
       } elseif (is_archive()) {
-        get_template_part('/patterns/article');
+        get_template_part('/template-parts/article');
       } ?>
 
     </div>
 
     <!-- Pagination -->
-    <?php get_template_part('/patterns/pagination'); ?>
+    <?php get_template_part('/template-parts/pagination'); ?>
     <!-- END Pagination -->
   </div>
   <!-- END Page Content -->

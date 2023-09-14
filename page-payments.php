@@ -2,7 +2,7 @@
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part('/patterns/quick-menu') ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo the_post_thumbnail_url(); ?>');">

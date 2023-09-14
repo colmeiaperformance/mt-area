@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Lista de Categorias
- * Slug: mt-area/categories-list
- */
-?>
 <!-- Show Categories -->
 <div class="row items-push">
   <div class="dropdown text-center text-lg-end">

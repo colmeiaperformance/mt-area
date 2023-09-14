@@ -1,10 +1,3 @@
-<?php
-
-/**
- * Title: Hero
- * Slug: mt-area/hero
- */
-?>
 <!-- Hero -->
 <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_artigos.jpg'; ?>');">
   <div class="bg-mt-green-op">
