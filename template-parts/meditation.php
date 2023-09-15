@@ -37,7 +37,7 @@ if ($configuracoes) {
         } else {
           echo 'ribbon-danger';
         } ?>">
-    <a class="link-fw" href="<?php echo $link_da_palestra; ?>">
+    <a target="_blank" class="link-fw" href="<?php echo $link_da_palestra; ?>">
       <div class="text-center">
         <div class="item item-circle bg-body-light mx-auto hover-scale push">
           <i class="fa fa-2x fa-circle-play text-primary"></i>

@@ -42,6 +42,9 @@
         get_template_part('/template-parts/article');
       } elseif (is_custom_post_type()) {
         get_template_part(get_the_archive_title());
+        /*
+        ! PRECISA SER FEITO
+        */
         echo 'custom post type';
       } elseif (is_archive()) {
         get_template_part('/template-parts/article');
