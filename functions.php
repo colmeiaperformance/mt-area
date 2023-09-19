@@ -1270,19 +1270,9 @@ function create_pages_in_wp_panel()
             'slug' => 'blog'
         ),
         array(
-            'title' => 'Calendário',
-            'content' => '',
-            'slug' => 'calendario'
-        ),
-        array(
             'title' => 'Contato',
             'content' => '',
             'slug' => 'contato'
-        ),
-        array(
-            'title' => 'Cursos',
-            'content' => '',
-            'slug' => 'cursos'
         ),
         array(
             'title' => 'Front Page',
@@ -1295,14 +1285,10 @@ function create_pages_in_wp_panel()
             'slug' => 'subscriptions'
         ),
         array(
-            'title' => 'Livros',
-            'content' => '',
-            'slug' => 'livros'
-        ),
-        array(
             'title' => 'Login',
             'content' => '',
-            'slug' => 'login'
+            'slug' => 'login',
+            'template' => 'custom-login.php'
         ),
         array(
             'title' => 'Meditação Coletiva Online',
@@ -1348,6 +1334,9 @@ function create_pages_in_wp_panel()
                 'post_type'     => 'page',
                 'post_name'     => $custom_slug,
             );
+            if (!empty($page['template'])) {
+                $page_args['page_template'] = $page['template'];
+            }
 
             $page_id = wp_insert_post($page_args);
         }
@@ -1377,3 +1366,17 @@ function define_front_page_and_blog_through_slug()
 
 // Ação para chamar a função de definir as páginas
 add_action('after_setup_theme', 'define_front_page_and_blog_through_slug');
+
+//Formatar telefone
+function format_phone($phone)
+{
+    $formatedPhone = preg_replace('/[^0-9]/', '', $phone);
+    $matches = [];
+    preg_match('/^([0-9]{2})([0-9]{4,5})([0-9]{4})$/', $formatedPhone, $matches);
+    if ($matches) {
+        return '('.$matches[1].') '.$matches[2].'-'.$matches[3];
+    }
+    
+    return $phone; // return number without format
+}
+add_action('init', 'format_phone', 10, 2);
