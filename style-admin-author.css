@@ -367,6 +367,11 @@ html {
   color: transparent !important;
 }
 
+#adminmenu li.wp-has-submenu.wp-not-current-submenu.opensub:hover::after,
+#adminmenu li.wp-has-submenu.wp-not-current-submenu:focus-within::after {
+  border-right-color: transparent !important;
+}
+
 @media screen and (max-width: 782px) {
   #wpadminbar li#wp-admin-bar-wp-logo {
     display: none !important;
@@ -485,7 +490,7 @@ html {
   background-size: 145px 100%;
   opacity: 0.75;
   display: inline-block;
-  width: 145px;
+  width: 100%;
   height: 100%;
   max-width: 145px;
   content: "";
