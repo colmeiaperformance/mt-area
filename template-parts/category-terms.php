@@ -1,10 +1,5 @@
 <?php
 
-/**
- * Title: Termos da Categoria
- * Slug: mt-area/category-terms
- */
-
 // Verifica o tipo de post personalizado do post atual
 $post_type = get_post_type();
 $post_taxonomy = get_object_taxonomies($post_type);
@@ -20,5 +15,5 @@ if ($terms && !is_wp_error($terms)) {
     echo '<span class="badge bg-primary">' . esc_html($term->name) . '</span> ';
   }
 } else {
-  echo 'Sem gêneros literários registrados.';
+  _e('Sem categorias registradas.', 'mt-area');
 }

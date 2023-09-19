@@ -1,13 +1,4 @@
 <?php
-
-/**
- * Title: Formulário de Contato
- * Slug: mt-area/contact-form
- */
-
-?>
-
-<?php
 $current_user = wp_get_current_user();
 $profile_tipo_de_telefone = get_field('profile_tipo_de_telefone', 'user_' . $current_user->ID);
 if ($profile_tipo_de_telefone == 'brasil') {
