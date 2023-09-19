@@ -1,9 +1,4 @@
 <?php
-
-/**
- * Template Name: Cursos
- */
-
 include("header.php"); ?>
 
 <!-- Main Container -->

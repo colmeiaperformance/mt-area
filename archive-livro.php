@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Livros
-*/
-
 include("header.php"); ?>
 
 <!-- Main Container -->

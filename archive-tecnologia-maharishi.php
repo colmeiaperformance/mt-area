@@ -1,8 +1,4 @@
 <?php
-/*
-Template Name: Tecnologias Maharishi
-*/
-
 include("header.php"); ?>
 
 <!-- Main Container -->
