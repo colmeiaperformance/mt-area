@@ -542,12 +542,6 @@ function my_acf_op_init()
             'parent_slug' => $parent['menu_slug'],
         ));
 
-        //Add sub page.
-        $child = acf_add_options_page(array(
-            'page_title'  => __('Calendário Védico', 'mt-area'),
-            'menu_title'  => __('Calendário Védico', 'mt-area'),
-            'parent_slug' => $parent['menu_slug'],
-        ));
     }
 }
 

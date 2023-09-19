@@ -76,7 +76,7 @@ if ($configuracoes) {
 
 
 
-
+<!-- Backup HTML -->
 <!-- <div class="block block-rounded">
   <div class="block-content block-content-full d-flex justify-content-center align-items-center flex-grow-1 ribbon 
             ribbon-light">
