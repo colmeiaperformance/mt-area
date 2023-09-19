@@ -20,9 +20,6 @@
 
   <!-- Page Content -->
   <div class="content content-full">
-    <div class="row">
-      <?php get_template_part('/template-parts/categories-list'); ?>
-    </div>
 
     <div class="row items-push">
       <?php
