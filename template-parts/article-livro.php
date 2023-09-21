@@ -103,8 +103,11 @@ $livros_query = new WP_Query($args);
 </div>
 </div>
 <!-- END Book -->
-<?php $i++;
-    endwhile;
+<?php
+$i++;
+endwhile;
+else:
+  get_template_part('/template-parts/no-posts');
 endif;
 wp_reset_postdata();
 

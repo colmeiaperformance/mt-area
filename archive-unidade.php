@@ -1,8 +1,9 @@
-<?php include("header.php"); ?>
+<?php
+include("header.php"); ?>
 
 <!-- Main Container -->
 <main id="main-container">
-  <?php get_template_part( '/template-parts/quick-menu' ) ?>
+  <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
   <div class="bg-image bg-image-fixed"
@@ -10,7 +11,7 @@
     <div class="bg-mt-default-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">
-        <?php _e('Unidades', 'mt-area') ?>
+          <?php _e('Unidades', 'mt-area') ?>
         </h1>
       </div>
     </div>
@@ -18,10 +19,16 @@
   <!-- END Hero -->
 
   <!-- Page Content -->
-  <div class="content">
+  <div class="content content-full">
+    <div class="row">
+      <?php get_template_part('/template-parts/categories-list'); ?>
+    </div>
+    <div class="row items-push gap">
 
+      <?php get_template_part('/template-parts/article-unidade'); ?>
+      <?php get_template_part('/template-parts/pagination'); ?>
 
-
+    </div>
   </div>
   <!-- END Page Content -->
 </main>

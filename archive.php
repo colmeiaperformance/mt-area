@@ -49,6 +49,8 @@
           get_template_part('/template-parts/article-livro');
       } elseif (get_post_type() == 'curso') {
           get_template_part('/template-parts/article-curso');
+      } elseif (get_post_type() == 'unidade') {
+          get_template_part('/template-parts/article-unidade');
       } elseif (is_archive()) {
           get_template_part('/template-parts/article');
       } ?>

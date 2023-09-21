@@ -40,3 +40,20 @@ function selectPeopleTab() {
   peopleTabContent.classList.add("active");
   peopleTabContent.classList.add("show");
 }
+
+//Category dropdown submenu
+jQuery(document).ready(function () {
+  // Quando o botão .dropdown-toggle-split é clicado ou recebe hover
+  jQuery(".dropdown-toggle-split").on("click hover", function (e) {
+    e.stopPropagation(); // Evita que o evento de clique ou hover se propague
+
+    // Adicione a classe .show ao submenu
+    jQuery(this).parent().parent().addClass("show");
+    jQuery(this).find(".dropdown-submenu").toggleClass("show");
+  });
+
+  // Feche o submenu quando clicar fora dele
+  jQuery(document).on("click", function () {
+    jQuery(".dropdown-submenu").removeClass("show");
+  });
+});

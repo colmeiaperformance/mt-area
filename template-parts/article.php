@@ -40,4 +40,7 @@ if (have_posts()) {
 
 <?php } // end while
 } // end if
+else {
+    get_template_part('/template-parts/no-posts');
+}
 wp_reset_postdata(); ?>

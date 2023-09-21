@@ -94,8 +94,10 @@ if (have_posts()) :
 </div>
 <!-- END Course -->
 
-<?php endwhile;
-
+<?php
+    endwhile;
+else :
+    get_template_part('/template-parts/no-posts');
 endif;
 wp_reset_postdata();
 ?>

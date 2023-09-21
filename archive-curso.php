@@ -6,7 +6,8 @@ include("header.php"); ?>
   <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
-  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_cursos.jpg'; ?>');">
+  <div class="bg-image bg-image-fixed"
+    style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_cursos.jpg'; ?>');">
     <div class="bg-mt-blue-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">
@@ -24,13 +25,10 @@ include("header.php"); ?>
     </div>
     <div class="row items-push gap">
 
-      
       <?php get_template_part('/template-parts/article-curso'); ?>
       <?php get_template_part('/template-parts/pagination'); ?>
 
-
     </div>
-
   </div>
   <!-- END Page Content -->
 </main>
