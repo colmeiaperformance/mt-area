@@ -4,8 +4,8 @@
 function loading_styles()
 {
     wp_enqueue_style('source-sans-pro-font', 'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap', array(), wp_get_theme()->get('Version'), 'all');
-    wp_enqueue_style('style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
-    wp_enqueue_style('icons-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('style-bootstrap', get_template_directory_uri() . '/vendor/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('icons-bootstrap', get_template_directory_uri() . '/vendor/bootstrap-icons.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('dashmix-fullcalendar-css', get_template_directory_uri() . '/assets/js/plugins/fullcalendar/main.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('dashmix-datatables-css', get_template_directory_uri() . '/assets/js/plugins/datatables-bs5/css/dataTables.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
     wp_enqueue_style('dashmix-buttons-css', get_template_directory_uri() . '/assets/js/plugins/datatables-buttons-bs5/css/buttons.bootstrap5.min.css', array(), wp_get_theme()->get('Version'), 'all');
