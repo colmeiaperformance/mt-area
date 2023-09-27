@@ -16,6 +16,7 @@ jQuery(document).ready(function () {
   // calendar.render();
 });
 
+//Controls sidebar btns
 function selectWallTab() {
   let wallTab = document.getElementById("so-wall-tab");
   let wallTabContent = document.getElementById("so-wall");

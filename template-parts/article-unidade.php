@@ -10,9 +10,13 @@ if (have_posts()) :
     while (have_posts()) : the_post(); ?>
 
 <div class="col-md-6">
-  <a class="block block-transparent bg-image"
-    style="background-image: url('<?php echo get_template_directory_uri() ?>/assets/media/photos/photo7.jpg');"
-    href="javascript:void(0)" data-toggle="click-ripple">
+  <a class="block block-transparent bg-image" style="background-image: url('<?php
+    if (has_post_thumbnail()) {
+        the_post_thumbnail();
+    } else {
+        echo get_template_directory_uri() . '/assets/media/mt/unidades-default.jpg';
+    } ?>
+     );" href="<?php the_permalink(); ?>" data-toggle="click-ripple">
     <div class="block-content ribbon ribbon-glass ribbon-bottom bg-black-50">
       <div class="ribbon-box">
         <span class="fw-bold">Rio de Janeiro</span>

@@ -6,7 +6,13 @@
 
 
   <!-- Hero -->
-  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');">
+  <div class="bg-image bg-image-fixed" style="background-image: url('<?php
+  if (has_post_thumbnail( )) {
+    echo get_the_post_thumbnail_url();
+  } else {
+    echo get_template_directory_uri() . '/assets/media/mt/unidades-default.jpg';
+  }
+    ?>');">
     <div class="bg-white-75">
       <div class="content content-top content-full text-center pb-5">
         <h1 class="fw-bold my-5">
@@ -92,7 +98,10 @@
             <td>
               <div class="fw-medium d-block d-md-flex justify-content-between align-items-center">
                 <span class="fs-1 fw-bold text-muted"><?php _e('Endereço: ', 'mt-area') ?>
-                  <?php echo get_field('unid_endereco'); ?></span>
+                  <?php 
+                  $unid_endereco = get_field('unid_endereco');
+                  echo $unid_endereco['tipo'] . ' ' . $unid_endereco['logradouro'] . ', ' . $unid_endereco['numero'] . ' - ' . $unid_endereco['complemento'] . '<br>' . $unid_endereco['cidade'] . ' - ' . $unid_endereco['uf'];
+                  ?></span>
               </div>
             </td>
           </tr>
