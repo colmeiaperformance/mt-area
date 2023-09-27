@@ -409,7 +409,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
                 <a class="dropdown-item" href="<?php echo admin_url('/profile.php'); ?>">
                   <i class="far fa-fw fa-user me-1"></i> Perfil
                 </a>
-                <a class="dropdown-item" href="be_pages_generic_invoice.html">
+                <a class="dropdown-item" href="#">
                   <i class="far fa-fw fa-file-alt me-1"></i> Meus Cursos
                 </a>
                 <div role="separator" class="dropdown-divider"></div>
