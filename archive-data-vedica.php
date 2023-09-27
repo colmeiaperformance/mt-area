@@ -100,7 +100,7 @@ endif; ?>
 
 
             <!-- Calendario vedico -->
-
+            NÃO ESTÁ PRONTO. REWORK EM ANDAMENTO.
             <!-- END Calendario vedico -->
 
           </div>
