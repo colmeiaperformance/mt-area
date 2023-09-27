@@ -36,7 +36,7 @@
                 <a class="block block-rounded block-link-pop h-100 mb-0" href="<?php the_permalink(); ?>">
                   <div class="w-100 img-blog">
                     <img class="img-fluid object-fit-cover" src="<?php if (!empty(get_the_post_thumbnail_url())) {
-                                                  esc_url(the_post_thumbnail_url());
+                                                  echo esc_url(get_the_post_thumbnail_url());
                                                 } else {
                                                   echo get_template_directory_uri() . '/assets/media/mt/bg-post.jpg';
                                                 }
