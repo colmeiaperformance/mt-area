@@ -8,9 +8,9 @@
   <!-- Hero -->
   <div class="bg-image bg-image-fixed" style="background-image: url('<?php
   if (has_post_thumbnail( )) {
-    echo get_the_post_thumbnail_url();
+    echo esc_url(get_the_post_thumbnail_url());
   } else {
-    echo get_template_directory_uri() . '/assets/media/mt/unidades-default.jpg';
+    echo esc_url(get_template_directory_uri() . '/assets/media/mt/unidades-default.jpg');
   }
     ?>');">
     <div class="bg-white-75">

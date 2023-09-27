@@ -101,7 +101,7 @@
                     <?php
                      $local = get_field('e_local');
         if($local) { ?>
-                    <a href="<?php echo site_url() . '/unidade/' . $local->post_name; ?>" class="">
+                    <a href="<?php echo esc_url( site_url() . '/unidade/' . $local->post_name ); ?>" class="">
                       <?php echo $local->post_title; ?>
                     </a>
                     <?php }

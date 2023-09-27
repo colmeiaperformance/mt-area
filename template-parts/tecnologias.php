@@ -42,7 +42,7 @@
       </div>
       <div class="block-content bg-body-light">
         <div class="d-flex justify-content-end push">
-          <a class="btn btn-sm btn-alt-secondary" href="<?php echo site_url() . '/tecnologias-maharishi'; ?>">
+          <a class="btn btn-sm btn-alt-secondary" href="<?php echo esc_url(site_url() . '/tecnologias-maharishi'); ?>">
             <?php _e('Veja todas', 'mt-area'); ?> <i class="fa fa-fw fa-arrow-right ms-1"></i>
           </a>
         </div>

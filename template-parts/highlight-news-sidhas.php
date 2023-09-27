@@ -39,7 +39,7 @@
                     <img class="img-fluid object-fit-cover" src="<?php if (!empty(get_the_post_thumbnail_url())) {
                                                   esc_url(the_post_thumbnail_url());
                                                 } else {
-                                                  echo get_template_directory_uri() . '/assets/media/mt/bg-post.jpg';
+                                                  echo esc_url(get_template_directory_uri() . '/assets/media/mt/bg-post.jpg');
                                                 }
                                                 ?>" alt="">
                   </div>
@@ -74,7 +74,7 @@
       </div>
       <div class="block-content bg-body-light">
         <div class="d-flex justify-content-end push">
-          <a class="btn btn-sm btn-alt-secondary" href="<?php echo site_url() . '/blog?sidhas=true'; ?>">
+          <a class="btn btn-sm btn-alt-secondary" href="<?php echo esc_url(site_url() . '/blog?sidhas=true'); ?>">
             Leia Mais <i class="fa fa-fw fa-arrow-right ms-1"></i>
           </a>
         </div>

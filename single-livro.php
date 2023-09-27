@@ -10,7 +10,7 @@
     <div class="bg-white-75">
       <div class="content content-top content-full text-center pb-5 d-flex justify-content-center">
         <div class="pe-5">
-          <img src="<?= get_the_post_thumbnail_url(); ?>"
+          <img src="<?= esc_url(get_the_post_thumbnail_url()); ?>"
             alt="Imagem">
         </div>
         <div>

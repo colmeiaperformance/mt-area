@@ -17,7 +17,7 @@
     <div class="row justify-content-center g-sm push">
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image" style="background-image: url('<?php echo '';?>');"
-          href="<?php echo home_url(); ?>">
+          href="<?php echo esc_url(home_url()); ?>">
           <div class="block-content block-content-full bg-mt-default bg-opacity-75 ratio ratio-16x9">
             <div class="d-flex justify-content-center align-items-center">
               <div>
@@ -32,7 +32,7 @@
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image"
           style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_agenda.jpg'; ?>');"
-          href="<?php echo home_url( '/calendario' ); ?>">
+          href="<?php echo esc_url(home_url( '/calendario' )); ?>">
           <div class="block-content block-content-full bg-mt-dark-blue-op ratio ratio-16x9">
             <div class="d-flex justify-content-center align-items-center">
               <div>
@@ -60,7 +60,7 @@
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image"
           style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_cursos.jpg'; ?>');"
-          href="<?php echo home_url( '/cursos' ); ?>">
+          href="<?php echo esc_url(home_url( '/cursos' )); ?>">
           <div class="block-content block-content-full bg-mt-blue-op ratio ratio-16x9">
             <div class="d-flex justify-content-center align-items-center">
               <div>
@@ -74,7 +74,7 @@
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image"
           style="background-image: url('<?php echo get_template_directory_uri() . '/assets/media/mt/qm_livros.jpg'; ?>');"
-          href="<?php echo home_url( '/livros' ); ?>">
+          href="<?php echo esc_url(home_url( '/livros' )); ?>">
           <div class="block-content block-content-full bg-mt-orange-op ratio ratio-16x9">
             <div class="d-flex justify-content-center align-items-center">
               <div>
@@ -88,7 +88,7 @@
       <div class="col-4 col-md-2 col-xl-2">
         <a class="block block-rounded text-center bg-image"
           style="background-image: url('<?php //echo get_template_directory_uri() . '/assets/media/mt/qm_videos.jpg'; ?>');"
-          href="<?php echo home_url( '/sign' ); ?>">
+          href="<?php echo esc_url(home_url( '/sign' )); ?>">
           <div class="block-content block-content-full bg-mt-default ratio ratio-16x9">
             <div class="d-flex justify-content-center align-items-center">
               <div>

@@ -15,7 +15,7 @@ if (have_posts()) :
     href="<?php the_permalink(); ?>">
     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
       <div class="d-md-flex flex-grow-1">
-        <div style="background-image: url('<?php if (get_the_post_thumbnail()) : the_post_thumbnail_url(); ?>
+        <div style="background-image: url('<?php if (get_the_post_thumbnail()) : esc_url(the_post_thumbnail_url()); ?>
                  <?php endif; ?>');"
           class="col-md-4 pb-8 text-end bg-image">
           <span class="badge bg-gd-sea-op fw-bold p-2 text-uppercase mt-2 me-2">

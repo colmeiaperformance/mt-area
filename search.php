@@ -33,7 +33,7 @@
               <img class="img-fluid" src="<?php if (!empty(get_the_post_thumbnail_url())) {
                                             esc_url(the_post_thumbnail_url());
                                           } else {
-                                            echo get_template_directory_uri() . '/assets/media/mt/bg-post.jpg';
+                                            echo esc_url(get_template_directory_uri() . '/assets/media/mt/bg-post.jpg');
                                           }
                                           ?>" alt="">
               <div class="block-content">

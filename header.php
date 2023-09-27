@@ -141,7 +141,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
       <div class="bg-header-dark">
         <div class="content-header bg-white-5">
           <!-- Logo -->
-          <a class="fw-semibold text-white tracking-wide" href="<?php echo home_url(); ?>">
+          <a class="fw-semibold text-white tracking-wide" href="<?php echo esc_url(home_url()); ?>">
             <span class="smini-visible">
               <!-- M<span class="opacity-75">T</span> -->
               <span class="opacity-75">
@@ -209,7 +209,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
             // END Menu Events
             ?>
             <li class="nav-main-item">
-              <a class="nav-main-link" href="<?php echo admin_url('/profile.php'); ?>">
+              <a class="nav-main-link" href="<?php echo esc_url(admin_url('/profile.php')); ?>">
                 <i class="nav-main-link-icon fa fa-user"></i>
                 <span class="nav-main-link-name">Meu Perfil</span>
               </a>
@@ -383,7 +383,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
                 <div class="fw-semibold"><?php _e('Total: ', 'mt-area'); ?> R$ 49,90</div>&nbsp;
               </div>
               <div class="p-2 border-top">
-                <a class="btn btn-alt-primary w-100 text-center" href="<?php echo home_url() . '/checkout' ?>">
+                <a class="btn btn-alt-primary w-100 text-center" href="<?php echo esc_url(home_url() . '/checkout'); ?>">
                   <i class="fa-fw fa-solid fa-shopping-cart opacity-50 me-1"></i>
                   <?php _e('Ir para o Carrinho', 'mt-area'); ?>
                 </a>
@@ -406,7 +406,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
                 </div>
               </div>
               <div class="p-2">
-                <a class="dropdown-item" href="<?php echo admin_url('/profile.php'); ?>">
+                <a class="dropdown-item" href="<?php echo esc_url(admin_url('/profile.php')); ?>">
                   <i class="far fa-fw fa-user me-1"></i> Perfil
                 </a>
                 <a class="dropdown-item" href="#">
@@ -422,7 +422,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
                 <!-- END Side Overlay -->
 
                 <div role="separator" class="dropdown-divider"></div>
-                <a class="dropdown-item" href="<?php echo wp_logout_url(); ?>">
+                <a class="dropdown-item" href="<?php echo esc_url(wp_logout_url()); ?>">
                   <i class="fa fa-fw fa-sign-out-alt me-1"></i> Sair
                 </a>
               </div>

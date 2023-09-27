@@ -3,7 +3,7 @@
 <?php
 // Verifica se o usuário está logado
 if (!is_user_logged_in()) {
-  wp_redirect(home_url());
+  wp_redirect(esc_url(home_url()));
   exit;
 }
 ?>

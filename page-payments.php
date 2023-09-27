@@ -5,7 +5,7 @@
   <?php get_template_part('/template-parts/quick-menu') ?>
 
   <!-- Hero -->
-  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo the_post_thumbnail_url(); ?>');">
+  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo esc_url(the_post_thumbnail_url()); ?>');">
     <div class="bg-mt-default-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">

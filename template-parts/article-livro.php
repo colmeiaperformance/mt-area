@@ -20,7 +20,7 @@ $livros_query = new WP_Query($args);
     <div class="block-content block-content-full d-flex align-items-center justify-content-between">
       <div class="d-md-flex flex-grow-1">
         <div class="col-md-4 text-center text-md-start flex-shrink-1">
-          <img class="img-fluid img-livros-grid" src="<?php if (get_the_post_thumbnail()) : the_post_thumbnail_url(); ?>
+          <img class="img-fluid img-livros-grid" src="<?php if (get_the_post_thumbnail()) : esc_url(the_post_thumbnail_url()); ?>
                  <?php endif; ?>" alt="">
         </div>
         <div class="block-content d-block d-flex flex-column justify-content-around">
@@ -39,13 +39,13 @@ $livros_query = new WP_Query($args);
               <?php echo get_field('livro_valor'); ?>
             </p>
             <div class="d-flex">
-              <a href="<?php the_permalink(); ?>">
+              <a href="<?php esc_url(the_permalink()); ?>">
                 <span class="btn btn-lg btn-primary me-2">
                   <i class="fa fa-plus-circle me-2"></i> Sobre
                 </span>
               </a>
               <a
-                href="<?php echo home_url() . '/checkout'; ?>">
+                href="<?php echo esc_url(home_url() . '/checkout'); ?>">
                 <span class="btn btn-lg btn-success">
                   <i class="fa fa-shopping-cart me-2"></i> Adquirir
                 </span>

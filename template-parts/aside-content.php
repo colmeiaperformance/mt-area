@@ -78,7 +78,7 @@
 
           <!-- Notification View All -->
           <div class="block-content block-content-full border-top">
-            <a class="btn w-100 btn-alt-primary" href="<?php echo home_url() . '/noticias-em-destaque' ?>">
+            <a class="btn w-100 btn-alt-primary" href="<?php echo esc_url(home_url() . '/noticias-em-destaque'); ?>">
               <i class="fa fa-fw fa-eye me-1"></i> Ver Tudo
             </a>
           </div>

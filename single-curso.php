@@ -6,14 +6,14 @@
 
 
   <!-- Hero -->
-  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo get_the_post_thumbnail_url(); ?>');">
+  <div class="bg-image bg-image-fixed" style="background-image: url('<?php echo esc_url(get_the_post_thumbnail_url()); ?>');">
     <div class="bg-white-75">
       <div class="content content-top content-full text-center pb-5">
         <h1 class="fw-bold my-5">
           <?= the_title(); ?>
         </h1>
         <p class="my-5 pb-1">
-          <a class="btn btn-hero btn-success" href="<?php echo home_url('/checkout'); ?>" data-toggle="click-ripple">
+          <a class="btn btn-hero btn-success" href="<?php echo esc_url(home_url('/checkout')); ?>" data-toggle="click-ripple">
             <i class="fa fa-shopping-cart opacity-50 me-1"></i> <?php _e('Adquira Agora', 'mt-area'); ?>
           </a>
         </p>
@@ -111,7 +111,7 @@
                     <div class="fw-medium d-block d-md-flex justify-content-between align-items-center">
                       <span class="fs-1 fw-bold text-success"><?php _e('R$ ', 'mt-area') ?>
                         <?php echo get_field('curso_valor'); ?></span>
-                      <a href="<?php echo home_url('/checkout'); ?>" class="btn btn-success text-uppercase text-white mt-2 mt-md-auto">
+                      <a href="<?php echo esc_url(home_url('/checkout')); ?>" class="btn btn-success text-uppercase text-white mt-2 mt-md-auto">
                         <i class="fa fa-fw fa-shopping-cart me-1"></i> <?php _e('Adquira Agora', 'mt-area'); ?>
                       </a>
                     </div>

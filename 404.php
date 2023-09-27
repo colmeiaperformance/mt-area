@@ -55,7 +55,7 @@ if (!is_user_logged_in()) {
       <h1 class="center-title">404</h1>
       <h2 class="center-subtitle">Oops</h2>
       <h3>Página não encontrada. Sentimos muito!</h3>
-      <p>Gostaria de voltar à <a href="<?php echo home_url(); ?>" class="">página inicial?</a></p>
+      <p>Gostaria de voltar à <a href="<?php echo esc_url(home_url()); ?>" class="">página inicial?</a></p>
     </div>
   </div>
 

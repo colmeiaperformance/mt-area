@@ -47,7 +47,7 @@
                 <img class="img-fluid object-fit-cover" src="<?php if (!empty(get_the_post_thumbnail_url())) {
                                               echo esc_url(get_the_post_thumbnail_url());
                                             } else {
-                                              echo get_template_directory_uri() . '/assets/media/mt/bg-post.jpg';
+                                              echo esc_url(get_template_directory_uri() . '/assets/media/mt/bg-post.jpg');
                                             }
                                             ?>" alt="">
               </div>

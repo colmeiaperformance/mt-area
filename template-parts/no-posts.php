@@ -3,7 +3,7 @@
     <i class="fa fa-info-circle me-1"></i>
     <?php
     if (is_tax('estado')) {
-        printf(__('Não há unidades registradas nesse Estado. Gostaria de conferir a lista com <a href="%1$s">todas as nossas Unidades</a>?', 'mt-area'), site_url() . '/unidades');
+        printf(__('Não há unidades registradas nesse Estado. Gostaria de conferir a lista com <a href="%1$s">todas as nossas Unidades</a>?', 'mt-area'), esc_url(site_url() . '/unidades'));
     } elseif (is_tax('categoria-de-curso')) {
         $taxonomy = 'categoria-de-curso';
         $post_type = get_taxonomy($taxonomy)->object_type[0];
@@ -11,7 +11,7 @@
         if ($archive_link) {
           printf(__('Não há cursos registrados nessa categoria, que tal conferir nossa <a href="%1$s">lista de cursos</a> completa?', 'mt-area'), esc_url($archive_link) );
         } else {
-          printf(__('Não há cursos registrados nessa categoria, que tal conferir nossa <a href="%1$s">lista de cursos</a> completa?', 'mt-area'), site_url() . '/cursos');
+          printf(__('Não há cursos registrados nessa categoria, que tal conferir nossa <a href="%1$s">lista de cursos</a> completa?', 'mt-area'), esc_url(site_url() . '/cursos'));
         }        
     } elseif (is_tax('genero-literario')) {
       $taxonomy = 'genero-literario';
