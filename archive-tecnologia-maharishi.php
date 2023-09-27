@@ -10,7 +10,9 @@ include("header.php"); ?>
     <div class="bg-mt-default-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">
-          <?php post_type_archive_title(); ?>
+          <?php // post_type_archive_title();
+          _e('Tecnologias Maharishi da Consciência', 'mt-area');
+          ?>
         </h1>
 
       </div>

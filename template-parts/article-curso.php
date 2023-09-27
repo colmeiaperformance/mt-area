@@ -51,6 +51,7 @@ if (have_posts()) :
             <?php _e('R$ ', 'mt-area') ?>
             <?php echo get_field('curso_valor'); ?>
           </p>
+          <p><?php echo get_field('curso_resumo'); ?></p>
         </div>
 
       </div>

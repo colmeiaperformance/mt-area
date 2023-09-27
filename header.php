@@ -223,7 +223,7 @@ if (!is_user_logged_in() && !is_page( 'login' )) {
             <li class="nav-main-item">
               <a class="nav-main-link" onclick="selectWallTab();" href="javascript:void(0)" data-toggle="layout" data-action="side_overlay_toggle">
                 <i class="nav-main-link-icon fa fa-bell"></i>
-                <span class="nav-main-link-name">Avisos</span>
+                <span class="nav-main-link-name">Notícias</span>
               </a>
             </li>
             <!-- END Menu Geral -->

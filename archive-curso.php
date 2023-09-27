@@ -11,7 +11,7 @@ include("header.php"); ?>
     <div class="bg-mt-blue-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">
-          <?php _e('Cursos', 'mt-area') ?>
+          <?php _e('Academia MT', 'mt-area') ?>
         </h1>
       </div>
     </div>

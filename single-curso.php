@@ -101,7 +101,7 @@
                 <tr>
                   <td>
                     <span class="fs-lg fw-bold">
-                      <?= the_title(); ?>
+                      <?php echo get_field('curso_resumo'); ?>
                     </span>
 
                   </td>

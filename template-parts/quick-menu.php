@@ -65,7 +65,7 @@
             <div class="d-flex justify-content-center align-items-center">
               <div>
                 <i class="fa fa-2x fa-chalkboard text-white"></i>
-                <div class="fw-semibold mt-3 text-uppercase text-white quick-menu-text">Cursos</div>
+                <div class="fw-semibold mt-3 text-uppercase text-white quick-menu-text">Academia MT</div>
               </div>
             </div>
           </div>

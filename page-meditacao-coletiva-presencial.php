@@ -27,7 +27,7 @@
             <table class="table">
               <thead class="bg-body-dark">
                 <tr>
-                  <th scope="col"><?php _e('Localidade', 'mt-area'); ?></th>
+                  <th scope="col"><?php _e('Unidade', 'mt-area'); ?></th>
                   <th scope="col"><?php _e('Horário de Início', 'mt-area'); ?></th>
                   <th scope="col"><?php _e('Horário de Encerramento', 'mt-area'); ?></th>
                 </tr>

@@ -10,7 +10,7 @@
     <div class="bg-mt-default-op">
       <div class="content content-full text-center">
         <h1 class="fw-bold text-white mt-3 mb-2">
-          Lista de Inscritos na palestra X
+          Lista de Usuários Associados
         </h1>
       </div>
     </div>
