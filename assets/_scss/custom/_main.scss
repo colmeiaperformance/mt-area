@@ -409,3 +409,11 @@ body.wp-core-ui {
   -o-object-fit: cover;
   object-fit: cover;
 }
+
+//Unidades
+.card-unidade, .card-unidade-content {
+  min-height: 260px;
+  @include media-breakpoint-down(md) {
+    min-height: 240px;
+  }
+}

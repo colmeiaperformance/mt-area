@@ -64240,3 +64240,12 @@ body.wp-core-ui {
   -o-object-fit: cover;
   object-fit: cover;
 }
+
+.card-unidade, .card-unidade-content {
+  min-height: 260px;
+}
+@media (max-width: 767.98px) {
+  .card-unidade, .card-unidade-content {
+    min-height: 240px;
+  }
+}/*# sourceMappingURL=style.css.map */
