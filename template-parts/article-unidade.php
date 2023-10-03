@@ -44,8 +44,10 @@ if (have_posts()) :
         <h4 class="fw-normal text-body-color-light"><?php
         $unid_endereco = get_field('unid_endereco');
         echo $unid_cidade = ($unid_endereco['cidade']) ? $unid_endereco['cidade'] . ' - ' : '';
-        foreach ($terms as $term) {
-            echo get_field('sigla_do_estado', $term);
+        if ($terms) {
+            foreach ($terms as $term) {
+                echo get_field('sigla_do_estado', $term);
+            }
         }
         ?></h5>
           <h5 class="fw-normal text-body-color-light mb-0">
