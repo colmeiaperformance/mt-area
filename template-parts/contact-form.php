@@ -22,14 +22,14 @@ $profile_instrutor_pessoal = (get_field('profile_instrutor_pessoal', 'user_' . $
   <input type="hidden" name="m" value="0" />
   <input type="hidden" name="act" value="sub" />
   <input type="hidden" name="v" value="2" />
-  <input type="hidden" name="or" value="9e6da328232648ae20ac8eb4fc932f29" />
+  <input type="hidden" name="or" value="90b9f5e5a329b8f1d5c6d129eac9d71d" />
   <div class="block block-rounded">
     <div class="block-header block-header-default block-header">
       <h3 class="block-title"></h3>
     </div>
     <div class="block-content">
       <div class="row justify-content-center py-sm-3 py-md-5">
-        <div class="col-sm-10 col-md-8">
+        <div class="col-sm-10 col-md-8 _form-content">
 
           <div class="d-lg-flex gap-lg-3">
 
@@ -116,22 +116,23 @@ $profile_instrutor_pessoal = (get_field('profile_instrutor_pessoal', 'user_' . $
               </fieldset>
             </div>
           </div>
+          <div class="_clear-element">
+          </div>
         </div>
-      </div>
 
-      <div class="_form-thank-you" style="display:none;">
-      </div>
+        <div class="_form-thank-you alert alert-success" style="display:none;">
+        </div>
 
+      </div>
+      <div class="block-content block-content-full block-content-sm bg-body-light text-center form-footer">
+        <button id="_form_26_submit" class="_submit btn btn-primary" type="submit">
+          <i class="fa fa-check opacity-50 me-1"></i> Enviar
+        </button>
+        <button type="reset" class="btn btn-alt-secondary">
+          <i class="fa fa-sync-alt opacity-50 me-1"></i> Limpar
+        </button>
+      </div>
     </div>
-    <div class="block-content block-content-full block-content-sm bg-body-light text-center">
-      <button id="_form_26_submit" class="_submit btn btn-primary" type="submit">
-        <i class="fa fa-check opacity-50 me-1"></i> Enviar
-      </button>
-      <button type="reset" class="btn btn-alt-secondary">
-        <i class="fa fa-sync-alt opacity-50 me-1"></i> Limpar
-      </button>
-    </div>
-  </div>
 </form>
 
 <script type="text/javascript">
@@ -145,6 +146,7 @@ $profile_instrutor_pessoal = (get_field('profile_instrutor_pessoal', 'user_' . $
     var form = document.getElementById('_form_' + id + '_'),
       thank_you = form.querySelector('._form-thank-you');
     form.querySelector('._form-content').style.display = 'none';
+    form.querySelector('.form-footer').style.display = 'none';
     thank_you.innerHTML = message;
     thank_you.style.display = 'block';
     const vgoAlias = typeof visitorGlobalObjectAlias === 'undefined' ? 'vgo' : visitorGlobalObjectAlias;
