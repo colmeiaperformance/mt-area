@@ -1,12 +1,14 @@
 <!-- Show Categories -->
+<?php if (!is_tag()) { ?>
 <div class="row items-push">
-  <div class="d-flex justify-content-center justify-content-lg-end">
-    <div class="dropdown">
-      <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        <?php _e('Filtrar por categoria', 'mt-area'); ?>
-      </a>
-      <ul class="dropdown-menu">
-        <?php
+    <div class="d-flex justify-content-center justify-content-lg-end">
+        <div class="dropdown">
+            <a class="btn btn-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <?php _e('Filtrar por categoria', 'mt-area'); ?>
+            </a>
+            <ul class="dropdown-menu">
+                <?php
                 if (is_home() || is_category()) {
                     $post_type = get_post_type();
                     $categories = get_categories(array(
@@ -115,7 +117,6 @@
                 } elseif (is_post_type_archive() || is_custom_post_type()) {
                     // Obtém o nome do Custom Post Type atual
                     $post_type = get_query_var('post_type');
-
                     // Obtém as taxonomias associadas ao Custom Post Type
                     $taxonomies = get_object_taxonomies($post_type);
 
@@ -173,15 +174,16 @@
                             echo 'Sem categorias registradas.';
                         }
                     }
+                } else {
+                    echo '';
                 }
-
-        ?>
-      </ul>
+    ?>
+            </ul>
+        </div>
     </div>
-  </div>
 </div>
 <!-- END Show Categories -->
-
+<?php } ?>
 
 
 

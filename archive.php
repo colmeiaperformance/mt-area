@@ -25,6 +25,8 @@
               echo get_the_archive_title();
           } elseif (is_category()) {
               echo _e('Categoria: ', 'mt-area') . the_category(', ');
+          } elseif (is_tag()) {
+              echo _e('Tag: ', 'mt-area') . single_tag_title('', false);
           } else {
               the_title();
           } ?>
