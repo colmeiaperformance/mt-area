@@ -1,6 +1,6 @@
 <?php
 $current_user = wp_get_current_user();
-$profile_tipo_de_telefone = get_field('profile_tipo_de_telefone', 'user_' . $current_user->ID);
+$profile_tipo_de_telefone = (get_field('profile_tipo_de_telefone', 'user_' . $current_user->ID)) ? get_field('profile_tipo_de_telefone', 'user_' . $current_user->ID) : '';
 if ($profile_tipo_de_telefone == 'brasil') {
     $telefone = get_field('profile_telefone', 'user_' . $current_user->ID);
 } elseif ($profile_tipo_de_telefone == 'fora') {
@@ -8,7 +8,9 @@ if ($profile_tipo_de_telefone == 'brasil') {
 } else {
     $telefone = get_field('profile_telefone', 'user_' . $current_user->ID);
 }
-$cpf = get_field('profile_cpf', 'user_' . $current_user->ID);
+$cpf = (get_field('profile_cpf', 'user_' . $current_user->ID)) ? get_field('profile_cpf', 'user_' . $current_user->ID) : '';
+$profile_nao_localizou_instrutor = (get_field('profile_nao_localizou_instrutor', 'user_' . $current_user->ID)) ? get_field('profile_nao_localizou_instrutor', 'user_' . $current_user->ID) : '';
+$profile_instrutor_pessoal = (get_field('profile_instrutor_pessoal', 'user_' . $current_user->ID)) ? get_field('profile_instrutor_pessoal', 'user_' . $current_user->ID) : '';
 ?>
 
 <form method="POST" action="https://meditacaotranscedental.activehosted.com/proc.php" id="_form_26_"
@@ -71,22 +73,20 @@ $cpf = get_field('profile_cpf', 'user_' . $current_user->ID);
               <label class="form-label" for="phone">Telefone</label>
             </div>
             <div class="col mb-4 form-floating">
-              <?php
-              // $instrutor_pessoal_array = get_field('profile_instrutor_pessoal', 'user_' . $current_user->ID);
-              // if (is_array($instrutor_pessoal_array) && !empty($instrutor_pessoal_array)) {
-              //     $instrutor_pessoal = $instrutor_pessoal_array[0];
-              // } else {
-              //     $instrutor_pessoal = '';
-              // }
-
-              ?>
               <input class="form-control form-control-alt" type="text" id="field[34]" name="field[34]"
-                placeholder="Insira seu instrutor pessoal.."
-                value="<?php //echo esc_attr($instrutor_pessoal); ?>" />
+                placeholder="Insira seu instrutor pessoal.." value="<?php
+                if (!empty($profile_nao_localizou_instrutor)) {
+                    $instrutor_pessoal = $profile_nao_localizou_instrutor;
+                } elseif (is_array($profile_instrutor_pessoal) && !empty($profile_instrutor_pessoal)) {
+                    $instrutor_pessoal = $profile_instrutor_pessoal["user_firstname"] . ' ' . $profile_instrutor_pessoal["user_lastname"];
+                } else {
+                  $instrutor_pessoal = '';
+                }
+                echo $instrutor_pessoal;
+                ?>" />
               <label class="form-label" for="field[34]">Instrutor Pessoal</label>
             </div>
           </div>
-          <?php //var_dump($instrutor_pessoal); ?>
           <div class="mb-4 form-floating">
             <textarea class="form-control form-control-alt" id="field[47]" name="field[47]"
               placeholder="Insira sua dúvida, sugestão ou crítica..." style="height: 100px"></textarea>
