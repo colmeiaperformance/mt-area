@@ -15,6 +15,7 @@
           $args = array(
             'post_type' => 'tecnologia-maharishi',
             'posts_per_page' => 4,
+            'orderby' => 'rand',
             // 'order' => 'ASC'
           );
           $highlight_maharishi_query = new WP_Query($args);
