@@ -32,7 +32,7 @@
                 $args = array(
                   'post_type' => 'evento',
                   'posts_per_page' => -1,
-                  'meta_key'  => 'e_geral_data',
+                  'meta_key'  => 'e_data',
                   'orderby' => 'meta_value',
                 );
             $eventos_query = new WP_Query($args);
@@ -46,7 +46,7 @@
                   <th class="d-none d-xl-table-cell">Tipo</th>
                   <th>Instrutor</th>
                   <th class="d-none d-sm-table-cell text-end" style="width: 25%;">Local</th>
-                  <th></th>
+                  <th>Valor</th>
                 </tr>
               </thead>
               <tbody>
@@ -58,7 +58,7 @@
                   </td>
                   <td>
                     <span
-                      class="fs-sm text-muted"><?php echo $e_geral_data = (get_field('e_geral_data')) ? get_field('e_geral_data') : ''; ?></span>
+                      class="fs-sm text-muted"><?php echo $e_data = (get_field('e_data')) ? get_field('e_data') : ''; ?></span>
                   </td>
                   <td class="d-none d-xl-table-cell">
                     <span class="fw-semibold" style="color:<?php
@@ -70,20 +70,20 @@
                       echo get_field('cor_do_tipo_do_evento', $term);
                     }
                     ?>">
-                      <?php
-                      $tipos_de_eventos = get_field('e_tipo_do_evento');
-                          if ($tipos_de_eventos) {
-                              foreach ($tipos_de_eventos as $tipo_do_evento) {
-                                  echo $tipo_do_evento->name;
-                              }
-                          }
-                          ?>
+                      <?php $modalidade = get_the_terms( get_the_ID(), 'categoria-de-evento' );;
+                  if ($modalidade) {
+                    foreach($modalidade as $term) {
+                      echo $term->name;
+                    }
+                  }
+                  ?>
+
                     </span>
                   </td>
                   <td>
                     <span class="fs-sm text-muted">
                       <?php
-        $instrutores = get_field('e_geral_instrutores');
+        $instrutores = get_field('e_instrutores');
         if ($instrutores) {
             $instrutoresNomes = array(); // Cria um array para armazenar os nomes dos instrutores
         
@@ -100,15 +100,26 @@
                   <td class="d-none d-sm-table-cell text-end fw-medium">
                     <?php
                      $local = get_field('e_local');
-        if($local) { ?>
-                    <a href="<?php echo esc_url( site_url() . '/unidade/' . $local->post_name ); ?>" class="">
-                      <?php echo $local->post_title; ?>
+                    if($local) { ?>
+                    <a href="<?php echo esc_url(get_permalink( $local )); ?>" class="">
+                      <?php echo esc_html( get_the_title( $local ) ); ?>
                     </a>
-                    <?php }
-        ?>
+                    <?php } ?>
                   </td>
                   <td class="text-center text-nowrap fw-medium">
-                    <a href="<?php the_permalink(); ?>">Ver</a>
+                    <?php 
+                    $conteudo_restrito_associados = get_field('conteudo_restrito_associados');
+                    var_dump($conteudo_restrito_associados);
+                    switch ($conteudo_restrito_associados) {
+                      case true:
+                        echo $e_valor = (get_field('e_valor')) ? get_field('e_valor') : '' ;
+                        break;
+                      
+                      default:
+                        echo 'Gratuito';
+                        break;
+                    }
+                    ?>
                   </td>
                 </tr>
                 <?php endwhile; ?>
