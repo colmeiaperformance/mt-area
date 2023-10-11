@@ -21,10 +21,10 @@
         if ($highlight_livros_query->have_posts()) :
           while ($highlight_livros_query->have_posts()) : $highlight_livros_query->the_post(); ?>
 
-            <a class="block block-rounded block-link-rotate mb-2 bg-image" href="<?php esc_url( the_permalink() ); ?>">
+            <a class="block block-rounded block-link-rotate mb-2 bg-image" href="<?php the_permalink(); ?>">
               <div class="block-content block-content-sm block-content-full d-flex align-items-center justify-content-start text-dark-muted bg-mt-light-gray-op block-highlight">
                 <div class="col-2 me-3">
-                  <img class="img-fluid" src="<?php esc_url(the_post_thumbnail_url()); ?>" alt="">
+                  <img class="img-fluid" src="<?php the_post_thumbnail_url(); ?>" alt="">
                 </div>
                 <div class="col-8 me-3">
                   <p class="fs-base mb-0">
