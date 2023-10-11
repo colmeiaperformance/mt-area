@@ -60,7 +60,15 @@
                 ?>
 
                         <tr class="">
-                          <td scope="row"><?= $meditacao['mcp_localidade']; ?></td>
+                          <td scope="row"><?php
+                          $localidade = $meditacao['mcp_localidade'];
+                          if ($localidade) {
+                              $unidade_permalink = get_permalink( $localidade->ID );
+                              $output = '<a href="' . $unidade_permalink . '">';
+                              $output .= esc_html(  $localidade->post_title );
+                              $output .= '</a>';
+                              echo $output;
+                          } ?></td>
                           <td><?= $meditacao['mcp_horario_de_inicio']; ?></td>
                           <td><?= $meditacao['mcp_horario_de_encerramento']; ?></td>
                         </tr>
