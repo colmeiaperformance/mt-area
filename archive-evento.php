@@ -109,7 +109,6 @@
                   <td class="text-center text-nowrap fw-medium">
                     <?php 
                     $conteudo_restrito_associados = get_field('conteudo_restrito_associados');
-                    var_dump($conteudo_restrito_associados);
                     switch ($conteudo_restrito_associados) {
                       case true:
                         echo $e_valor = (get_field('e_valor')) ? get_field('e_valor') : '' ;
