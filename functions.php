@@ -523,9 +523,25 @@ function my_acf_op_init()
         $parent = acf_add_options_page(array(
             'page_title'  => __('Ajustes', 'mt-area'),
             'menu_title'  => __('Ajustes', 'mt-area'),
+            'menu_slug' => 'ajustes',
+            'capability' => 'edit_others_posts',
             'icon_url'    => 'dashicons-admin-generic',
             'position'    => 58,
             'redirect'    => true,
+        ));
+
+        // Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('CTA Associado', 'mt-area'),
+            'menu_title'  => __('CTA Associado', 'mt-area'),
+            'parent_slug' => $parent['menu_slug'],
+        ));
+
+        // Add sub page.
+        $child = acf_add_options_page(array(
+            'page_title'  => __('FAQ', 'mt-area'),
+            'menu_title'  => __('FAQ', 'mt-area'),
+            'parent_slug' => $parent['menu_slug'],
         ));
 
         // Add sub page.
@@ -670,22 +686,17 @@ function reading_time()
 }
 
 //Change WP Login Page
-function wpb_login_logo()
+function mt_login_scripts()
 {
     //Add bootstrap to login/register page
-    wp_enqueue_style('style-bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('style-bootstrap', get_template_directory_uri() . '/vendor/bootstrap.min.css', array(), wp_get_theme()->get('Version'), 'all');
+    wp_enqueue_style('style-css', get_template_directory_uri() . '/style.min.css', array(), wp_get_theme()->get('Version'), 'all');
     ?>
 <style type="text/css">
-    #login {
-        padding: 2% 0 0 !important;
-        width: 50% !important;
-        min-width: 320px;
-    }
-
     #login h1 a,
     .login h1 a {
-        background-image: url(<?php echo get_stylesheet_directory_uri();
-    ?>%pcs-comment-end#* //assets/media/mt/icon-arvore.png);
+        background-image: url(<?php echo get_template_directory_uri()."/assets/media/mt/icon-arvore.png";
+    ?>);
         height: 140px;
         width: 140px;
         background-size: 140px 140px;
@@ -693,120 +704,77 @@ function wpb_login_logo()
         padding-bottom: 10px;
     }
 
-    .login #login_error,
-    .login .message,
-    .login .success {
-        border-radius: 7px;
-    }
+    @media screen and (max-width: 540px) {
 
-    .login h1 {
-        background: #fff;
-        margin-bottom: -30px;
-        position: relative;
-        z-index: 10;
-        border-top-left-radius: 7px;
-        border-top-right-radius: 7px;
-        padding-top: 20px;
-    }
-
-    #lostpasswordform #wp-submit,
-    #loginform #wp-submit {
-        width: 100%;
-        height: 35px;
-        background-color: #ffc536;
-        border: 1px solid #ffc536;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 17px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        letter-spacing: -0.015em;
-        color: #FFFFFF;
-        border-radius: 4px;
-        margin-top: 10px;
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        user-select: none;
-        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-    }
-
-    #lostpasswordform #wp-submit:hover,
-    #loginform #wp-submit:hover {
-        outline: 0;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        color: #ffc536;
-        background-color: transparent;
-    }
-
-    body.wp-core-ui {
-        background:
-            /* url(<?php //echo get_stylesheet_directory_uri();
-    ?>
-            /assets/media/mt/bg-404.jpg), */ rgb(255, 197, 54, 1) !important;
-    }
-
-    .wp-core-ui .button-secondary .dashicons {
-        color: #ffc536;
-    }
-
-    #lostpasswordform,
-    #loginform {
-        border: none;
-        border-radius: 7px;
-        box-shadow: 13px 11px 15px rgba(0, 0, 0, .04);
-    }
-
-    #lostpasswordform input,
-    #loginform input {
-        border: 1px solid #ffc536;
-        border-radius: 0px;
-    }
-
-    #lostpasswordform input[type="checkbox"]:checked::before,
-    #loginform input[type="checkbox"]:checked::before {
-        margin: -0.250rem 0 0 -0.35rem;
-    }
-
-    #lostpasswordform #wp-submit {
-        width: 160px;
-    }
-
-    .login #login_error,
-    .login .message,
-    .login .success {
-        border-left: none !important;
-    }
-
-    .login .button.wp-hide-pw:focus {
-        border-color: none !important;
-        box-shadow: none !important;
-    }
-
-    #backtoblog {
-        display: none;
-    }
-
-    .login .message {
-        font-size: 20px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    #login #registerform {
-        border-radius: 7px;
+        #login h1 a,
+        .login h1 a {
+            height: 70px;
+            width: 70px;
+            background-size: 70px 70px;
+        }
     }
 </style>
 <?php }
-add_action('login_enqueue_scripts', 'wpb_login_logo');
+add_action('login_enqueue_scripts', 'mt_login_scripts');
+
+add_action('login_init', function () { ?>
+
+<div class="container text-white text-center py-5 px-3 login-header">
+
+    <?php if (!isset($_GET['action']) || ($_GET['action'] != 'register' && $_GET['action'] != 'lostpassword' && $_GET['action'] != 'logout')) { ?>
+    <div class="row">
+        <h2 class="hero-title mb-3">Bem-vindo à Comunidade MT Brasil.</h2>
+    </div>
+    <div class="row">
+        <div class="hero-subtitle">Área exclusiva aos praticantes da Meditação Transcendental.</div>
+    </div>
+    <?php } ?>
+
+    <div class="row my-3 d-block d-md-flex">
+        <div class="col-12 col-md-6 my-3 d-flex justify-content-center justify-content-lg-end">
+            <?php if (isset($_GET['action']) && $_GET['action'] == 'register') { ?>
+                <a class="btn btn-primary btn-lg me-1"
+                href="<?php echo esc_url(wp_login_url()); ?>">Já cadastrado? Realize seu login</a>
+            <?php } else { ?>
+            <a class="btn btn-primary btn-lg me-1"
+                href="<?php echo esc_url(wp_registration_url()); ?>">Primeiro acesso? Solicite seu login</a>
+            <?php } ?>
+        </div>
+        <?php
+        if (isset($_GET['action']) && $_GET['action'] == 'lostpassword') { ?>
+        <div class="col-12 col-md-6 my-3 d-flex justify-content-center justify-content-lg-start">
+            <a class="btn btn-primary btn-lg ms-1"
+                href="<?php echo esc_url(wp_login_url()); ?>">Já
+                tem acesso? Realize
+                o login</a>
+        </div>
+        <?php } else { ?>
+        <div class="col-12 col-md-6 my-3 d-flex justify-content-center justify-content-lg-start">
+            <a class="btn btn-primary btn-lg ms-1"
+                href="<?php echo esc_url(wp_lostpassword_url()); ?>">Esqueceu
+                a senha? Solicite uma nova</a>
+        </div>
+        <?php } ?>
+    </div>
+</div>
+
+<?php
+});
+
+// Change login URL
+add_filter('login_url', 'my_custom_login_url', 10, 3);
+function my_custom_login_url($login_url, $redirect, $force_reauth)
+{
+    // This will append /custom-login/ to you main site URL as configured in general settings (ie https://domain.com/custom-login/)
+    $login_url = site_url('/login/', 'login');
+    if (! empty($redirect)) {
+        $login_url = add_query_arg('redirect_to', urlencode($redirect), $login_url);
+    }
+    if ($force_reauth) {
+        $login_url = add_query_arg('reauth', '1', $login_url);
+    }
+    return $login_url;
+}
 
 function wpb_login_logo_url()
 {
@@ -847,6 +815,7 @@ function wpdocs_my_login_redirect($url, $request, $user)
 
 add_filter('login_redirect', 'wpdocs_my_login_redirect', 10, 3);
 
+// END LOGIN FUNCTIONS
 
 //Displays User Info
 function display_user_info($param)
@@ -879,71 +848,39 @@ function display_user_info($param)
     }
 }
 
-add_action('login_init', function () {
-    ?>
-<style>
-    .login-header {
-        color: #FFFFFF;
-        text-align: center;
-        padding: 5% 0 0 !important;
-    }
-
-    .login-header .login-header-h2 {
-        font-family: 'Work Sans', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 3.125rem;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-    }
-
-    .login-header .login-header-p {
-        font-family: 'Work Sans', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 2.5rem;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-    }
-</style>
-<div class="login-header">
-    <h2 class="login-header-h2">Bem-vindo à Comunidade MT Brasil.</h2>
-    <p class="login-header-p">Área exclusiva aos praticantes da Meditação Transcendental.</p>
-</div>
-<?php
-
-});
-
 /*
 * Disable comments
 */
-// First, this will disable support for comments and trackbacks in post types
-// function df_disable_comments_post_types_support() {
-//     $post_types = get_post_types();
-//     foreach ($post_types as $post_type) {
-//        if(post_type_supports($post_type, 'comments')) {
-//           remove_post_type_support($post_type, 'comments');
-//           remove_post_type_support($post_type, 'trackbacks');
-//        }
-//     }
-//  }
+//First, this will disable support for comments and trackbacks in post types
+function df_disable_comments_post_types_support()
+{
+    $post_types = get_post_types();
+    foreach ($post_types as $post_type) {
+        if(post_type_supports($post_type, 'comments')) {
+            remove_post_type_support($post_type, 'comments');
+            remove_post_type_support($post_type, 'trackbacks');
+        }
+    }
+}
 # https://keithgreer.uk/wordpress-code-completely-disable-comments-using-functions-php
 
-//  add_action('admin_init', 'df_disable_comments_post_types_support');
+add_action('admin_init', 'df_disable_comments_post_types_support');
 
-// Then close any comments open comments on the front-end just in case
-//  function df_disable_comments_status() {
-//     return false;
-//  }
-//  add_filter('comments_open', 'df_disable_comments_status', 20, 2);
-//  add_filter('pings_open', 'df_disable_comments_status', 20, 2);
+//Then close any comments open comments on the front-end just in case
+function df_disable_comments_status()
+{
+    return false;
+}
+add_filter('comments_open', 'df_disable_comments_status', 20, 2);
+add_filter('pings_open', 'df_disable_comments_status', 20, 2);
 
-// Finally, hide any existing comments that are on the site.
-//  function df_disable_comments_hide_existing_comments($comments) {
-//     $comments = array();
-//     return $comments;
-//  }
-//  add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
+//Finally, hide any existing comments that are on the site.
+function df_disable_comments_hide_existing_comments($comments)
+{
+    $comments = array();
+    return $comments;
+}
+add_filter('comments_array', 'df_disable_comments_hide_existing_comments', 10, 2);
 
 /*
 * Rename User roles - Change Capabilities
@@ -1280,7 +1217,7 @@ function create_pages_in_wp_panel()
             'slug' => 'front-page'
         ),
         array(
-            'title' => 'Inscrições',
+            'title' => 'Lista de Usuários',
             'content' => '',
             'slug' => 'subscriptions'
         ),
@@ -1289,6 +1226,26 @@ function create_pages_in_wp_panel()
             'content' => '',
             'slug' => 'login',
             'template' => 'custom-login.php'
+        ),
+        array(
+            'title' => 'Painel de Controle - Instrutor',
+            'content' => '',
+            'slug' => 'enrollment-instructor'
+        ),
+        array(
+            'title' => 'Painel de Controle - MT',
+            'content' => '',
+            'slug' => 'enrollment-mt'
+        ),
+        array(
+            'title' => 'Lista de Inscritos',
+            'content' => '',
+            'slug' => 'enrollment-list'
+        ),
+        array(
+            'title' => 'Informações do Inscrito',
+            'content' => '',
+            'slug' => 'profile-view'
         ),
         array(
             'title' => 'Meditação Coletiva Online',
@@ -1376,7 +1333,7 @@ function format_phone($phone)
     if ($matches) {
         return '('.$matches[1].') '.$matches[2].'-'.$matches[3];
     }
-    
+
     return $phone; // return number without format
 }
 add_action('init', 'format_phone', 10, 2);
