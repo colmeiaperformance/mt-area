@@ -532,8 +532,8 @@ function my_acf_op_init()
 
         // Add sub page.
         $child = acf_add_options_page(array(
-            'page_title'  => __('CTA Associado', 'mt-area'),
-            'menu_title'  => __('CTA Associado', 'mt-area'),
+            'page_title'  => __('CTAs', 'mt-area'),
+            'menu_title'  => __('CTAs', 'mt-area'),
             'parent_slug' => $parent['menu_slug'],
         ));
 
@@ -1066,7 +1066,7 @@ function special_nav_class($classes, $item)
 // Admin footer modification
 function remove_footer_admin()
 {
-    echo '<span id="footer-thankyou">' . __('Desenvolvido por ', 'mt-area') . '<a href="https://www.colmeiaperformance.com.br" target="_blank\">Colmeia Performance</a></span>';
+    echo '<span id="footer-thankyou">' . __('Desenvolvido por ', 'mt-area') . '<a href="https://www.colmeiaperformance.com.br" target="_blank\">Colmeia Performance.</a></span>&nbsp;';
 }
 
 add_filter('admin_footer_text', 'remove_footer_admin');
