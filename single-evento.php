@@ -70,7 +70,7 @@
                   $e_local = get_field('e_local');
                   if( $e_local ):
                     ?>
-                  <a href="<?php echo esc_url(get_permalink( $e_local )); ?>">
+                  <a href="<?php echo get_permalink( $e_local ); ?>">
                     <h3><?php echo esc_html( get_the_title( $e_local ) ); ?></h3>
                   </a>
                   <?php

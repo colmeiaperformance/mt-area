@@ -101,7 +101,7 @@
                     <?php
                      $local = get_field('e_local');
                     if($local) { ?>
-                    <a href="<?php echo esc_url(get_permalink( $local )); ?>" class="">
+                    <a href="<?php echo get_permalink( $local ); ?>" class="">
                       <?php echo esc_html( get_the_title( $local ) ); ?>
                     </a>
                     <?php } ?>
