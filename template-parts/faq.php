@@ -70,7 +70,8 @@ if(have_rows('faq_topico', 'option')) :
     <?php
 $sec++;
     endwhile;
-endif; ?>
+endif;
+wp_reset_postdata();?>
 
   </div>
 </div>
