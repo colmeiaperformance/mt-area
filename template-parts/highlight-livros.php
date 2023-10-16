@@ -47,7 +47,7 @@
     </div>
     <div class="block-content bg-body-light">
       <div class="p-2">
-        <a class="btn btn-alt-primary w-100 text-center" href="javascript:void(0)">
+        <a class="btn btn-alt-primary w-100 text-center" href="<?php echo site_url() . '/livros'; ?>">
           <i class="fa fa-fw fa-eye opacity-50 me-1"></i> Ver Tudo
         </a>
       </div>
