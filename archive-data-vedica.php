@@ -23,91 +23,80 @@
   <!-- Page Content -->
   <div id="calendario-vedico" class="content w-50">
 
-    <!-- Form -->
+    <!-- Table -->
     <div class="row">
       <div class="col">
         <div class="block block-rounded">
           <div class="block-content">
 
-            <!-- Calendario antigo -->
+          <?php
+          $args = array(
+            'post_type' => 'evento',
+            'posts_per_page' => -1,
+          );
+
+          $eventos = new WP_Query($args);
+
+          if (have_posts()) :
+          ?>
+            <!-- Calendario vedico -->
             <table class="table table-borderless table-striped text-center">
               <thead>
                 <tr class="bg-primary text-white">
                   <th scope="col">
-                    <?php //_e('Data', 'mt-area');?>
+                    <?php _e('Data', 'mt-area');?>
                   </th>
                 </tr>
               </thead>
               <tbody>
-                <?php
-                $calendario_vedico = get_field('calendario_vedico', 'option');
-
-if ($calendario_vedico) :
-
-    // Criar um array auxiliar para armazenar as datas
-    $datas_vedicas = array();
-
-    // Percorrer o array de meditações coletivas presencial
-    foreach ($calendario_vedico as $calendario) {
-
-        // Armazenar as datas no array auxiliar
-        $data_vedica = $calendario['vedico_data'];
-        $datas_vedicas[] = $data_vedica;
-    }
-    // Ordenar as datas em ordem cronológica
-    //sort($datas_vedicas);
-    usort($datas_vedicas, "compareByTimeStamp");
-
-
-    // Percorrer o array ordenado de datas
-    foreach ($datas_vedicas as $data_vedica) {
-
-        // Procurar a meditação correspondente ao horário de início
-        foreach ($calendario_vedico as $calendario) {
-
-            if ($calendario['vedico_data'] === $data_vedica) {
-                // Exibir a linha correspondente
-                ?>
-
+                
+              <?php while (have_posts()) :
+                the_post();
+                $vedico_data = get_field('vedico_data');
+                
+                if (!empty($vedico_data)) :
+            ?>
                 <tr class="">
                   <td scope="row">
-                    <?php echo $calendario['vedico_data'] . ' - ' . $calendario['nome_da_data'] . '<br>';
-                $tz_object = new DateTimeZone('Brazil/East');
-                $datetime = new DateTime();
-                $datetime->setTimezone($tz_object);
-                $date_today = $datetime->format('d\/m');
+                    <?php echo $vedico_data . ' - ' . get_the_title(); ?><br>
+                    <?php
+                    $tz_object = new DateTimeZone('Brazil/East');
+                    $datetime = new DateTime();
+                    $datetime->setTimezone($tz_object);
+                    $date_today = $datetime->format('d/m');
 
-                if ($date_today == $calendario['vedico_data']) { ?>
+                    if ($date_today == $vedico_data) :
+                    ?>
                     <a target="_blank"
-                      href="<?php echo $calendario['vedico_audio']; ?>">Clique
-                      aqui para ouvir</a>
-                    <?php } else {
-                        echo '';
-                    } ?>
+                      href="<?php echo the_permalink();?>">Clique
+                      aqui para saber mais</a>
+                    <?php else : ?>
+                    <!-- Se a data não for hoje -->
+                    <?php endif; ?>
                   </td>
                 </tr>
-
                 <?php
-                          break;
-            }
-        }
-    }
-
-endif; ?>
+                endif; // Fim da verificação de data válida
+              endwhile;
+              wp_reset_postdata();
+                ?>
+            
               </tbody>
             </table>
-            <!-- END Calendario antigo -->
-
-
-            <!-- Calendario vedico -->
-            NÃO ESTÁ PRONTO. REWORK EM ANDAMENTO.
             <!-- END Calendario vedico -->
+            <?php 
+            else :
+              echo '<p class="alert alert-secondary">Nenhuma data cadastrada.<p>';
+            endif;
+            ?>
+
 
           </div>
         </div>
       </div>
     </div>
-    <!-- END Form -->
+
+    <!-- END Table -->
 
   </div>
   <!-- END Page Content -->
@@ -115,8 +104,8 @@ endif; ?>
 <!-- END Main Container -->
 
 <script>
-  jQuery(".nav-main-link .nav-main-link-name:contains('Residenciais')").parent().removeClass("active");
-  jQuery(".nav-main-link .nav-main-link-name:contains('Recorrentes')").parent().removeClass("active");
+jQuery(".nav-main-link .nav-main-link-name:contains('Residenciais')").parent().removeClass("active");
+jQuery(".nav-main-link .nav-main-link-name:contains('Recorrentes')").parent().removeClass("active");
 </script>
 
 
