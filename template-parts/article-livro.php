@@ -39,7 +39,7 @@ $livros_query = new WP_Query($args);
               <?php echo get_field('livro_valor'); ?>
             </p>
             <div class="d-flex">
-              <a href="<?php esc_url(the_permalink()); ?>">
+              <a href="<?php the_permalink(); ?>">
                 <span class="btn btn-lg btn-primary me-2">
                   <i class="fa fa-plus-circle me-2"></i> Sobre
                 </span>
