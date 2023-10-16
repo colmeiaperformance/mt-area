@@ -53,8 +53,7 @@ if ($numero_de_instrutores == 1) {
             <div class="d-flex mt-2">
               <p class="mb-0">
                 <img class="img-avatar img-avatar-thumb"
-                  src="<?php echo get_template_directory_uri() . '/assets/media/avatars/avatar16.jpg'; ?>"
-                  alt="">
+                  src="<?php echo get_template_directory_uri() . '/assets/media/avatars/avatar16.jpg'; ?>" alt="">
                 <span class="fw-normal text-muted mb-0">
                   <?php echo $instrutor['user_firstname'] . ' ' . $instrutor['user_lastname']; ?>
                 </span>
@@ -67,12 +66,14 @@ if ($numero_de_instrutores == 1) {
           <div class="block-content block-content-full text-center">
             <div class="row g-sm">
               <div class="col-12">
+                <?php if (get_field('unid_email_de_contato')) { ?>
                 <div class="item item-circle mx-auto">
                   <i class="far fa-2x fa-fw fa-envelope me-1"></i>
                 </div>
                 <p class="text-muted mb-0">
                   <?php the_field('unid_email_de_contato'); ?>
                 </p>
+                <?php } ?>
               </div>
             </div>
           </div>
@@ -105,15 +106,24 @@ if ($numero_de_instrutores == 1) {
           <tr>
             <td>
               <div class="fw-medium d-block d-md-flex justify-content-between align-items-center">
-                <span
-                  class="fs-1 fw-bold text-muted"><?php _e('Endereço: ', 'mt-area') ?>
+                <span class="fs-1 fw-bold text-muted"><?php _e('Endereço: ', 'mt-area') ?>
                   <?php
-$unid_endereco = get_field('unid_endereco');
-echo $unid_endereco['tipo'] . ' ' . $unid_endereco['logradouro'] . ', ' . $unid_endereco['numero'] . ' - ' . $unid_endereco['complemento'] . '<br>' . $unid_endereco['cidade'] . ' - ';
+$unid_endereco = (get_field('unid_endereco')) ? get_field('unid_endereco') : '';
 
-foreach ($terms as $term) {
-    echo get_field('sigla_do_estado', $term);
+$complete_address = ($unid_endereco['tipo']) ? $unid_endereco['tipo'] : '';
+$complete_address .= ($unid_endereco['logradouro']) ? '&nbsp;' . $unid_endereco['logradouro'] : '';
+$complete_address .= ($unid_endereco['numero']) ? ', ' . $unid_endereco['numero'] : '';
+$complete_address .= ($unid_endereco['complemento']) ? ' - ' . $unid_endereco['complemento'] : '';
+$complete_address .= ($unid_endereco['cidade']) ? '<br>' . $unid_endereco['cidade'] . ' - ' : '';
+
+echo $complete_address;
+
+if ($terms) {
+    foreach ($terms as $term) {
+        echo get_field('sigla_do_estado', $term);
+    }
 }
+
 ?></span>
               </div>
             </td>
@@ -150,9 +160,9 @@ foreach ($terms as $term) {
       <?php echo get_field('unid_mapa'); ?>
     </div>
     <script>
-      jQuery(document).ready(function() {
-        document.querySelector('iframe').width = '100%';
-      });
+    jQuery(document).ready(function() {
+      document.querySelector('iframe').width = '100%';
+    });
     </script>
   </div>
   <?php } ?>
