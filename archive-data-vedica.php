@@ -29,7 +29,7 @@
         <div class="block block-rounded">
           <div class="block-content">
 
-          <?php
+            <?php
           $args = array(
             'post_type' => 'evento',
             'posts_per_page' => -1,
@@ -46,11 +46,14 @@
                   <th scope="col">
                     <?php _e('Data', 'mt-area');?>
                   </th>
+                  <th scope="col">
+                    <?php _e('Evento Védico', 'mt-area');?>
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                
-              <?php while (have_posts()) :
+
+                <?php while (have_posts()) :
                 the_post();
                 $vedico_data = get_field('vedico_data');
                 
@@ -58,7 +61,10 @@
             ?>
                 <tr class="">
                   <td scope="row">
-                    <?php echo $vedico_data . ' - ' . get_the_title(); ?><br>
+                    <?php echo $vedico_data; ?>
+                  </td>
+                  <td class="text-start">
+                    <?php echo get_the_title(); ?><br>
                     <?php
                     $tz_object = new DateTimeZone('Brazil/East');
                     $datetime = new DateTime();
@@ -67,12 +73,12 @@
 
                     if ($date_today == $vedico_data) :
                     ?>
-                    <a target="_blank"
-                      href="<?php echo the_permalink();?>">Clique
-                      aqui para saber mais</a>
-                    <?php else : ?>
-                    <!-- Se a data não for hoje -->
-                    <?php endif; ?>
+                
+                    <a class="fs-5" target="_blank" href="<?php echo the_permalink();?>">Veja mais sobre a data de hoje!</a>
+                  
+                <?php else : ?>
+                <!-- Se a data não for hoje -->
+                <?php endif; ?>
                   </td>
                 </tr>
                 <?php
@@ -80,7 +86,7 @@
               endwhile;
               wp_reset_postdata();
                 ?>
-            
+
               </tbody>
             </table>
             <!-- END Calendario vedico -->
