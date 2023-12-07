@@ -1,4 +1,13 @@
-<?php include("header.php"); ?>
+<?php
+	
+	use MtArea\Services\Model\Movements;
+	
+	include("header.php");
+    require_once("Services/Model/Movements.php");
+    require_once("Services/Helpers/Util.php");
+	
+	$movements = new Movements();
+?>
 
 <!-- Main Container -->
 <main id="main-container">
@@ -28,7 +37,8 @@
         <div class="row text-center">
           <div class="col-md-4 py-3">
             <div class="fs-1 fw-light text-success mb-1">
-              R$4.968,00
+<!--              R$4.968,00-->
+                R$<?= number_format($movements->getTotal(), 2, ',', '.') ?>
             </div>
             <a class="link-fx fs-sm fw-bold text-uppercase text-muted" href="javascript:void(0)"><?php _e('Compras', 'mt-area'); ?></a>
           </div>
@@ -53,86 +63,32 @@
     <h2 class="content-heading">
       <i class="fa fa-angle-right text-muted me-1"></i> Últimas Transações
     </h2>
-    <a class="block block-rounded block-link-shadow border-start border-success border-3" href="javascript:void(0)">
-      <div class="block-content block-content-full d-flex align-items-center justify-content-between">
-        <div>
-          <p class="fs-lg fw-semibold mb-0">
-            +$250,00
-          </p>
-          <p class="text-muted mb-0">
-            xxx-485 Crédito
-          </p>
-        </div>
-        <div class="ms-3">
-          <i class="fa fa-arrow-left text-success"></i>
-        </div>
-      </div>
-      <div class="block-content block-content-full block-content-sm bg-body-light">
-        <span class="fs-sm text-muted">
-          De: Meditante <strong>João da Silva</strong> em <strong>10 de Junho de 2023 - 10:06</strong>
-        </span>
-      </div>
-    </a>
-    <a class="block block-rounded block-link-shadow border-start border-danger border-3" href="javascript:void(0)">
-      <div class="block-content block-content-full d-flex align-items-center justify-content-between">
-        <div>
-          <p class="fs-lg fw-semibold mb-0">
-            -$540,00
-          </p>
-          <p class="text-muted mb-0">
-            xxx-7898 Débito
-          </p>
-        </div>
-        <div class="ms-3">
-          <i class="fa fa-arrow-right text-danger"></i>
-        </div>
-      </div>
-      <div class="block-content block-content-full block-content-sm bg-body-light">
-        <span class="fs-sm text-muted">
-          De: Associado <strong>Maria Oliveira</strong> em <strong>5 de Junho de 2023 - 08:46</strong>
-        </span>
-      </div>
-    </a>
-    <a class="block block-rounded block-link-shadow border-start border-success border-3" href="javascript:void(0)">
-      <div class="block-content block-content-full d-flex align-items-center justify-content-between">
-        <div>
-          <p class="fs-lg fw-semibold mb-0">
-            +$120,00
-          </p>
-          <p class="text-muted mb-0">
-            xxx-485 Crédito
-          </p>
-        </div>
-        <div class="ms-3">
-          <i class="fa fa-arrow-left text-success"></i>
-        </div>
-      </div>
-      <div class="block-content block-content-full block-content-sm bg-body-light">
-        <span class="fs-sm text-muted">
-          De: Sidha Associado <strong>Marcos Souza</strong> em <strong>25 de Maio de 2023 - 12:25</strong>
-        </span>
-      </div>
-    </a>
-    <a class="block block-rounded block-link-shadow border-start border-success border-3" href="javascript:void(0)">
-      <div class="block-content block-content-full d-flex align-items-center justify-content-between">
-        <div>
-          <p class="fs-lg fw-semibold mb-0">
-            +$698,00
-          </p>
-          <p class="text-muted mb-0">
-            xxx-796 Pix
-          </p>
-        </div>
-        <div class="ms-3">
-          <i class="fa fa-arrow-left text-success"></i>
-        </div>
-      </div>
-      <div class="block-content block-content-full block-content-sm bg-body-light">
-        <span class="fs-sm text-muted">
-          De: Sidha Meditante <strong>José Pereira</strong> em <strong>23 de Maio de 2023 - 14:23</strong>
-        </span>
-      </div>
-    </a>
+  
+    <?php
+        foreach ($movements->all() as $movement):
+        
+    ?>
+        <a class="block block-rounded block-link-shadow border-start <?= $movement->operacao === '+' ? 'border-success' : 'border-danger' ?> border-3" href="javascript:void(0)">
+            <div class="block-content block-content-full d-flex align-items-center justify-content-between">
+                <div>
+                    <p class="fs-lg fw-semibold mb-0">
+                        <?= $movement->operacao ?>$<?= number_format($movement->valor, 2, ',', '.') ?>
+                    </p>
+                    <p class="text-muted mb-0">
+                        <?= $movement->ini ?> <?= getTipo($movement->tipo) ?>
+                    </p>
+                </div>
+                <div class="ms-3">
+                    <i class="fa <?= $movement->operacao === '+' ? 'fa-arrow-left text-success' : 'fa-arrow-right text-danger' ?>"></i>
+                </div>
+            </div>
+            <div class="block-content block-content-full block-content-sm bg-body-light">
+                <span class="fs-sm text-muted">
+                  De: <?= $movement->de_onde_e ?> <strong><?= $movement->nome ?></strong> em <strong><?= date_format(date_create($movement->created_at), 'd \d\e F \d\e Y H:i') ?></strong>
+                </span>
+            </div>
+        </a>
+    <?php endforeach; ?>
     <!-- END Latest Transactions -->
 
     <!-- View More -->

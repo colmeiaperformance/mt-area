@@ -13,9 +13,11 @@
           <?= the_title(); ?>
         </h1>
         <p class="my-5 pb-1">
-          <a class="btn btn-hero btn-success" href="<?php echo esc_url(home_url('/checkout')); ?>" data-toggle="click-ripple">
-            <i class="fa fa-shopping-cart opacity-50 me-1"></i> <?php _e('Adquira Agora', 'mt-area'); ?>
-          </a>
+          <form method="post" action="<?php echo esc_url(home_url('/cart')); ?>">
+              <button class="btn btn-hero btn-success" data-toggle="click-ripple">
+                <i class="fa fa-shopping-cart opacity-50 me-1"></i> <?php _e('Adquira Agora', 'mt-area'); ?>
+              </button>
+          </form>
         </p>
       </div>
     </div>

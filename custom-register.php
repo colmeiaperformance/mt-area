@@ -1,137 +1,208 @@
-<form method="POST" action="https://meditacaotranscedental.activehosted.com/proc.php" id="_form_27_" class="_form _form_27 _inline-form  _dark" novalidate data-styles-version="3">
-  <input type="hidden" name="u" value="27" />
-  <input type="hidden" name="f" value="27" />
-  <input type="hidden" name="s" />
-  <input type="hidden" name="c" value="0" />
-  <input type="hidden" name="m" value="0" />
-  <input type="hidden" name="act" value="sub" />
-  <input type="hidden" name="v" value="2" />
-  <input type="hidden" name="or" value="e09355abc2192002da5c624875f09a57" />
-  <div class="_form-content">
-    <div class="_form_element _x84654747 _full_width " >
-      <label for="firstname" class="_form-label">
-        Nome*
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="firstname" name="firstname" placeholder="Digite seu primeiro nome" required/>
+<?php
+
+/**
+ * Template Name: Custom registration Page
+ */
+
+?>
+<!doctype html>
+<html lang="pt-br" style="margin-top: 0 !important;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>
+			<?php _e('Comunidade MT Brasil', 'mt-area'); ?>
+    </title>
+
+    <meta name="description" content="Dashboard &amp; Área de Meditantes">
+    <meta name="author" content="Colmeia Performance">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Comunidade &amp; MT Brasil">
+    <meta property="og:site_name" content="Comunidade MT Brasil">
+    <meta property="og:description" content="Comunidade &amp; MT Brasil">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="">
+    
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="57x57"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-57x57.png'; ?>">
+    <link rel="apple-touch-icon" sizes="60x60"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-60x60.png'; ?>">
+    <link rel="apple-touch-icon" sizes="72x72"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-72x72.png'; ?>">
+    <link rel="apple-touch-icon" sizes="76x76"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-76x76.png'; ?>">
+    <link rel="apple-touch-icon" sizes="114x114"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-114x114.png'; ?>">
+    <link rel="apple-touch-icon" sizes="120x120"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-120x120.png'; ?>">
+    <link rel="apple-touch-icon" sizes="144x144"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-144x144.png'; ?>">
+    <link rel="apple-touch-icon" sizes="152x152"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-152x152.png'; ?>">
+    <link rel="apple-touch-icon" sizes="180x180"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/apple-icon-180x180.png'; ?>">
+    <link rel="icon" type="image/png" sizes="192x192"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/android-icon-192x192.png'; ?>">
+    <link rel="icon" type="image/png" sizes="32x32"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/favicon-32x32.png'; ?>">
+    <link rel="icon" type="image/png" sizes="96x96"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/favicon-96x96.png'; ?>">
+    <link rel="icon" type="image/png" sizes="16x16"
+          href="<?php echo get_template_directory_uri() . '/assets/media/favicons/favicon-16x16.png'; ?>">
+    <link rel="manifest" href="<?php echo get_template_directory_uri() . '/assets/media/favicons/manifest.json'; ?>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage"
+          content="<?php echo get_template_directory_uri() . '/assets/media/favicons/ms-icon-144x144.png'; ?>">
+    <meta name="theme-color" content="#ffffff">
+    <!-- END Favicons -->
+	
+	<?php wp_head(); ?>
+</head>
+
+<body>
+    <form method="POST" action="/obrigado-por-se-registrar" id="_form_27_" class="_form _form_27 _inline-form  _dark" novalidate data-styles-version="3">
+      <input type="hidden" name="u" value="27" />
+      <input type="hidden" name="f" value="27" />
+      <input type="hidden" name="s" />
+      <input type="hidden" name="c" value="0" />
+      <input type="hidden" name="m" value="0" />
+      <input type="hidden" name="act" value="sub" />
+      <input type="hidden" name="v" value="2" />
+      <input type="hidden" name="or" value="e09355abc2192002da5c624875f09a57" />
+      <div class="_form-content">
+        <div class="_form_element _x84654747 _full_width " >
+          <label for="firstname" class="_form-label">
+            Nome*
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="firstname" name="firstname" placeholder="Digite seu primeiro nome" required/>
+          </div>
+        </div>
+        <div class="_form_element _x98529158 _full_width " >
+          <label for="lastname" class="_form-label">
+            Sobrenome*
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="lastname" name="lastname" placeholder="Digite seu sobrenome" required/>
+          </div>
+        </div>
+        <div class="_form_element _x75725633 _full_width " >
+          <label for="email" class="_form-label">
+            Email*
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="email" name="email" placeholder="Digite seu email" required/>
+          </div>
+        </div>
+        <div class="_form_element _x52574770 _full_width " >
+          <label for="phone" class="_form-label">
+            Telefone*
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="phone" name="phone" placeholder="Digite seu telefone" required/>
+          </div>
+        </div>
+        <div class="_form_element _x60088435 _full_width " >
+          <label for="field[92]" class="_form-label">
+            CPF*
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[92]" name="field[92]" value="" placeholder="" required/>
+          </div>
+        </div>
+        <div class="_form_element _x04589699 _full_width " >
+          <label for="field[55]" class="_form-label">
+            Profissao
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[55]" name="field[55]" value="" placeholder="" />
+          </div>
+        </div>
+        <div class="_form_element _x83675434 _full_width " >
+          <label for="field[53]" class="_form-label">
+            cep
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[53]" name="field[53]" value="" placeholder="" />
+          </div>
+        </div>
+        <div class="_form_element _x16568054 _full_width " >
+          <label for="field[60]" class="_form-label">
+            cidade
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[60]" name="field[60]" value="" placeholder="" />
+          </div>
+        </div>
+        <div class="_form_element _x14488074 _full_width " >
+          <label for="field[61]" class="_form-label">
+            endereco
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[61]" name="field[61]" value="" placeholder="" />
+          </div>
+        </div>
+        <div class="_form_element _x49315101 _full_width " >
+          <label for="field[73]" class="_form-label">
+            Data instrucao pessoal
+          </label>
+          <div class="_field-wrapper">
+            <input type="date" class="date_field" id="field[73]" name="field[73]" value="" placeholder=""  />
+          </div>
+        </div>
+        <div class="_form_element _x37025933 _full_width " >
+          <label for="field[34]" class="_form-label">
+            Instrutor_da_palestra
+          </label>
+          <div class="_field-wrapper">
+            <input type="text" id="field[34]" name="field[34]" value="" placeholder="" />
+          </div>
+        </div>
+        <div class="_form_element _x30905747 _full_width " >
+          <label for="field[71]" class="_form-label">
+            Data de nascimento
+          </label>
+          <div class="_field-wrapper">
+            <input type="date" class="date_field" id="field[71]" name="field[71]" value="" placeholder=""  />
+          </div>
+        </div>
+        <div class="_form_element _x34686660 _full_width " >
+          <label for="ls" class="_form-label">
+            Por favor, verifique seu pedido*
+          </label>
+          <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go">
+          </div>
+        </div>
+        <div class="_button-wrapper _full_width">
+          <button id="_form_27_submit" class="_submit" type="submit">
+            Enviar
+          </button>
+        </div>
+        <div class="_clear-element">
+        </div>
       </div>
-    </div>
-    <div class="_form_element _x98529158 _full_width " >
-      <label for="lastname" class="_form-label">
-        Sobrenome*
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="lastname" name="lastname" placeholder="Digite seu sobrenome" required/>
+      <div class="_form-thank-you" style="display:none;">
       </div>
-    </div>
-    <div class="_form_element _x75725633 _full_width " >
-      <label for="email" class="_form-label">
-        Email*
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="email" name="email" placeholder="Digite seu email" required/>
+      <div class="_form-branding">
+        <div class="_marketing-by">
+          Marketing por
+        </div>
+        <a href="https://www.activecampaign.com/?utm_medium=referral&utm_campaign=acforms" class="_logo">
+          <span class="form-sr-only">
+            ActiveCampaign
+          </span>
+        </a>
       </div>
-    </div>
-    <div class="_form_element _x52574770 _full_width " >
-      <label for="phone" class="_form-label">
-        Telefone*
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="phone" name="phone" placeholder="Digite seu telefone" required/>
-      </div>
-    </div>
-    <div class="_form_element _x60088435 _full_width " >
-      <label for="field[92]" class="_form-label">
-        CPF*
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[92]" name="field[92]" value="" placeholder="" required/>
-      </div>
-    </div>
-    <div class="_form_element _x04589699 _full_width " >
-      <label for="field[55]" class="_form-label">
-        Profissao
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[55]" name="field[55]" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="_form_element _x83675434 _full_width " >
-      <label for="field[53]" class="_form-label">
-        cep
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[53]" name="field[53]" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="_form_element _x16568054 _full_width " >
-      <label for="field[60]" class="_form-label">
-        cidade
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[60]" name="field[60]" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="_form_element _x14488074 _full_width " >
-      <label for="field[61]" class="_form-label">
-        endereco
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[61]" name="field[61]" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="_form_element _x49315101 _full_width " >
-      <label for="field[73]" class="_form-label">
-        Data instrucao pessoal
-      </label>
-      <div class="_field-wrapper">
-        <input type="date" class="date_field" id="field[73]" name="field[73]" value="" placeholder=""  />
-      </div>
-    </div>
-    <div class="_form_element _x37025933 _full_width " >
-      <label for="field[34]" class="_form-label">
-        Instrutor_da_palestra
-      </label>
-      <div class="_field-wrapper">
-        <input type="text" id="field[34]" name="field[34]" value="" placeholder="" />
-      </div>
-    </div>
-    <div class="_form_element _x30905747 _full_width " >
-      <label for="field[71]" class="_form-label">
-        Data de nascimento
-      </label>
-      <div class="_field-wrapper">
-        <input type="date" class="date_field" id="field[71]" name="field[71]" value="" placeholder=""  />
-      </div>
-    </div>
-    <div class="_form_element _x34686660 _full_width " >
-      <label for="ls" class="_form-label">
-        Por favor, verifique seu pedido*
-      </label>
-      <div class="g-recaptcha" data-sitekey="6LcwIw8TAAAAACP1ysM08EhCgzd6q5JAOUR1a0Go">
-      </div>
-    </div>
-    <div class="_button-wrapper _full_width">
-      <button id="_form_27_submit" class="_submit" type="submit">
-        Enviar
-      </button>
-    </div>
-    <div class="_clear-element">
-    </div>
-  </div>
-  <div class="_form-thank-you" style="display:none;">
-  </div>
-  <div class="_form-branding">
-    <div class="_marketing-by">
-      Marketing por
-    </div>
-    <a href="https://www.activecampaign.com/?utm_medium=referral&utm_campaign=acforms" class="_logo">
-      <span class="form-sr-only">
-        ActiveCampaign
-      </span>
-    </a>
-  </div>
-</form><script type="text/javascript">
+    </form>
+</body>
+</html>
+<script type="text/javascript">
 window.cfields = {"92":"cpf","55":"profissao","53":"cep","60":"cidade","61":"endereco","73":"data_instrucao_pessoal","34":"instrutordapalestra","71":"data_de_nascimento"};
 window._show_thank_you = function(id, message, trackcmp_url, email) {
     var form = document.getElementById('_form_' + id + '_'), thank_you = form.querySelector('._form-thank-you');
@@ -594,7 +665,7 @@ window._load_script = function(url, callback, isSubmit) {
 
     const formSupportsPost = false;
     var form_submit = function(e) {
-        e.preventDefault();
+        // e.preventDefault();
         if (validate_form()) {
             // use this trick to get the submit button & disable it using plain javascript
             var submitButton = e.target.querySelector('#_form_27_submit');
@@ -605,22 +676,22 @@ window._load_script = function(url, callback, isSubmit) {
             ).replace(/%0A/g, '\\n');
             var err = form_to_submit.querySelector('._form_error');
             err ? err.parentNode.removeChild(err) : false;
-            async function submitForm() {
-              var formData = new FormData();
-              const searchParams = new URLSearchParams(serialized);
-              searchParams.forEach((value, key) => {
-                formData.append(key, value);
-              });
-
-              const response = await fetch('https://meditacaotranscedental.activehosted.com/proc.php?jsonp=true', {
-                headers: {
-                  "Accept": "application/json"
-                },
-                body: formData,
-                method: "POST"
-              });
-              return response.json();
-            }
+            // async function submitForm() {
+            //   var formData = new FormData();
+            //   const searchParams = new URLSearchParams(serialized);
+            //   searchParams.forEach((value, key) => {
+            //     formData.append(key, value);
+            //   });
+            //
+            //   const response = await fetch('https://meditacaotranscedental.activehosted.com/proc.php?jsonp=true', {
+            //     headers: {
+            //       "Accept": "application/json"
+            //     },
+            //     body: formData,
+            //     method: "POST"
+            //   });
+            //   return response.json();
+            // }
 
             if (formSupportsPost) {
               submitForm().then((data) => {
@@ -629,6 +700,8 @@ window._load_script = function(url, callback, isSubmit) {
             } else {
               _load_script('https://meditacaotranscedental.activehosted.com/proc.php?' + serialized + '&jsonp=true', null, true);
             }
+
+            console.log("enviado")
         }
         return false;
     };

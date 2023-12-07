@@ -776,6 +776,21 @@ function my_custom_login_url($login_url, $redirect, $force_reauth)
     return $login_url;
 }
 
+//Change WP Registration Page
+
+// Change Registration URL
+add_filter( 'register_url', 'change_register_url' );
+function change_register_url( $url ) {
+    return home_url('/register/', 'register');
+}
+
+//Registration redirect
+add_filter('registration_redirect', 'my_redirect_home');
+function my_redirect_home($registration_redirect)
+{
+    return home_url('/obrigado-por-se-registrar');
+}
+
 function wpb_login_logo_url()
 {
     return home_url();
@@ -790,13 +805,6 @@ add_filter('login_headertext', 'wpb_login_logo_url_title');
 
 //Disable Login language
 add_filter('login_display_language_dropdown', '__return_false');
-
-//Registration redirect
-add_filter('registration_redirect', 'my_redirect_home');
-function my_redirect_home($registration_redirect)
-{
-    return home_url('/obrigado-por-se-registrar');
-}
 
 /**
  * WordPress function for redirecting users on login based on user role
@@ -1227,6 +1235,12 @@ function create_pages_in_wp_panel()
             'slug' => 'login',
             'template' => 'custom-login.php'
         ),
+	    array(
+		    'title' => 'Cadastro',
+		    'content' => '',
+		    'slug' => 'register',
+		    'template' => 'custom-register.php'
+	    ),
         array(
             'title' => 'Painel de Controle - Instrutor',
             'content' => '',
@@ -1267,6 +1281,11 @@ function create_pages_in_wp_panel()
             'content' => '',
             'slug' => 'obrigado-por-se-registrar'
         ),
+	    array(
+		    'title' => 'Carrinho',
+		    'content' => '',
+		    'slug' => 'cart'
+	    ),
         array(
             'title' => 'Pagamento',
             'content' => '',
@@ -1337,3 +1356,6 @@ function format_phone($phone)
     return $phone; // return number without format
 }
 add_action('init', 'format_phone', 10, 2);
+
+// Chama o Services
+require_once 'Services\Config\config.php';

@@ -1,7 +1,7 @@
 <?php
 $args = array(
   'post_type' => 'livro',
-  'posts_per_page' => 3,
+  'posts_per_page' => 10,
   // 'order' => 'ASC'
 );
 $livros_query = new WP_Query($args);
@@ -10,7 +10,11 @@ $livros_query = new WP_Query($args);
 <?php if (have_posts()) :
     $i = 1;
     ?>
-<?php while (have_posts()) : the_post(); ?>
+<?php while (have_posts()) : the_post();
+
+//var_dump($livros_query);
+
+?>
 
 
 <!-- Book -->
@@ -44,12 +48,14 @@ $livros_query = new WP_Query($args);
                   <i class="fa fa-plus-circle me-2"></i> Sobre
                 </span>
               </a>
-              <a
-                href="<?php echo esc_url(home_url() . '/checkout'); ?>">
-                <span class="btn btn-lg btn-success">
-                  <i class="fa fa-shopping-cart me-2"></i> Adquirir
-                </span>
-              </a>
+              <form method="post" action="<?php echo esc_url(home_url() . '/cart'); ?>">
+                  <input type="hidden" name="id" value="594">
+                  <button
+                    <span class="btn btn-lg btn-success">
+                      <i class="fa fa-shopping-cart me-2"></i> Adquirir
+                    </span>
+                  </button>
+              </form>
             </div>
           </div>
         </div>

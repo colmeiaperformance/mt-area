@@ -1,4 +1,13 @@
-<?php include("header.php"); ?>
+<?php
+	
+	use MtArea\Services\Model\ShoppingCart;
+	
+	include("header.php");
+	
+  require_once("Services/Model/ShoppingCart.php");
+
+  $shoppingCart = new ShoppingCart();
+?>
 
 <!-- Main Container -->
 <main id="main-container">
@@ -144,24 +153,16 @@
                 <div class="block-content block-content-full">
                   <table class="table table-vcenter">
                     <tbody>
+                        <?php
+                          foreach ($shoppingCart->all() as $item):
+                        ?>
                       <tr>
                         <td class="ps-0">
-                          <a class="fw-semibold" href="javascript:void(0)">Curso Lorem Ipsum</a>
+                          <a class="fw-semibold" href="javascript:void(0)"><?= $item->post_id ?></a>
                         </td>
                         <td class="pe-0 fw-medium text-end">R$ 249,90</td>
                       </tr>
-                      <tr>
-                        <td class="ps-0">
-                          <a class="fw-semibold" href="javascript:void(0)">Livro Lorem Ipsum</a>
-                        </td>
-                        <td class="pe-0 fw-medium text-end">R$ 29,90</td>
-                      </tr>
-                      <tr>
-                        <td class="ps-0">
-                          <a class="fw-semibold" href="javascript:void(0)">Evento Dolor sit amet</a>
-                        </td>
-                        <td class="pe-0 fw-medium text-end">R$ 49,90</td>
-                      </tr>
+                        <?php endforeach; ?>
                     </tbody>
                     <tbody>
                       <tr>
